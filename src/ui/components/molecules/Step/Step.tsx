@@ -6,15 +6,9 @@ import Link from "next/link";
 import { Button } from "@atoms";
 import { cn } from "@utils";
 
-type StepProps = {
-    title: string;
-    image: string;
-    description: string[];
-    link: string;
-    isSecondary?: boolean;
-}
+import { ExampleStepType } from "@types";
 
-export const Step = ({ title, image, description, link, isSecondary }: StepProps) => {
+export const Step = ({ title, image, description, slug, isSecondary }: ExampleStepType) => {
 
     const maxLength = 500;
 
@@ -56,7 +50,7 @@ export const Step = ({ title, image, description, link, isSecondary }: StepProps
                 isSecondary && "order-2"
             )}>
                 <Button asChild>
-                    <Link href={link}>
+                    <Link href={`/${slug}`}>
                         Далі
                     </Link>
                 </Button>

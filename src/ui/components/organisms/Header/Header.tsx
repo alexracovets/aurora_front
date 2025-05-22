@@ -2,6 +2,7 @@
 
 import { Container, Logo } from "@atoms";
 import { HeaderNavigation } from "@molecules";
+import Link from "next/link";
 
 export const Header = () => {
     return (
@@ -11,7 +12,9 @@ export const Header = () => {
             <Container
                 className="flex items-center gap-x-[32px] py-[10px]"
             >
-                <Logo />
+                <Link href="/">
+                    <Logo />
+                </Link>
                 <HeaderNavigation />
             </Container>
         </header>
