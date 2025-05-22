@@ -1,7 +1,7 @@
 export const StepsData = [
     {
         title: "Місія 1",
-        image: "/images/avrora.jpg",
+        image: "/images/aurora.jpg",
         description: [
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit delectus. Sit vitae dolor dolorem beatae quo qui dolores impedit quasi ex? Nesciunt nemo quis dignissimos magnam rerum obcaecati enim.",
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit delectus. Sit vitae dolor dolorem beatae quo qui dolores impedit quasi ex? Nesciunt nemo quis dignissimos magnam rerum obcaecati enim.",
@@ -12,7 +12,7 @@ export const StepsData = [
     },
     {
         title: "Роль 2",
-        image: "/images/avrora.jpg",
+        image: "/images/aurora.jpg",
         description: [
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit delectus. Sit vitae dolor dolorem beatae quo qui dolores impedit quasi ex? Nesciunt nemo quis dignissimos magnam rerum obcaecati enim.",
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit delectus. Sit vitae dolor dolorem beatae quo qui dolores impedit quasi ex? Nesciunt nemo quis dignissimos magnam rerum obcaecati enim.",
@@ -23,7 +23,7 @@ export const StepsData = [
     },
     {
         title: "Задача 3",
-        image: "/images/avrora.jpg",
+        image: "/images/aurora.jpg",
         description: [
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit delectus. Sit vitae dolor dolorem beatae quo qui dolores impedit quasi ex? Nesciunt nemo quis dignissimos magnam rerum obcaecati enim.",
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit delectus. Sit vitae dolor dolorem beatae quo qui dolores impedit quasi ex? Nesciunt nemo quis dignissimos magnam rerum obcaecati enim.",
@@ -34,7 +34,7 @@ export const StepsData = [
     },
     {
         title: "Приклад 4",
-        image: "/images/avrora.jpg",
+        image: "/images/aurora.jpg",
         description: [
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit delectus. Sit vitae dolor dolorem beatae quo qui dolores impedit quasi ex? Nesciunt nemo quis dignissimos magnam rerum obcaecati enim.",
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, odit delectus. Sit vitae dolor dolorem beatae quo qui dolores impedit quasi ex? Nesciunt nemo quis dignissimos magnam rerum obcaecati enim.",

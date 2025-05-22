@@ -35,7 +35,7 @@ export default function Steps({ params }: ExampleStepsProps) {
       <div
         className="w-[70dvw] h-[30dvw] relative mb-[32px]"
       >
-        <Image src={'/images/avrora.jpg'} alt={data.title} fill className="object-cover" />
+        <Image src={'/images/aurora.jpg'} alt={data.title} fill className="object-cover" />
       </div>
       <div className="w-full flex flex-col gap-y-[8px]">
         {data.description.map((item, idx) => (

@@ -2,26 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
-const news = [
-    {
-        title: "Новая статья",
-        data: "22.05.2025",
-        description: "Описание новости",
-        image: "/images/avrora.jpg",
-        slug: "news-1"
-    },
-]
+import { NewsData } from "@data";
 
 export const NewsBlock = () => {
     return (
         <div
-            className="flex w-full flex-wrap gap-4"
+            className="grid grid-cols-3 gap-4 w-full"
         >
-            {news.map((item, idx) => (
+            {NewsData.map((item, idx) => (
                 <div
                     key={idx}
-                    className="w-1/3 border-1 border-gray-300 rounded-md p-4"
+                    className="border-1 border-gray-300 rounded-md p-4"
                 >
                     <div
                         className="w-full h-[200px] relative"
