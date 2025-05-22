@@ -6,9 +6,9 @@ import Link from "next/link";
 import { Button } from "@atoms";
 import { cn } from "@utils";
 
-import { ExampleStepType } from "@types";
+import { StepType } from "@types";
 
-export const Step = ({ title, image, description, slug, isSecondary }: ExampleStepType) => {
+export const Step = ({ title, image, description, slug, isSecondary }: StepType) => {
 
     const maxLength = 500;
 
