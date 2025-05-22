@@ -1,17 +1,22 @@
 "use client";
 
 import { JustChildrenType } from "@types";
-import { Header } from "@organisms";
+import { Footer, Header } from "@organisms";
 
-import "@styles/tailwind.scss";
 import "@styles/globals.scss";
+import "@styles/tailwind.css";
 
 export const DefaultTemplate = ({ children }: JustChildrenType) => {
     return (
         <html lang="en">
-            <body>
+            <body
+                className="min-h-screen w-full flex flex-col"
+            >
                 <Header />
-                {children}
+                <main className="grow">
+                    {children}
+                </main>
+                <Footer />
             </body>
         </html>
     )
