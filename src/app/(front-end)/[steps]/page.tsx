@@ -5,6 +5,7 @@ import { useEffect, useState, use } from "react";
 
 import { ExampleStepType } from "@types";
 import { ExampleStepsData } from "@data";
+import Image from "next/image";
 
 interface ExampleStepsProps {
   params: Promise<{ steps: string; }>
@@ -30,7 +31,17 @@ export default function Steps({ params }: ExampleStepsProps) {
 
   return (
     <Container space>
-      {data?.title}
+      <h1 className="text-[64px] font-bold mb-[48px]">{data.title}</h1>
+      <div
+        className="w-[70dvw] h-[30dvw] relative mb-[32px]"
+      >
+        <Image src={'/images/avrora.jpg'} alt={data.title} fill className="object-cover" />
+      </div>
+      <div className="w-full flex flex-col gap-y-[8px]">
+        {data.description.map((item, idx) => (
+          <p key={idx}>{item}</p>
+        ))}
+      </div>
     </Container>
   );
 }
