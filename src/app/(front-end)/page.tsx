@@ -1,14 +1,12 @@
 "use client";
 
 import { Container } from "@atoms";
-import { ExampleSteps } from "@organisms";
+import { StepsBlock } from "@organisms";
 
 export default function Home() {
   return (
-    <>
-      <Container space>
-        <ExampleSteps />
-      </Container>
-    </>
+    <Container space>
+      <StepsBlock />
+    </Container>
   );
 }

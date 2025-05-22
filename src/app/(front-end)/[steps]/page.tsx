@@ -3,8 +3,8 @@
 import { Container } from "@atoms";
 import { useEffect, useState, use } from "react";
 
-import { ExampleStepType } from "@types";
-import { ExampleStepsData } from "@data";
+import { StepType } from "@types";
+import { StepsData } from "@data";
 import Image from "next/image";
 
 interface ExampleStepsProps {
@@ -12,12 +12,12 @@ interface ExampleStepsProps {
 }
 
 export default function Steps({ params }: ExampleStepsProps) {
-  const [data, setData] = useState<ExampleStepType | null>(null);
+  const [data, setData] = useState<StepType | null>(null);
   const resolvedParams = use(params);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async (slug: string) => {
-    const data = ExampleStepsData.find((item) => item.slug === slug);
+    const data = StepsData.find((item) => item.slug === slug);
     if (!data) return setIsLoading(false);
     setData(data);
   };

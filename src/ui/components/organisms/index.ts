@@ -1,3 +1,4 @@
 export { Header } from "./Header";
 export { Footer } from "./Footer";
-export { ExampleSteps } from "./ExampleSteps";
+export { StepsBlock } from "./StepsBlock";
+export { NewsBlock } from "./NewsBlock";

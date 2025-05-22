@@ -1,11 +1,7 @@
-export interface ExampleStepType {
+export interface StepType {
     title: string;
     image: string;
     description: string[];
     slug: string;
     isSecondary?: boolean;
-}
-
-export interface ExampleStepsType {
-    steps: ExampleStepType[];
 }

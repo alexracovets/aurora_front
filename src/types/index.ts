@@ -1,2 +1,3 @@
 export type { JustChildrenType } from "./JustChildrenType";
-export type { ExampleStepType, ExampleStepsType } from "./ExampleStepsType";
+export type { StepType } from "./StepType";
+export type { NewsType } from "./NewsType";

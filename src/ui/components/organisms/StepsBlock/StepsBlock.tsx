@@ -2,14 +2,14 @@
 
 import { Step } from "@molecules";
 
-import { ExampleStepsData as data } from "@data";
+import { StepsData } from "@data";
 
-export const ExampleSteps = () => {
+export const StepsBlock = () => {
     return (
         <div
             className="w-full flex flex-col"
         >
-            {data.map((item, index) => (
+            {StepsData.map((item, index) => (
                 <Step key={index} {...item} isSecondary={index % 2 !== 0} />
             ))}
         </div>

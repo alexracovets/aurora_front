@@ -1,4 +1,4 @@
-export const ExampleStepsData = [
+export const StepsData = [
     {
         title: "Місія 1",
         image: "/images/avrora.jpg",
