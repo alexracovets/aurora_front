@@ -1,7 +1,12 @@
 {
+  "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,18 +24,48 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@atoms": ["./src/ui/components/atoms"],
-      "@molecules": ["./src/ui/components/molecules"],
-      "@organisms": ["./src/ui/components/organisms"],
-      "@templates": ["./src/ui/components/templates"], 
-      "@hooks": ["./src/hooks"],
-      "@types": ["./src/types"], 
-      "@utils": ["./src/utils"],
-      "@styles/*": ["./src/styles/*"],
-      "@data": ["./src/data"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@payload-config": [
+        "./src/payload.config.ts"
+      ],
+      "@atoms": [
+        "./src/ui/components/atoms"
+      ],
+      "@molecules": [
+        "./src/ui/components/molecules"
+      ],
+      "@organisms": [
+        "./src/ui/components/organisms"
+      ],
+      "@templates": [
+        "./src/ui/components/templates"
+      ],
+      "@hooks": [
+        "./src/hooks"
+      ],
+      "@types": [
+        "./src/types"
+      ],
+      "@utils": [
+        "./src/utils"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@data": [
+        "./src/data"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
