@@ -47,6 +47,10 @@ export default buildConfig({
     seoPlugin({
       collections: [Pages.slug],
     }),
-    // storage-adapter-placeholder
   ],
+  upload: {
+    limits: {
+      fileSize: 5000000, // 5MB
+    },
+  },
 })
