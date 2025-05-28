@@ -21,7 +21,7 @@ const buttonVariants = cva(
     }
 )
 
-function Button({
+export const AtomButton = ({
     className,
     variant,
     asChild = false,
@@ -29,7 +29,7 @@ function Button({
 }: React.ComponentProps<"button"> &
     VariantProps<typeof buttonVariants> & {
         asChild?: boolean
-    }) {
+    }) => {
     const Comp = asChild ? Slot : "button"
 
     return (
@@ -39,6 +39,4 @@ function Button({
             {...props}
         />
     )
-}
-
-export { Button, buttonVariants }
+} 

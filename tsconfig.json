@@ -55,6 +55,9 @@
       ],
       "@data": [
         "./src/data"
+      ],
+      "@fonts": [
+        "./src/ui/fonts"
       ]
     }
   },

@@ -11,7 +11,7 @@ interface ContainerProps extends JustChildrenType {
 export const Container = ({ children, className, space }: ContainerProps) => {
     return (
         <div className={cn(
-            "w-full max-w-[1280px] mx-auto",
+            "w-full max-w-[1286px] mx-auto",
             space && "py-[32px]",
             className
         )}>

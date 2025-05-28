@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 
-
 @theme {
-    --color-mint-500: oklch(0.72 0.11 178);
+    --font-gilroy: "Gilroy", sans-serif;
+
+    --color-bage: #ececdf;
 }

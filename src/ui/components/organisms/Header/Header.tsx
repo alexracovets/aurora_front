@@ -10,7 +10,7 @@ export const Header = () => {
             className="shadow-md"
         >
             <Container
-                className="flex items-center gap-x-[32px] py-[10px]"
+                className="flex items-center gap-x-[16px] py-[12px]"
             >
                 <Link href="/">
                     <Logo />

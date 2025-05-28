@@ -3,10 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@atoms";
-import { cn } from "@utils";
-
+import { AtomButton } from "@atoms";
 import { StepType } from "@types";
+import { cn } from "@utils";
 
 export const Step = ({ title, photo, content, slug, isSecondary }: StepType) => {
 
@@ -49,11 +48,11 @@ export const Step = ({ title, photo, content, slug, isSecondary }: StepType) => 
                 "flex flex-col justify-end",
                 isSecondary && "order-2"
             )}>
-                <Button asChild>
+                <AtomButton asChild>
                     <Link href={`/${slug}`}>
                         Далі
                     </Link>
-                </Button>
+                </AtomButton>
             </div>
         </div>
     )
