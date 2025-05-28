@@ -7,7 +7,7 @@ import Link from "next/link";
 export const Header = () => {
     return (
         <header
-            className="shadow-md"
+            className="shadow-md bg-white"
         >
             <Container
                 className="flex items-center gap-x-[16px] py-[12px]"

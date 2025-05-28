@@ -4,5 +4,7 @@
 @theme {
     --font-gilroy: "Gilroy", sans-serif;
 
+    --color-bg: #f6f3ee;
+    --color-white: #fff;
     --color-bage: #ececdf;
 }
