@@ -8,7 +8,7 @@ import { cn } from "@utils";
 
 import { StepType } from "@types";
 
-export const Step = ({ title, image, description, slug, isSecondary }: StepType) => {
+export const Step = ({ title, photo, content, slug, isSecondary }: StepType) => {
 
     const maxLength = 500;
 
@@ -18,11 +18,11 @@ export const Step = ({ title, image, description, slug, isSecondary }: StepType)
                 "w-[320px] min-w-[320px] h-[200px] relative",
                 isSecondary && "order-3"
             )}>
-                <Image src={image} fill alt="image" priority />
+                <Image src={photo.url} fill alt="image" priority />
             </div>
             <div
                 className={cn(
-                    "flex flex-col gap-y-[16px]",
+                    "flex flex-col gap-y-[16px] w-full",
                     isSecondary && "order-1"
                 )}
             >
@@ -30,17 +30,17 @@ export const Step = ({ title, image, description, slug, isSecondary }: StepType)
                 <div className="flex flex-col gap-y-[4px]">
                     {(() => {
                         let currentLength = 0;
-                        return description.map((item, index) => {
+                        return content.text.root.children.map((item, index) => {
                             if (currentLength >= maxLength) return null;
 
                             const remainingLength = maxLength - currentLength;
-                            currentLength += item.length;
+                            currentLength += item.children[0].text.length;
 
                             if (currentLength > maxLength) {
-                                return <p key={index}>{item.slice(0, remainingLength)}...</p>;
+                                return <p key={index}>{item.children[0].text.slice(0, remainingLength)}...</p>;
                             }
 
-                            return <p key={index}>{item}</p>;
+                            return <p key={index}>{item.children[0].text}</p>;
                         });
                     })()}
                 </div>

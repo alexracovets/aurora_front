@@ -2,11 +2,8 @@
 
 import { Container } from "@atoms";
 import { useEffect, useState, use } from "react";
-import { findData } from "@utils";
 import { StepType } from "@types";
 import Image from "next/image";
-import { getPayload } from "payload";
-import configPromise from "@payload-config";
 
 interface ExampleStepsProps {
   params: Promise<{ steps: string; }>
@@ -32,7 +29,7 @@ export default function Steps({ params }: ExampleStepsProps) {
 
     fetchSection();
   }, [params]);
-  console.log(data)
+
   if (!data && !isLoading) return <Container space>404</Container>;
   if (!data) return <Container space>Loading...</Container>;
 
