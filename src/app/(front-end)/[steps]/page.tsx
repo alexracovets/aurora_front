@@ -2,10 +2,11 @@
 
 import { Container } from "@atoms";
 import { useEffect, useState, use } from "react";
-
+import { findData } from "@utils";
 import { StepType } from "@types";
-import { StepsData } from "@data";
 import Image from "next/image";
+import { getPayload } from "payload";
+import configPromise from "@payload-config";
 
 interface ExampleStepsProps {
   params: Promise<{ steps: string; }>
@@ -16,31 +17,39 @@ export default function Steps({ params }: ExampleStepsProps) {
   const resolvedParams = use(params);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = async (slug: string) => {
-    const data = StepsData.find((item) => item.slug === slug);
-    if (!data) return setIsLoading(false);
-    setData(data);
-  };
-
   useEffect(() => {
-    fetchData(resolvedParams.steps);
-  }, [resolvedParams]);
+    const fetchSection = async () => {
+      const res = await fetch(
+        `/api/missions?where[slug][equals]=${resolvedParams.steps}`
+      );
+      const data = await res.json();
 
+      if (data?.docs?.length > 0) {
+        setData(data.docs[0]);
+      }
+      setIsLoading(false);
+    };
+
+    fetchSection();
+  }, [params]);
+  console.log(data)
   if (!data && !isLoading) return <Container space>404</Container>;
   if (!data) return <Container space>Loading...</Container>;
 
   return (
     <Container space>
       <h1 className="text-[64px] font-bold mb-[48px]">{data.title}</h1>
-      <div
-        className="w-[70dvw] h-[30dvw] relative mb-[32px]"
-      >
-        <Image src={'/images/aurora.jpg'} alt={data.title} fill className="object-cover" />
+      <div className="w-[70dvw] h-[30dvw] relative mb-[32px]">
+        <Image src={data.photo.url} alt={data.title} fill className="object-cover" />
       </div>
       <div className="w-full flex flex-col gap-y-[8px]">
-        {data.description.map((item, idx) => (
-          <p key={idx}>{item}</p>
-        ))}
+        {
+          data.content.text.root.children.map((item, idx) => {
+            return (
+              <p key={idx}>{item.children[0].text}</p>
+            )
+          })
+        }
       </div>
     </Container>
   );
