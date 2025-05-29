@@ -25,9 +25,9 @@ export default buildConfig({
     },
     components: {
       views: {
-        dashboard: {
-          Component: "./app/views/Dashbord#Dashboard",
-        },
+        // dashboard: {
+        //   Component: "./app/views/Dashbord#Dashboard",
+        // },
       }
     }
   },
