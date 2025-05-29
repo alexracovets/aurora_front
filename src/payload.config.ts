@@ -17,7 +17,13 @@ import { Missions } from './collections/Missions';
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+import { en } from "@payloadcms/translations/languages/en";
+import { uk } from "@payloadcms/translations/languages/uk";
+
 export default buildConfig({
+  i18n: {
+    supportedLanguages: { en, uk },
+  },
   admin: {
     user: Users.slug,
     importMap: {
