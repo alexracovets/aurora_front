@@ -47,6 +47,11 @@ export default buildConfig({
     payloadCloudPlugin(),
     seoPlugin({
       collections: [Pages.slug],
+      uploadsCollection: 'media',
+      generateTitle: ({ doc }) => `Website.com — ${doc.title}`,
+      generateDescription: ({ doc }) => doc.excerpt,
+      generateURL: ({ doc, collectionSlug }) =>
+        `http://localhost:3000/${doc?.slug === '/' ? '' : doc?.slug}`,
     }),
     s3Storage({
       collections: {
