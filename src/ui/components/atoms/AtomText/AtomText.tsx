@@ -21,6 +21,10 @@ const textVariants = cva(
                     "text-[20px] font-semibold",
                 missionList:
                     "text-[14px] uppercase px-[25px] pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2",
+                cardData:
+                    "text-[20px]",
+                cardNext:
+                    "text-[20px]",
             },
         },
         defaultVariants: {
