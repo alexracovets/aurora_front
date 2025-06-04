@@ -16,7 +16,7 @@ export default async function Home() {
   });
 
   return (
-    <Container space>
+    <Container space className="max-w-[1760px]">
       <h1>{page.docs[0].title}</h1>
       <StepsBlock />
     </Container>
