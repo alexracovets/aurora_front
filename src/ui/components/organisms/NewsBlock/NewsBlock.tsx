@@ -13,7 +13,7 @@ export const NewsBlock = () => {
                 <Link
                     key={idx}
                     href={`/news/${item.slug}`}
-                    className="w-full flex flex-col gap-[10px] bg-white rounded-[30px] py-[24px] px-[36px]"
+                    className="w-full flex flex-col gap-[10px] bg-white rounded-[30px] py-[24px] px-[36px] hover:scale-[1.1] transition transition-[300ms] ease-in"
                 >
                     <div className="w-full h-[273px] relative rounded-[20px] overflow-hidden">
                         <Image src={item.image} alt={item.title} fill className="object-cover" />
