@@ -5,18 +5,6 @@ import { AtomHR, AtomText } from "@atoms";
 
 export const StepsBlock = () => {
 
-    // const [data, setData] = useState<StepType[]>([]);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const res = await fetch("/api/missions");
-    //         const data = await res.json();
-    //         setData(data.docs);
-    //     };
-
-    //     fetchData();
-    // }, []);
-
     return (
         <div className="flex w-full flex-wrap gap-[20px]">
             <div className="flex items-center w-[calc(50%-10px)] bg-white py-[36px] px-[44px] rounded-[30px] gap-x-[8px]">
