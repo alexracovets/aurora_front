@@ -1,4 +1,4 @@
-import { Container } from "@atoms";
+import { AtomText, Container } from "@atoms";
 import { StepsBlock } from "@organisms";
 import { getPayload } from "payload";
 import config from "@/payload.config";
@@ -17,7 +17,9 @@ export default async function Home() {
 
   return (
     <Container space className="max-w-[1760px]">
-      <h1>{page.docs[0].title}</h1>
+      <AtomText variant="h1" asChild>
+        <h1>{page.docs[0].title}</h1>
+      </AtomText>
       <StepsBlock />
     </Container>
   );

@@ -13,6 +13,8 @@ const textVariants = cva(
             variant: {
                 default:
                     "text-[16px]",
+                h1:
+                    "text-[40px] font-semibold text-center my-[30px]",
                 h3:
                     "text-[32px] font-semibold",
                 description:
