@@ -1,10 +1,7 @@
 "use client";
 
-import { StepType } from "@/types/StepType/StepType";
-import { Step } from "@molecules";
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { AtomHR } from "@atoms";
+import { AtomHR, AtomText } from "@atoms";
 
 export const StepsBlock = () => {
 
@@ -24,12 +21,14 @@ export const StepsBlock = () => {
         <div className="flex w-full flex-wrap gap-[20px]">
             <div className="flex items-center w-[calc(50%-10px)] bg-white py-[36px] px-[44px] rounded-[30px] gap-x-[8px]">
                 <div className="flex w-full max-w-[calc(51%-4px)] flex-col gap-[20px]">
-                    <h3 className="text-[32px] font-semibold">Місія</h3>
-                    <p className="text-[20px] font-semibold">Ми робимо добро системно — з розумінням, для людей і разом із людьми.</p>
+                    <AtomText variant="h3" asChild>
+                        <h3>Місія</h3>
+                    </AtomText>
+                    <AtomText variant="description">Ми робимо добро системно — з розумінням, для людей і разом із людьми.</AtomText>
                     <div className="w-full flex flex-col gap-[25px]">
-                        <p className="text-[16px] w-[90%]">Благодійність для нас — це не просто допомога, а інвестиція в гідність, стійкість і мрії.</p>
+                        <AtomText>Благодійність для нас — це не просто допомога, а інвестиція в гідність, стійкість і мрії.</AtomText>
                         <AtomHR className="max-w-[70%]" />
-                        <p className="text-[16px] w-[90%]">Ми діємо чесно, прозоро й партнерськи, щоб наш вплив жив довше, ніж сама допомога.</p>
+                        <AtomText>Ми діємо чесно, прозоро й партнерськи, щоб наш вплив жив довше, ніж сама допомога.</AtomText>
                     </div>
                 </div>
                 <div className="w-full max-w-[calc(49%-4px)] h-[203px] rounded-[20px] overflow-hidden relative">
@@ -38,12 +37,14 @@ export const StepsBlock = () => {
             </div>
             <div className="flex items-center w-[calc(50%-10px)] bg-white py-[36px] px-[44px] rounded-[30px] gap-x-[8px]">
                 <div className="flex w-full max-w-[calc(51%-4px)] flex-col gap-[20px]">
-                    <h3 className="text-[32px] font-semibold">Наша роль</h3>
-                    <p className="text-[20px] font-semibold">Наша роль — розпізнати сенс, з’єднати партнерів, підсилити важливе.</p>
+                    <AtomText variant="h3" asChild>
+                        <h3>Наша роль</h3>
+                    </AtomText>
+                    <AtomText variant="description">Наша роль — розпізнати сенс, з’єднати партнерів, підсилити важливе.</AtomText>
                     <div className="w-full flex flex-col gap-[25px]">
-                        <p className="text-[16px] w-[90%]">Ми не просто підтримуємо ініціативи — ми обираємо ті, які створюють спільну цінність і мають довгостроковий вплив.</p>
+                        <AtomText>Ми не просто підтримуємо ініціативи — ми обираємо ті, які створюють спільну цінність і мають довгостроковий вплив.</AtomText>
                         <AtomHR className="max-w-[70%] bg-transparent" />
-                        <p className="text-[16px] w-[90%]">Ми діємо як відповідальна компанія, яка інвестує у зміни, а не просто реагує на запити.</p>
+                        <AtomText>Ми діємо як відповідальна компанія, яка інвестує у зміни, а не просто реагує на запити.</AtomText>
                     </div>
                 </div>
                 <div className="w-full max-w-[calc(49%-4px)] h-[203px] rounded-[20px] overflow-hidden relative">
@@ -52,33 +53,45 @@ export const StepsBlock = () => {
             </div>
             <div className="flex flex grid-cols-2 items-center w-[calc(50%-10px)] bg-white py-[36px] px-[44px] rounded-[30px] gap-x-[64px]">
                 <div className="flex w-full flex-col gap-[20px] max-w-[46%]">
-                    <h3 className="text-[32px] font-semibold">Наш підхід</h3>
-                    <p className="text-[20px] font-semibold">Ми оцінюємо ініціативи за чіткими критеріями:</p>
+                    <AtomText variant="h3" asChild>
+                        <h3>Наш підхід</h3>
+                    </AtomText>
+                    <AtomText variant="description">Ми оцінюємо ініціативи за чіткими критеріями:</AtomText>
                     <ul className="gap-[10px] py-[30px] px-[18px] bg-light-pink rounded-[20px]">
-                        <li className="text-[14px] uppercase px-[25px] pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2">відповідність цінностям</li>
-                        <li className="text-[14px] uppercase px-[25px] pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2">довгостроковий ефект</li>
-                        <li className="text-[14px] uppercase px-[25px] pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2">прозорість використання ресурсів</li>
-                        <li className="text-[14px] uppercase px-[25px] pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2">партнерський підхід</li>
+                        <AtomText variant="missionList" asChild>
+                            <li>відповідність цінностям</li>
+                        </AtomText>
+                        <AtomText variant="missionList" asChild>
+                            <li>довгостроковий ефект</li>
+                        </AtomText>
+                        <AtomText variant="missionList" asChild>
+                            <li>прозорість використання ресурсів</li>
+                        </AtomText>
+                        <AtomText variant="missionList" asChild>
+                            <li>партнерський підхід</li>
+                        </AtomText>
                     </ul>
                 </div>
                 <div className="w-full h-full flex items-end">
                     <div className="w-full flex flex-col gap-[25px]">
-                        <p className="text-[16px] w-[90%]">Наш благодійний підхід базується на цінностях «Аврори»:</p>
+                        <AtomText>Наш благодійний підхід базується на цінностях «Аврори»:</AtomText>
                         <AtomHR className="max-w-[70%]" />
-                        <p className="text-[16px] italic">#створюй_свій_світ | #взаємодій_заради_мрій | #будь_відкритим_до_нового</p>
+                        <AtomText className="italic">#створюй_свій_світ | #взаємодій_заради_мрій | #будь_відкритим_до_нового</AtomText>
                     </div>
                 </div>
             </div>
             <div className="flex flex grid-cols-2 items-center w-[calc(50%-10px)] bg-white py-[36px] px-[44px] rounded-[30px] gap-x-[64px]">
                 <div className="flex w-full flex-col gap-[20px]">
-                    <h3 className="text-[32px] font-semibold">Приклади</h3>
-                    <p className="text-[20px] font-semibold">Ми підтримуємо Сили безпеки та оборони, ветеранів, медиків, громади, культурні та освітні проєкти, ініціативи з гендерної рівності.</p>
+                    <AtomText variant="h3" asChild>
+                        <h3>Приклади</h3>
+                    </AtomText>
+                    <AtomText variant="description">Ми підтримуємо Сили безпеки та оборони, ветеранів, медиків, громади, культурні та освітні проєкти, ініціативи з гендерної рівності.</AtomText>
                     <div className="w-full flex flex-col gap-[18px]">
-                        <p className="text-[16px]">Віримо, що один бронежилет — це не просто річ, а шанс повернутись живим.</p>
+                        <AtomText>Віримо, що один бронежилет — це не просто річ, а шанс повернутись живим.</AtomText>
                         <AtomHR className="max-w-[70%]" />
-                        <p className="text-[16px]">Ми реалізуємо підтримку як у форматі цільових проєктів, так і через акції в мережі магазинів «Аврора».</p>
+                        <AtomText>Ми реалізуємо підтримку як у форматі цільових проєктів, так і через акції в мережі магазинів «Аврора».</AtomText>
                         <AtomHR className="max-w-[70%]" />
-                        <p className="text-[16px] font-semibold">У розділах "Новини" та "Фото" дивіться реалізовані проєкти, щоб побачити, як саме працює наша підтримка.</p>
+                        <AtomText className="font-semibold">У розділах "Новини" та "Фото" дивіться реалізовані проєкти, щоб побачити, як саме працює наша підтримка.</AtomText>
                     </div>
                 </div>
             </div>

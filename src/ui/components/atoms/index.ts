@@ -3,3 +3,4 @@ export { Logo } from "./Logo";
 export { AtomButton } from "./AtomButton";
 export { AtomLink } from "./AtomLink";
 export { AtomHR } from "./AtomHR";
+export { AtomText } from "./AtomText";
