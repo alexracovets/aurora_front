@@ -13,6 +13,11 @@ const gilroy = localFont({
             path: '/src/Gilroy-Semibold.woff',
             weight: '600',
             style: 'normal',
+        },
+        {
+            path: '/src/Gilroy-RegularItalic.woff',
+            weight: '400',
+            style: 'italic',
         }
     ],
     variable: '--font-gilroy',
