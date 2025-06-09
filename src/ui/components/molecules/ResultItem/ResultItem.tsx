@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { AtomButton, AtomHR, AtomText } from "@atoms";
 import { MoveRight } from "lucide-react";
 
@@ -8,13 +9,14 @@ interface ResultItemProps {
     title: string;
     shortDescription: string;
     description: string;
+    slug: string;
     image: {
         url: string;
         alt: string;
     };
 }
 
-export const ResultItem = ({ title, shortDescription, image, description }: ResultItemProps) => {
+export const ResultItem = ({ title, shortDescription, image, description, slug }: ResultItemProps) => {
     return (
         <div
             className="flex justify-between items-center w-full gap-x-[35px] bg-white rounded-[30px] p-[28px]"
@@ -34,9 +36,11 @@ export const ResultItem = ({ title, shortDescription, image, description }: Resu
                     <p>{shortDescription}</p>
                 </AtomText>
                 <AtomHR />
-                <AtomButton variant="destructive">
-                    Читати далі
-                    <MoveRight className="w-[24px] text-yellow" />
+                <AtomButton variant="destructive" asChild>
+                    <Link href={`/results/${slug}`}>
+                        Читати далі
+                        <MoveRight className="w-[24px] text-yellow" />
+                    </Link>
                 </AtomButton>
             </div>
         </div>

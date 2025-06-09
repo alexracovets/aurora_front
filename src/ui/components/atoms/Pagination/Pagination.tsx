@@ -36,6 +36,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 
 type PaginationLinkProps = {
     isActive?: boolean
+    disabled?: boolean
 } & Pick<React.ComponentProps<typeof AtomButton>, "variant"> &
     React.ComponentProps<typeof Link>
 
@@ -43,15 +44,21 @@ function PaginationLink({
     className,
     isActive,
     variant = "default",
+    disabled,
     ...props
 }: PaginationLinkProps) {
+    // const Component = disabled ? 'span' : Link;
+    const Component = 'span';
+
     return (
-        <Link
+        <Component
             aria-current={isActive ? "page" : undefined}
             data-slot="pagination-link"
             data-active={isActive}
             className={cn(
-                "w-[65px] h-[65px] rounded-[50%] flex justify-center items-center bg-white border-none text-[32px] font-semibold",
+                "w-[65px] h-[65px] rounded-[50%] flex justify-center items-center bg-white border-none text-[32px] font-semibold cursor-pointer select-none",
+                "hover:scale-[1.1] transition-all duration-300 will-change-transform",
+                disabled && "pointer-events-none opacity-50",
                 className
             )}
             {...props}
@@ -61,6 +68,7 @@ function PaginationLink({
 
 function PaginationPrevious({
     className,
+    disabled,
     ...props
 }: React.ComponentProps<typeof PaginationLink>) {
     return (
@@ -68,6 +76,7 @@ function PaginationPrevious({
             aria-label="Go to previous page"
             variant="default"
             className={cn("mr-[10px]", className)}
+            disabled={disabled}
             {...props}
         >
             <div className="w-[23px]">
@@ -81,6 +90,7 @@ function PaginationPrevious({
 
 function PaginationNext({
     className,
+    disabled,
     ...props
 }: React.ComponentProps<typeof PaginationLink>) {
     return (
@@ -88,6 +98,7 @@ function PaginationNext({
             aria-label="Go to next page"
             variant="default"
             className={cn("ml-[10px]", className)}
+            disabled={disabled}
             {...props}
         >
             <div className="w-[23px]">

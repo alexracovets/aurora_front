@@ -36,6 +36,7 @@ export const PagitationComponent = ({ totalPages, currentPage, onPageChange }: P
                     <PaginationPrevious
                         href="#"
                         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
+                        disabled={currentPage === 1}
                     />
                 </PaginationItem>
 
@@ -62,6 +63,7 @@ export const PagitationComponent = ({ totalPages, currentPage, onPageChange }: P
                     <PaginationNext
                         href="#"
                         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
+                        disabled={currentPage === totalPages}
                     />
                 </PaginationItem>
             </PaginationContent>
