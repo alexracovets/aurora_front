@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     pages: Page;
     missions: Mission;
+    results: Result;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -81,6 +82,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     missions: MissionsSelect<false> | MissionsSelect<true>;
+    results: ResultsSelect<false> | ResultsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -221,6 +223,34 @@ export interface Mission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "results".
+ */
+export interface Result {
+  id: number;
+  title?: string | null;
+  description?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  image?: (number | null) | Media;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -241,6 +271,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'missions';
         value: number | Mission;
+      } | null)
+    | ({
+        relationTo: 'results';
+        value: number | Result;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -351,6 +385,19 @@ export interface MissionsSelect<T extends boolean = true> {
       };
   slug?: T;
   order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "results_select".
+ */
+export interface ResultsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  content?: T;
+  image?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -58,6 +58,9 @@
       ],
       "@fonts": [
         "./src/ui/fonts"
+      ],
+      "@payload-types": [
+        "./src/payload-types.ts"
       ]
     }
   },

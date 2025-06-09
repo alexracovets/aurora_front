@@ -4,19 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { AtomButton, AtomHR, AtomText } from "@atoms";
 import { MoveRight } from "lucide-react";
+import { Result } from "@/payload-types";
 
-interface ResultItemProps {
-    title: string;
-    shortDescription: string;
-    description: string;
-    slug: string;
-    image: {
-        url: string;
-        alt: string;
-    };
-}
-
-export const ResultItem = ({ title, shortDescription, image, description, slug }: ResultItemProps) => {
+export const ResultItem = ({ title, image, slug, description }: Result) => {
     return (
         <div
             className="flex justify-between items-center w-full gap-x-[35px] bg-white rounded-[30px] p-[28px]"
@@ -24,7 +14,9 @@ export const ResultItem = ({ title, shortDescription, image, description, slug }
             <div
                 className="w-[251px] min-w-[251px] h-[164px] relative rounded-[20px] overflow-hidden"
             >
-                <Image src={image.url} alt={image.alt} fill className="object-cover" />
+                {image && typeof image === 'object' && 'url' in image && image.url && (
+                    <Image src={image.url} alt={image.alt || 'alt'} fill className="object-cover" />
+                )}
             </div>
             <div
                 className="flex flex-col w-full"
@@ -33,7 +25,7 @@ export const ResultItem = ({ title, shortDescription, image, description, slug }
                     <h3>{title}</h3>
                 </AtomText>
                 <AtomText variant="text" className="mb-[24px]" asChild>
-                    <p>{shortDescription}</p>
+                    <p>{description}</p>
                 </AtomText>
                 <AtomHR />
                 <AtomButton variant="destructive" asChild>

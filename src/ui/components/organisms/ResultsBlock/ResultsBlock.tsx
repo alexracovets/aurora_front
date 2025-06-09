@@ -2,19 +2,19 @@
 
 import { PagitationComponent, ResultItem } from "@molecules";
 import { useState } from "react";
-import { ResultData } from "@data";
+import { Result } from "@/payload-types";
 
 const RESULTS_PER_PAGE = 4;
 
-export const ResultsBlock = () => {
+export const ResultsBlock = ({ results }: { results: Result[] }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const resultsPerPage = RESULTS_PER_PAGE;
 
-    const totalResults = ResultData.length;
+    const totalResults = results.length;
     const totalPages = Math.ceil(totalResults / resultsPerPage);
 
     const startIndex = (currentPage - 1) * resultsPerPage;
-    const currentResults = ResultData.slice(startIndex, startIndex + resultsPerPage);
+    const currentResults = results.slice(startIndex, startIndex + resultsPerPage);
 
     return (
         <div>

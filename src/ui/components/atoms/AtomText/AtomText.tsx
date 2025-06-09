@@ -15,6 +15,8 @@ const textVariants = cva(
                     "text-[16px]",
                 h1:
                     "text-[40px] font-semibold text-center my-[30px]",
+                h1_secondary:
+                    "text-[40px] font-semibold text-left mt-[15px] mb-[35px]",
                 h3:
                     "text-[32px] font-semibold",
                 description:
@@ -23,6 +25,8 @@ const textVariants = cva(
                     "text-[14px] uppercase px-[25px] pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2",
                 text:
                     "text-[20px]",
+                paragraph:
+                    "text-[20px] my-[28px] break-inside-avoid",
             },
         },
         defaultVariants: {

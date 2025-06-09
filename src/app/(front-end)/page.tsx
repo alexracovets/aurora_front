@@ -16,7 +16,7 @@ export default async function Home() {
   });
 
   return (
-    <Container space className="max-w-[1760px]">
+    <Container space>
       <AtomText variant="h1" asChild>
         <h1>{page.docs[0].title}</h1>
       </AtomText>

@@ -14,6 +14,7 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages';
 import { Missions } from './collections/Missions';
+import { Results } from './collections/Results';
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -37,7 +38,7 @@ export default buildConfig({
       }
     }
   },
-  collections: [Users, Media, Pages, Missions],
+  collections: [Users, Media, Pages, Missions, Results],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -14,6 +14,7 @@ export const buttonVariants = cva(
                 default:
                     "bg-gray-200 text-black shadow-xs hover:bg-gray-500/90",
                 destructive: "bg-transparent text-black text-[20px] border border-none flex justify-end items-center gap-x-[15px]",
+                toBack: "bg-transparent text-black text-[24px] border border-none flex justify-start items-center gap-x-[20px] w-max",
             },
         },
         defaultVariants: {
