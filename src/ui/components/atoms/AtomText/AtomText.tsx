@@ -26,7 +26,7 @@ const textVariants = cva(
                 text:
                     "text-[20px]",
                 paragraph:
-                    "text-[20px] my-[28px] break-inside-avoid",
+                    "text-[20px]",
             },
         },
         defaultVariants: {

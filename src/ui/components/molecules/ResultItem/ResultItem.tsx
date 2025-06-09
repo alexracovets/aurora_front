@@ -19,9 +19,9 @@ export const ResultItem = ({ title, image, slug, description }: Result) => {
                 )}
             </div>
             <div
-                className="flex flex-col w-full"
+                className="flex flex-col w-full items-end"
             >
-                <AtomText variant="h3" className="mb-[10px]" asChild>
+                <AtomText variant="h3" className="mb-[10px] w-full" asChild>
                     <h3>{title}</h3>
                 </AtomText>
                 <AtomText variant="text" className="mb-[24px]" asChild>

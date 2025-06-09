@@ -13,7 +13,8 @@ export const buttonVariants = cva(
             variant: {
                 default:
                     "bg-gray-200 text-black shadow-xs hover:bg-gray-500/90",
-                destructive: "bg-transparent text-black text-[20px] border border-none flex justify-end items-center gap-x-[15px]",
+                destructive: "bg-transparent text-black text-[20px] border border-none flex justify-center items-center gap-x-[15px] w-max",
+                destructive_secondary: "bg-transparent text-black text-[20px] flex justify-center items-center gap-x-[15px] pl-0 w-max pb-[10px] rounded-none border-x-0 border-t-0 border-b border-gray",
                 toBack: "bg-transparent text-black text-[24px] border border-none flex justify-start items-center gap-x-[20px] w-max",
             },
         },
