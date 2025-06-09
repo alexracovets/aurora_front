@@ -27,15 +27,13 @@ export default function Rules() {
 
   if (!data && !isLoading) return <Container space>404</Container>;
   if (!data) return <Container space>Loading...</Container>;
-  
+
   return (
     <Container space>
       <AtomText variant="h1" asChild>
         <h1>{data.title}</h1>
       </AtomText>
-      <div
-        className="flex flex-col gap-y-[28px] mb-[80px]"
-      >
+      <div className="flex flex-col mb-[80px]">
         {
           data.content?.root?.children?.map((child: { type: string; children?: Array<{ text: string }> }, index) => {
             if (child.type === 'paragraph') {

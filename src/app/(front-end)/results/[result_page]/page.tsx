@@ -56,20 +56,21 @@ export default function ResultPage({ params }: ExampleStepsProps) {
               </div>
             )
           }
-          {
-            data.content && typeof data.content === 'object' && 'root' in data.content && data.content.root && 'children' in data.content.root && data.content.root.children &&
-            data.content.root.children.map((child, index) => {
-              const node = child as { type: string; children?: Array<{ text: string }> };
-              return node.type === 'paragraph' && node.children && (
-                <AtomText variant="paragraph" key={index}>
-                  {node.children[0].text}
-                </AtomText>
-              );
-            })
-          }
-
-          <div className="clear-both"></div>
+          <div className="gap-y-[28px]">
+            {
+              data.content?.root?.children?.map((child: { type: string; children?: Array<{ text: string }> }, index) => {
+                if (child.type === 'paragraph') {
+                  return (
+                    <AtomText variant="paragraph" key={index}>
+                      {child?.children?.[0]?.text}
+                    </AtomText>
+                  )
+                }
+              })
+            }
+          </div>
         </div>
+        <div className="clear-both"></div>
       </div>
     </Container>
   );

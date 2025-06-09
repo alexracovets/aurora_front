@@ -1,24 +1,41 @@
+"use client";
+
 import { AtomText, Container } from "@atoms";
 import { ResultsBlock } from "@organisms";
-import { getPayload } from "payload";
-import config from "@/payload.config";
-import { Result } from "@payload-types";
+import { Page } from "@payload-types";
+import { useEffect, useState } from "react";
 
-export default async function Results() {
+export default function Results() {
+  const [data, setData] = useState<Page | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const payload = await getPayload({ config })
+  useEffect(() => {
+    const fetchSection = async () => {
+      try {
+        const res = await fetch(`/api/pages?where[slug][equals]=results`);
+        const data = await res.json();
+        if (data?.docs?.length > 0) {
+          setData(data.docs[0]);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const results = await payload.find({
-    collection: 'results',
-    limit: 100,
-  })
-  console.log(results)
+    fetchSection();
+  }, []);
+
+  if (!data && !isLoading) return <Container space>404</Container>;
+  if (!data) return <Container space>Loading...</Container>;
+
   return (
     <Container space className="max-w-[1760px]">
       <AtomText variant="h1" asChild>
-        <h1>Результати роботи</h1>
+        <h1>{data.title}</h1>
       </AtomText>
-      <ResultsBlock results={results.docs as Result[]} />
+      <ResultsBlock />
     </Container>
   );
 }
