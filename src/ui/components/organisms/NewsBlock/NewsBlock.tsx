@@ -13,12 +13,12 @@ export const NewsBlock = () => {
                 <Link
                     key={idx}
                     href={`/news/${item.slug}`}
-                    className="w-full flex flex-col gap-[10px] bg-white rounded-[30px] py-[24px] px-[36px] hover:scale-[1.1] transition transition-[300ms] ease-in"
+                    className="w-full flex flex-col gap-[10px] bg-white rounded-[30px] py-[24px] px-[36px] hover:scale-[1.05] transition transition-[300ms] ease-in"
                 >
                     <div className="w-full h-[273px] relative rounded-[20px] overflow-hidden">
                         <Image src={item.image} alt={item.title} fill className="object-cover" />
                     </div>
-                    <AtomText variant="cardData" asChild>
+                    <AtomText variant="text" asChild>
                         <h3>{item.data}</h3>
                     </AtomText>
                     <AtomText variant="h3" asChild>
@@ -26,7 +26,7 @@ export const NewsBlock = () => {
                     </AtomText>
                     <AtomHR />
                     <div className="w-full flex justify-between items-center">
-                        <AtomText variant="cardNext">Далі</AtomText>
+                        <AtomText variant="text">Далі</AtomText>
                         <MoveRight className="w-[24px] text-yellow" />
                     </div>
                 </Link>

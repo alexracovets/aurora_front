@@ -1,0 +1,1 @@
+export { ResultData } from "./ResultData";

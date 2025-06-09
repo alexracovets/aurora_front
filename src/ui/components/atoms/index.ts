@@ -1,6 +1,7 @@
+export { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis } from "./Pagination";
 export { Container } from "./Container";
 export { Logo } from "./Logo";
-export { AtomButton } from "./AtomButton";
+export { AtomButton, buttonVariants } from "./AtomButton";
 export { AtomLink } from "./AtomLink";
 export { AtomHR } from "./AtomHR";
 export { AtomText } from "./AtomText";

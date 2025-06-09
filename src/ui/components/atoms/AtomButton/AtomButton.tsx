@@ -6,13 +6,14 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@utils"
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
     "block rounded-md border border-black px-[16px] py-[8px] cursor-pointer",
     {
         variants: {
             variant: {
                 default:
                     "bg-gray-200 text-black shadow-xs hover:bg-gray-500/90",
+                destructive: "bg-transparent text-black text-[20px] border border-none flex justify-end items-center gap-x-[15px]",
             },
         },
         defaultVariants: {

@@ -1,0 +1,1 @@
+export { PagitationComponent } from "./PagitationComponent";
