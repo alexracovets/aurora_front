@@ -1,3 +1,4 @@
+import { Mision } from '@/blocks/Mision'
 import type { CollectionConfig } from 'payload'
 
 export const Pages: CollectionConfig = {
@@ -13,6 +14,17 @@ export const Pages: CollectionConfig = {
         {
             name: 'title',
             type: 'text',
+        },
+        {
+            name: "blocks",
+            type: "blocks",
+            label: "Mision",
+            admin: {
+                condition: (data: { slug?: string }) => data.slug === '/'
+            },
+            blocks: [
+                Mision
+            ],
         },
         {
             name: 'content',
