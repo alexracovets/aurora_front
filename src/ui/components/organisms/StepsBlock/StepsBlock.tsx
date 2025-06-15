@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { AtomHR, AtomText } from "@atoms";
 import { SerializedEditorState, SerializedLexicalNode } from '@payloadcms/richtext-lexical/lexical'
 import { RichTextFilter } from "@/ui/components/molecules/RichTextFilter/RichTextFilter";
 interface LexicalNode extends SerializedLexicalNode {
@@ -20,7 +18,6 @@ interface StepsBlockProps {
 }
 
 export const StepsBlock = ({ steps }: StepsBlockProps) => {
-
     return (
         <div className="flex w-full flex-wrap gap-[20px]">
             {steps.map((step, idx) => {

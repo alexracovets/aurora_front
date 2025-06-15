@@ -71,7 +71,6 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
             return (
                 <ul className="gap-[10px] py-[30px] px-[18px] bg-light-pink rounded-[20px] max-w-[90%]">
                     {item?.children?.map((child: { text: string, children?: Array<{ text: string, format?: number }> }, id: number) => {
-                        console.log(child)
                         return (
                             <AtomText variant="missionList" asChild>
                                 <li>

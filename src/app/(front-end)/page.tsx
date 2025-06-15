@@ -27,7 +27,12 @@ export default async function Home() {
         <AtomText variant="h1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
-        {pageData.blocks?.[0]?.colums && <StepsBlock steps={pageData.blocks[0].colums} />}
+        {pageData.blocks?.[0]?.colums && <StepsBlock steps={pageData.blocks[0].colums.map(col => ({
+          content: col.content || null,
+          contentLeft: col.contentLeft || null,
+          contentRight: col.contentRight || null,
+          width: col.width || '1/1'
+        }))} />}
       </Suspense>
     </Container>
   );
