@@ -1,8 +1,8 @@
 import { Block } from "payload";
 
 
-export const Mision: Block = {
-    slug: "mision",
+export const Missions: Block = {
+    slug: "missions",
     fields: [
         {
             name: "colums",

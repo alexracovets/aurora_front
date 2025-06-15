@@ -70,7 +70,6 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
-    missions: Mission;
     results: Result;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -81,7 +80,6 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
-    missions: MissionsSelect<false> | MissionsSelect<true>;
     results: ResultsSelect<false> | ResultsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -219,7 +217,7 @@ export interface Page {
           | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: 'mision';
+        blockType: 'missions';
       }[]
     | null;
   content?: {
@@ -246,36 +244,6 @@ export interface Page {
      */
     image?: (number | null) | Media;
   };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "missions".
- */
-export interface Mission {
-  id: number;
-  title: string;
-  photo?: (number | null) | Media;
-  content?: {
-    text?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-  };
-  slug: string;
-  order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -325,10 +293,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: number | Page;
-      } | null)
-    | ({
-        relationTo: 'missions';
-        value: number | Mission;
       } | null)
     | ({
         relationTo: 'results';
@@ -420,7 +384,7 @@ export interface PagesSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
-        mision?:
+        missions?:
           | T
           | {
               colums?:
@@ -445,23 +409,6 @@ export interface PagesSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "missions_select".
- */
-export interface MissionsSelect<T extends boolean = true> {
-  title?: T;
-  photo?: T;
-  content?:
-    | T
-    | {
-        text?: T;
-      };
-  slug?: T;
-  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }
