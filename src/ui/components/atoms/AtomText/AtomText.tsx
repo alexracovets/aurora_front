@@ -19,6 +19,8 @@ const textVariants = cva(
                     "text-[40px] font-semibold text-left mt-[15px] mb-[35px]",
                 h3:
                     "text-[32px] font-semibold",
+                cardTitle:
+                    "text-[36px] font-semibold",
                 description:
                     "text-[20px] font-semibold",
                 missionList:

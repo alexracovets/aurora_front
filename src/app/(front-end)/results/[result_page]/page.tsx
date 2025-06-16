@@ -8,18 +8,22 @@ import { Result } from "@payload-types";
 import { getPayload } from "payload";
 import config from "@/payload.config";
 
-interface ExampleStepsProps {
-  params: { result_page: string; }
+type PageProps = {
+  params: Promise<{
+    result_page: string;
+  }>;
 }
 
-export default async function ResultPage({ params }: ExampleStepsProps) {
+export default async function ResultPage({ params }: PageProps) {
+ 
   const payload = await getPayload({ config })
-
+  const { result_page } = await params;
+  
   const page = await payload.find({
     collection: 'results',
     where: {
       slug: {
-        equals: params.result_page
+        equals: result_page
       }
     }
   });

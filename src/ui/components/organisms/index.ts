@@ -3,3 +3,5 @@ export { Footer } from "./Footer";
 export { StepsBlock } from "./StepsBlock";
 export { NewsBlock } from "./NewsBlock";
 export { ResultsBlock } from "./ResultsBlock";
+export { PartnersBlock } from "./PartnersBlock";
+export { PaginationBlock } from "./PaginationBlock";

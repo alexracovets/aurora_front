@@ -1,0 +1,1 @@
+export { PartnersBlock } from "./PartnersBlock";
