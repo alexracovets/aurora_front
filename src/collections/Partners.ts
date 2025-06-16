@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload';
 
 export const Partners: CollectionConfig = {
     slug: 'partners',
+    labels: {
+        singular: 'Партнер',
+        plural: 'Партнери',
+    },
     access: {
         read: () => true,
     },

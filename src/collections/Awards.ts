@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Awards: CollectionConfig = {
     slug: 'awards',
+    labels: {
+        singular: 'Відзнака',
+        plural: 'Відзнаки',
+    },
     access: {
         read: () => true,
     },
@@ -9,10 +13,6 @@ export const Awards: CollectionConfig = {
         {
             name: 'title',
             type: 'text',
-        },
-        {
-            name: "description",
-            type: "text",
         },
         {
             name: 'content',
@@ -30,5 +30,13 @@ export const Awards: CollectionConfig = {
                 position: 'sidebar',
             },
         },
+        {
+            name: 'date',
+            type: 'date',
+            label: 'Дата створення',
+            admin: {
+                position: 'sidebar',
+            },
+        }
     ],
 };

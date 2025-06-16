@@ -3,6 +3,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Pages: CollectionConfig = {
     slug: 'pages',
+    labels: {
+        singular: 'Сторінка',
+        plural: 'Сторінки',
+    },
     access: {
         read: () => true,
     },

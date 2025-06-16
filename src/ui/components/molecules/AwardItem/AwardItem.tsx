@@ -7,10 +7,10 @@ import Link from "next/link";
 import { AtomButton, AtomHR, AtomText } from "@atoms";
 import { Award } from "@/payload-types";
 
-export const AwardItem = ({ title, image, slug, description }: Award) => {
+export const AwardItem = ({ title, image, date, slug }: Award) => {
     return (
         <div
-            className="flex flex-col w-full gap-x-[35px] bg-white rounded-[30px] py-[25px] px-[35px]"
+            className="flex flex-col w-full gap-y-[10px] bg-white rounded-[30px] py-[25px] px-[35px]"
         >
             <div
                 className="w-[499px] min-w-[499px] h-[273px] relative rounded-[20px] overflow-hidden"
@@ -19,23 +19,26 @@ export const AwardItem = ({ title, image, slug, description }: Award) => {
                     <Image src={image.url} alt={image.alt || 'alt'} fill className="object-cover" />
                 )}
             </div>
+            {date &&
+                <AtomText variant="text">
+                    {new Date(date).toLocaleDateString('uk-UA')}
+                </AtomText>
+            }
+            <AtomText variant="h3" asChild>
+                <h3>{title}</h3>
+            </AtomText>
+            <AtomHR />
             <div
-                className="flex flex-col w-full items-end"
+                className="flex justify-end w-full"
             >
-                <AtomText variant="h3" className="mb-[10px] w-full" asChild>
-                    <h3>{title}</h3>
-                </AtomText>
-                <AtomText variant="text" className="mb-[24px]" asChild>
-                    <p>{description}</p>
-                </AtomText>
-                <AtomHR />
                 <AtomButton variant="destructive" asChild>
-                    <Link href={`/results/${slug}`}>
+                    <Link href={`/awards/${slug}`}>
                         Читати далі
                         <MoveRight className="w-[24px] text-yellow" />
                     </Link>
                 </AtomButton>
             </div>
+
         </div>
     )
 };
