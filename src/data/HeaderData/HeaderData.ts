@@ -17,7 +17,7 @@ export const HeaderData = [
     },
     {
         name: "Фото",
-        slug: "photos",
+        slug: "gallery",
     },
     {
         name: "Правила",

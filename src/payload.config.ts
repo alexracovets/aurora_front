@@ -16,6 +16,8 @@ import { Pages } from './collections/Pages';
 import { Results } from './collections/Results';
 import { Partners } from './collections/Partners';
 import { Awards } from './collections/Awards';
+import { Gallery } from './collections/Gallery';
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -39,7 +41,7 @@ export default buildConfig({
       }
     }
   },
-  collections: [Users, Media, Pages, Results, Partners, Awards],
+  collections: [Users, Media, Pages, Results, Partners, Awards, Gallery],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
