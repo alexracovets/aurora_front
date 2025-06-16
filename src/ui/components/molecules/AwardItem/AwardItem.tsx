@@ -28,17 +28,16 @@ export const AwardItem = ({ title, image, date, slug }: Award) => {
                 <h3>{title}</h3>
             </AtomText>
             <AtomHR />
-            <div
-                className="flex justify-end w-full"
+            <AtomButton
+                variant="destructive"
+                asChild
+                className="flex justify-between items-center w-full px-0"
             >
-                <AtomButton variant="destructive" asChild>
-                    <Link href={`/awards/${slug}`}>
-                        Читати далі
-                        <MoveRight className="w-[24px] text-yellow" />
-                    </Link>
-                </AtomButton>
-            </div>
-
+                <Link href={`/awards/${slug}`}>
+                    Читати далі
+                    <MoveRight className="w-[24px] text-yellow" />
+                </Link>
+            </AtomButton>
         </div>
     )
 };
