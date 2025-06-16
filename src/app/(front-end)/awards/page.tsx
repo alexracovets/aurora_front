@@ -2,6 +2,7 @@ import { getPayload } from "payload";
 import { Suspense } from "react";
 
 import { AtomText, Container } from "@atoms";
+import { AwardsBlock } from "@organisms";
 import config from "@/payload.config";
 
 export default async function Awards() {
@@ -27,6 +28,7 @@ export default async function Awards() {
           <h1>{pageData.title}</h1>
         </AtomText>
       </Suspense>
+      <AwardsBlock />
     </Container>
   );
 }

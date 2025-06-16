@@ -6,15 +6,13 @@ import { PartnersWrapper } from "@atoms";
 import { Suspense, useEffect, useState } from "react";
 import { Partner } from "@/payload-types";
 
-const API_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000';
-
 export const PartnersBlock = () => {
     const [partners, setPartners] = useState<Partner[]>([]);
     const [loading, setLoading] = useState(true);
 
     const getData = async () => {
         try {
-            const response = await fetch(`${API_URL}/api/partners`);
+            const response = await fetch(`/api/partners`);
             const data = await response.json();
             setPartners(data.docs);
         } catch (error) {

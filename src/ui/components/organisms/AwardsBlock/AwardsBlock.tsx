@@ -3,21 +3,21 @@
 import { Suspense, useEffect, useState } from "react";
 
 import { PaginationBlock } from "@organisms";
-import { ResultItem } from "@molecules";
-import { ResultsWrapper } from "@atoms";
-import { Partner } from "@/payload-types";
+import { AwardItem } from "@molecules";
+import { AwardsWrapper } from "@atoms";
+import { Award } from "@/payload-types";
 
-export const ResultsBlock = () => {
-    const [partners, setPartners] = useState<Partner[]>([]);
+export const AwardsBlock = () => {
+    const [awards, setAwards] = useState<Award[]>([]);
     const [loading, setLoading] = useState(true);
 
     const getData = async () => {
         try {
-            const response = await fetch(`/api/results`);
+            const response = await fetch(`/api/awards`);
             const data = await response.json();
-            setPartners(data.docs);
+            setAwards(data.docs);
         } catch (error) {
-            console.error('Failed to fetch partners:', error);
+            console.error('Failed to fetch awards:', error);
         } finally {
             setLoading(false);
         }
@@ -33,7 +33,7 @@ export const ResultsBlock = () => {
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            {partners && <PaginationBlock items={partners} countItemsPerPage={8} ItemComponent={ResultItem} WrapperItems={ResultsWrapper} />}
+            {awards && <PaginationBlock items={awards} countItemsPerPage={8} ItemComponent={AwardItem} WrapperItems={AwardsWrapper} />}
         </Suspense>
     );
 };

@@ -5,3 +5,4 @@ export { NewsBlock } from "./NewsBlock";
 export { ResultsBlock } from "./ResultsBlock";
 export { PartnersBlock } from "./PartnersBlock";
 export { PaginationBlock } from "./PaginationBlock";
+export { AwardsBlock } from "./AwardsBlock";
