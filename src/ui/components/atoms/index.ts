@@ -6,3 +6,4 @@ export { AtomLink } from "./AtomLink";
 export { AtomHR } from "./AtomHR";
 export { AtomText } from "./AtomText";
 export { PartnersWrapper } from "./PartnersWrapper";
+export { ResultsWrapper } from "./ResultsWrapper";
