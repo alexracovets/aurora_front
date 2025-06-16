@@ -23,9 +23,9 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
                 return (
                     <AtomText variant="h3" asChild>
                         <h2>
-                            {item?.children?.map((child: { text: string }, id: number) => {
+                            {item?.children?.map((child: { text: string }, idx: number) => {
                                 return (
-                                    <span key={id}>{child.text}</span>
+                                    <span key={idx}>{child.text}</span>
                                 )
                             })}
                         </h2>
@@ -36,9 +36,9 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
                 return (
                     <AtomText variant="description" asChild>
                         <h3>
-                            {item?.children?.map((child: { text: string }, id: number) => {
+                            {item?.children?.map((child: { text: string }, idx: number) => {
                                 return (
-                                    <span key={id}>{child.text}</span>
+                                    <span key={idx}>{child.text}</span>
                                 )
                             })}
                         </h3>
@@ -48,9 +48,9 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
         case "paragraph":
             return (
                 <AtomText>
-                    {item?.children?.map((child: { text: string, format?: number }, id: number) => {
+                    {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
                         return (
-                            <span key={id} className={cn(
+                            <span key={idx} className={cn(
                                 child.format === 1 && 'font-semibold'
                             )}>{child.text}</span>
                         )
@@ -70,9 +70,9 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
         case "list":
             return (
                 <ul className="gap-[10px] py-[30px] px-[18px] bg-light-pink rounded-[20px] max-w-[90%]">
-                    {item?.children?.map((child: { text: string, children?: Array<{ text: string, format?: number }> }, id: number) => {
+                    {item?.children?.map((child: { text: string, children?: Array<{ text: string, format?: number }> }, idx: number) => {
                         return (
-                            <AtomText variant="missionList" asChild>
+                            <AtomText variant="missionList" asChild key={idx}>
                                 <li>
                                     {
                                         child.children?.map((child: { text: string, format?: number }, id: number) => {

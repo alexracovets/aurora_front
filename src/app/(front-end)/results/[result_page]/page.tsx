@@ -1,77 +1,71 @@
-"use client";
-
-import { useState, use, useEffect } from "react";
 import { MoveLeft } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { Container, AtomButton, AtomText } from "@atoms";
 import { Result } from "@payload-types";
-import Image from "next/image";
+import { getPayload } from "payload";
+import config from "@/payload.config";
 
 interface ExampleStepsProps {
-  params: Promise<{ result_page: string; }>
+  params: { result_page: string; }
 }
 
-export default function ResultPage({ params }: ExampleStepsProps) {
-  const [data, setData] = useState<Result | null>(null);
-  const resolvedParams = use(params);
-  const [isLoading, setIsLoading] = useState(true);
+export default async function ResultPage({ params }: ExampleStepsProps) {
+  const payload = await getPayload({ config })
 
-  useEffect(() => {
-    const fetchSection = async () => {
-      const res = await fetch(
-        `/api/results?where[slug][equals]=${resolvedParams.result_page}`
-      );
-      const data = await res.json();
-
-      if (data?.docs?.length > 0) {
-        setData(data.docs[0]);
+  const page = await payload.find({
+    collection: 'results',
+    where: {
+      slug: {
+        equals: params.result_page
       }
-      setIsLoading(false);
-    };
+    }
+  });
 
-    fetchSection();
-  }, [params]);
+  const pageData = page.docs[0] as Result || null;
 
-  if (!data && !isLoading) return <Container space>404</Container>;
-  if (!data) return <Container space>Loading...</Container>;
+  if (!pageData) return <Container space>404</Container>;
 
   return (
     <Container space>
-      <div className="flex flex-col w-full">
-        <AtomButton variant="toBack" asChild>
-          <Link href={`/results`}>
-            <MoveLeft className="w-[24px] text-yellow" />
-            Назад
-          </Link>
-        </AtomButton>
-        <AtomText variant="h1_secondary" asChild className="text-left">
-          <h1>{data.title}</h1>
-        </AtomText>
-        <div className="relative">
-          {
-            data.image && typeof data.image === 'object' && 'url' in data.image && data.image.url && (
-              <div className="w-[807px] h-[440px] relative rounded-[30px] overflow-hidden float-left mr-[80px] mb-[70px]">
-                <Image src={data.image.url} alt={data.image.alt || 'alt'} fill className="object-cover" />
-              </div>
-            )
-          }
-          <div className="gap-y-[28px]">
+      <Suspense fallback={<>Завантаження...</>}>
+        <div className="flex flex-col w-full">
+          <AtomButton variant="toBack" asChild>
+            <Link href={`/results`}>
+              <MoveLeft className="w-[24px] text-yellow" />
+              Назад
+            </Link>
+          </AtomButton>
+          <AtomText variant="h1_secondary" asChild className="text-left">
+            <h1>{pageData.title}</h1>
+          </AtomText>
+          <div className="relative">
             {
-              data.content?.root?.children?.map((child: { type: string; children?: Array<{ text: string }> }, index) => {
-                if (child.type === 'paragraph') {
-                  return (
-                    <AtomText variant="paragraph" key={index}>
-                      {child?.children?.[0]?.text}
-                    </AtomText>
-                  )
-                }
-              })
+              pageData.image && typeof pageData.image === 'object' && 'url' in pageData.image && pageData.image.url && (
+                <div className="w-[807px] h-[440px] relative rounded-[30px] overflow-hidden float-left mr-[80px] mb-[70px]">
+                  <Image src={pageData.image.url} alt={pageData.image.alt || 'alt'} fill className="object-cover" />
+                </div>
+              )
             }
+            <div className="gap-y-[28px]">
+              {
+                pageData.content?.root?.children?.map((child: { type: string; children?: Array<{ text: string }> }, index) => {
+                  if (child.type === 'paragraph') {
+                    return (
+                      <AtomText variant="paragraph" key={index}>
+                        {child?.children?.[0]?.text}
+                      </AtomText>
+                    )
+                  }
+                })
+              }
+            </div>
           </div>
+          <div className="clear-both"></div>
         </div>
-        <div className="clear-both"></div>
-      </div>
+      </Suspense>
     </Container>
   );
 };

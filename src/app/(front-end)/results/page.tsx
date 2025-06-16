@@ -1,41 +1,34 @@
-"use client";
+import { getPayload } from "payload";
+import { Suspense } from "react";
 
 import { AtomText, Container } from "@atoms";
 import { ResultsBlock } from "@organisms";
-import { Page } from "@payload-types";
-import { useEffect, useState } from "react";
+import config from "@/payload.config";
 
-export default function Results() {
-  const [data, setData] = useState<Page | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+export default async function Results() {
+  const payload = await getPayload({ config })
 
-  useEffect(() => {
-    const fetchSection = async () => {
-      try {
-        const res = await fetch(`/api/pages?where[slug][equals]=results`);
-        const data = await res.json();
-        if (data?.docs?.length > 0) {
-          setData(data.docs[0]);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setIsLoading(false);
+  const page = await payload.find({
+    collection: 'pages',
+    where: {
+      slug: {
+        equals: 'results'
       }
-    };
+    }
+  });
 
-    fetchSection();
-  }, []);
+  const pageData = page.docs[0] || null;
 
-  if (!data && !isLoading) return <Container space>404</Container>;
-  if (!data) return <Container space>Loading...</Container>;
+  if (!pageData) return <Container space>404</Container>;
 
   return (
     <Container space className="max-w-[1760px]">
-      <AtomText variant="h1" asChild>
-        <h1>{data.title}</h1>
-      </AtomText>
-      <ResultsBlock />
+      <Suspense fallback={<>Завантаження...</>}>
+        <AtomText variant="h1" asChild>
+          <h1>{pageData.title}</h1>
+        </AtomText>
+        <ResultsBlock />
+      </Suspense>
     </Container>
   );
 }
