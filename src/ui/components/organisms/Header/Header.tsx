@@ -19,4 +19,4 @@ export const Header = () => {
             </header>
         </Headroom>
     )
-};
+}; 
