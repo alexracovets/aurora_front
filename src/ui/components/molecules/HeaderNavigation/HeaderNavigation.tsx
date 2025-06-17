@@ -2,23 +2,24 @@
 
 import { AtomLink } from "@atoms";
 import { useCheckPage } from "@hooks";
-import { HeaderData } from "@data";
 import { cn } from "@utils";
+import { useNavigationStore } from "@store";
 
 export const HeaderNavigation = () => {
     const activePage = useCheckPage();
+    const { navigation } = useNavigationStore();
 
     return (
         <nav className="flex">
             <ul className="flex items-center">
-                {HeaderData.map((link, idx) => (
+                {navigation.map((nav, idx) => (
                     <li key={idx}>
-                        <AtomLink key={idx} href={`/${link.slug}`} variant="navigation" className={cn(activePage === link.slug && "bg-bage")}>
-                            {link.name}
+                        <AtomLink key={idx} href={`/${nav.slug}`} variant="navigation" className={cn(activePage === nav.slug && "bg-bage")}>
+                            {nav.name}
                         </AtomLink>
                     </li>
                 ))}
             </ul>
-        </nav >
-    )
-}
+        </nav>
+    );
+};
