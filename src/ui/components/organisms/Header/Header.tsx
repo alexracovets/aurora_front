@@ -1,15 +1,13 @@
 "use client";
 
-import Link from "next/link";
-// @ts-ignore
-import Headroom from "react-headroom";
+import Link from "next/link"; 
 
 import { Container, Logo } from "@atoms";
 import { HeaderNavigation } from "@molecules";
 
 export const Header = () => {
     return (
-        <Headroom>
+ 
             <header className="shadow-md bg-white">
                 <Container className="flex items-center gap-x-[16px] py-[12px]">
                     <Link href="/">
@@ -17,7 +15,6 @@ export const Header = () => {
                     </Link>
                     <HeaderNavigation />
                 </Container>
-            </header>
-        </Headroom>
+            </header> 
     )
 };
