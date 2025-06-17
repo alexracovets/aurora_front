@@ -4,10 +4,15 @@ import { AtomLink } from "@atoms";
 import { useCheckPage } from "@hooks";
 import { cn } from "@utils";
 import { useNavigationStore } from "@store";
+import { useEffect } from "react";
 
 export const HeaderNavigation = () => {
     const activePage = useCheckPage();
-    const { navigation } = useNavigationStore();
+    const { navigation, loadNavigation } = useNavigationStore();
+
+    useEffect(() => {
+        loadNavigation();
+    }, [loadNavigation]);
 
     return (
         <nav className="flex">
