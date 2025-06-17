@@ -1,0 +1,1 @@
+export { useCheckPage } from "./checkPage";
