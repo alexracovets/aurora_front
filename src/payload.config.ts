@@ -42,7 +42,8 @@ export default buildConfig({
       }
     }
   },
-  collections: [Users, Media, Pages, Results, Partners, Awards, Gallery, Header],
+  collections: [Users, Media, Pages, Results, Partners, Awards, Gallery],
+  globals: [Header],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

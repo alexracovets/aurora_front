@@ -1,14 +1,15 @@
-import type { CollectionConfig } from 'payload'
+import type { GlobalConfig } from 'payload'
 
-export const Header: CollectionConfig = {
+export const Header: GlobalConfig = {
     slug: 'header',
-    labels: {
-        singular: 'Header',
-        plural: 'Header',
+    label: 'Навігація',
+    access: {
+        read: () => true,
     },
     fields: [
         {
             name: 'page',
+            label: 'Сторінки:',
             type: 'relationship',
             relationTo: 'pages',
             hasMany: true,

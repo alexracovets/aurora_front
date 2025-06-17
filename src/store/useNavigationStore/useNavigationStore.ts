@@ -8,9 +8,9 @@ interface NavigationStoreType {
 }
 
 const getNavigation = async () => {
-  const response = await fetch('/api/header');
+  const response = await fetch('/api/globals/header');
   const data = await response.json();
-  return data.docs;
+  return data.page || [];
 }
 
 export const useNavigationStore = create<NavigationStoreType>()(
@@ -18,9 +18,9 @@ export const useNavigationStore = create<NavigationStoreType>()(
     navigation: [],
     loadNavigation: async () => {
       const navigation = await getNavigation();
-      console.log(navigation)
+
       set({
-        navigation: navigation[0].page.map((page: Page) => ({
+        navigation: navigation.map((page: Page) => ({
           id: page.id,
           name: page.name,
           slug: page.slug,

@@ -74,7 +74,6 @@ export interface Config {
     partners: Partner;
     awards: Award;
     gallery: Gallery;
-    header: Header;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -88,7 +87,6 @@ export interface Config {
     partners: PartnersSelect<false> | PartnersSelect<true>;
     awards: AwardsSelect<false> | AwardsSelect<true>;
     gallery: GallerySelect<false> | GallerySelect<true>;
-    header: HeaderSelect<false> | HeaderSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -96,8 +94,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    header: Header;
+  };
+  globalsSelect: {
+    header: HeaderSelect<false> | HeaderSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -344,16 +346,6 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "header".
- */
-export interface Header {
-  id: number;
-  page?: (number | Page)[] | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -386,10 +378,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'gallery';
         value: number | Gallery;
-      } | null)
-    | ({
-        relationTo: 'header';
-        value: number | Header;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -562,15 +550,6 @@ export interface GallerySelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "header_select".
- */
-export interface HeaderSelect<T extends boolean = true> {
-  page?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -600,6 +579,26 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  page?: (number | Page)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  page?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
