@@ -29,6 +29,8 @@ const textVariants = cva(
                     "text-[20px]",
                 paragraph:
                     "text-[20px] pb-[28px] last:pb-0",
+                galleryTitle:
+                    "text-[22px] font-semibold text-center",
             },
         },
         defaultVariants: {

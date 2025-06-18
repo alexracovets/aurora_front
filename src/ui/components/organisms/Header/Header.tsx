@@ -6,7 +6,7 @@ import Headroom from "react-headroom";
 import { Container, Logo } from "@atoms";
 import { HeaderNavigation } from "@molecules";
 import { useNavigationStore } from "@store";
-import { cn } from "@/lib/utils";
+import { cn } from "@utils";
 
 export const Header = () => {
     const { navigation } = useNavigationStore();

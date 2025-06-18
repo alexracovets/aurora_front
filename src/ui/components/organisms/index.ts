@@ -6,3 +6,4 @@ export { ResultsBlock } from "./ResultsBlock";
 export { PartnersBlock } from "./PartnersBlock";
 export { PaginationBlock } from "./PaginationBlock";
 export { AwardsBlock } from "./AwardsBlock";
+export { GalleryBlock } from "./GalleryBlock";
