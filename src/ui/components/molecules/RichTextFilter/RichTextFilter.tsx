@@ -63,7 +63,7 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
             )
         case "upload":
             return (
-                <div className="w-full h-[203px] rounded-[20px] overflow-hidden relative">
+                <div className="relative w-full h-[203px] rounded-[20px] overflow-hidden">
                     <Image src={item.value?.url || ''} alt={item.value?.alt || 'photo =( '} fill className="object-cover" />
                 </div>
             )

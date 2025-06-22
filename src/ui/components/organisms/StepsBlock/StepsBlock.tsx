@@ -1,7 +1,8 @@
 "use client";
 
 import { SerializedEditorState, SerializedLexicalNode } from '@payloadcms/richtext-lexical/lexical'
-import { RichTextFilter } from "@/ui/components/molecules/RichTextFilter/RichTextFilter";
+import { RichTextFilter } from "@molecules";
+
 interface LexicalNode extends SerializedLexicalNode {
     type: string;
     tag?: string;
