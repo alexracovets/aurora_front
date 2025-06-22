@@ -1,43 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { AtomText } from "@atoms";
+import { getGalleries } from "@utils";
 import { Gallery } from "@payload-types";
+import { useEffect, useState } from "react";
 
 export const GalleryBlock = () => {
-    const [items, setItems] = useState<Gallery[]>([]);
+    const [galleries, setGalleries] = useState<Gallery[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchGallery = async () => {
+        const fetchGalleries = async () => {
             try {
-                const response = await fetch('/api/gallery');
-                const data = await response.json();
-                setItems(data);
+                const galleriesData = await getGalleries();
+                setGalleries(galleriesData);
             } catch (error) {
-                console.error('Error fetching gallery:', error);
+                console.error('Error fetching galleries:', error);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchGallery();
+        fetchGalleries();
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>Завантаження галереї...</div>;
     }
 
     return (
         <div className="grid grid-cols-3 gap-[20px]">
-            {items.map((item) => (
+            {galleries.map((item) => (
                 <Link href={`/gallery/${item.slug}`} key={item.id}>
                     <div key={item.id} className="flex flex-col gap-[10px]">
                         <div className="relative w-[573px] h-[310px] rounded-[20px] overflow-hidden">
-                            <Image src={item.url || ''} alt={item.alt} fill />
+                            <Image src={item.url || ''} alt={item.alt} fill className="object-cover" />
                         </div>
                         <AtomText variant="galleryTitle">
                             {item.title}

@@ -1,0 +1,1 @@
+export { getGalleries } from "./getGalleries";

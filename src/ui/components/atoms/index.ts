@@ -1,4 +1,5 @@
 export { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis } from "./Pagination";
+export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "./Carousel";
 export { Container } from "./Container";
 export { Logo } from "./Logo";
 export { AtomButton, buttonVariants } from "./AtomButton";
