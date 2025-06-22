@@ -20,7 +20,7 @@ export default async function Gallery() {
   const pageData = page.docs[0] || null;
 
   if (!pageData) return <Container space>404</Container>;
-  
+
   return (
     <Container space className="max-w-[1760px]">
       <Suspense fallback={<>Завантаження...</>}>

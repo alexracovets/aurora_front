@@ -1,73 +1,49 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { AtomText } from "../../atoms";
+import Link from "next/link";
 
-const items = [
-    {
-        id: 1,
-        src: "/images/aurora.jpg",
-        alt: "gallery",
-        description: [
-            "Видача гуманітарної допомоги, лютий 2025.",
-            "Набори для малюків у Харкові"
-        ],
-    },
-    {
-        id: 2,
-        src: "/images/aurora.jpg",
-        alt: "gallery",
-        description: [
-            "Видача гуманітарної допомоги, лютий 2025.",
-            "Набори для малюків у Харкові"
-        ],
-    },
-    {
-        id: 3,
-        src: "/images/aurora.jpg",
-        alt: "gallery",
-        description: [
-            "Видача гуманітарної допомоги, лютий 2025.",
-            "Набори для малюків у Харкові"
-        ],
-    },
-    {
-        id: 4,
-        src: "/images/aurora.jpg",
-        alt: "gallery",
-        description: [
-            "Видача гуманітарної допомоги, лютий 2025.",
-            "Набори для малюків у Харкові"
-        ],
-    },
-    {
-        id: 5,
-        src: "/images/aurora.jpg",
-        alt: "gallery",
-        description: [
-            "Видача гуманітарної допомоги, лютий 2025.",
-            "Набори для малюків у Харкові"
-        ],
-    },
-
-]
+import { AtomText } from "@atoms";
+import { Gallery } from "@payload-types";
 
 export const GalleryBlock = () => {
+    const [items, setItems] = useState<Gallery[]>([]);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const fetchGallery = async () => {
+            try {
+                const response = await fetch('/api/gallery');
+                const data = await response.json();
+                setItems(data);
+            } catch (error) {
+                console.error('Error fetching gallery:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchGallery();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="grid grid-cols-3 gap-[20px]">
             {items.map((item) => (
-                <div key={item.id} className="flex flex-col gap-[10px]">
-                    <div className="relative w-[573px] h-[310px] rounded-[20px] overflow-hidden">
-                        <Image src={item.src} alt={item.alt} fill />
+                <Link href={`/gallery/${item.slug}`} key={item.id}>
+                    <div key={item.id} className="flex flex-col gap-[10px]">
+                        <div className="relative w-[573px] h-[310px] rounded-[20px] overflow-hidden">
+                            <Image src={item.url || ''} alt={item.alt} fill />
+                        </div>
+                        <AtomText variant="galleryTitle">
+                            {item.title}
+                        </AtomText>
                     </div>
-                    <AtomText variant="galleryTitle">
-                        {item.description.map((item, index) => (
-                            <span key={index} className="block">{item}</span>
-                        ))}
-                    </AtomText>
-                </div>
+                </Link>
             ))}
         </div>
     )

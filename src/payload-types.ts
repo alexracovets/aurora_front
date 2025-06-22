@@ -332,6 +332,7 @@ export interface Gallery {
   id: number;
   alt: string;
   title: string;
+  slug: string;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -536,6 +537,7 @@ export interface AwardsSelect<T extends boolean = true> {
 export interface GallerySelect<T extends boolean = true> {
   alt?: T;
   title?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
