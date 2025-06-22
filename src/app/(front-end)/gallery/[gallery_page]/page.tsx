@@ -1,6 +1,7 @@
 
 import { getPayload } from "payload";
 import { Suspense } from "react";
+import Image from "next/image";
 
 import { Container, AtomText } from "@atoms";
 import { Gallery } from "@payload-types";
@@ -30,10 +31,13 @@ export default async function GalleryPage({ params }: PageProps) {
   if (!pageData) return <Container space>404</Container>;
 
   return (
-    <Container space>
+    <Container space className="max-w-[1760px]">
       <Suspense fallback={<>Завантаження...</>}>
         <div className="flex flex-col w-full">
-          <AtomText variant="h1" asChild>
+          <div className="relative w-[1166px] h-[616px] mx-auto mb-[16px] rounded-[20px] overflow-hidden">
+            <Image src={pageData.url ? pageData.url : ""} alt={pageData.alt} fill />
+          </div>
+          <AtomText variant="h3" asChild className="text-center">
             <h1>{pageData.title}</h1>
           </AtomText>
         </div>

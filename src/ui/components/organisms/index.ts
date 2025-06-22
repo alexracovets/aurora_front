@@ -7,3 +7,4 @@ export { PartnersBlock } from "./PartnersBlock";
 export { PaginationBlock } from "./PaginationBlock";
 export { AwardsBlock } from "./AwardsBlock";
 export { GalleryBlock } from "./GalleryBlock";
+export { ShowCaseGallery } from "./ShowCaseGallery";
