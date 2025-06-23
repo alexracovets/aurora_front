@@ -22,7 +22,7 @@ const textVariants = cva(
                 cardTitle:
                     "text-[36px] font-semibold",
                 description:
-                    "text-[20px] font-semibold",
+                    "text-[18px] font-semibold",
                 missionList:
                     "text-[14px] uppercase px-[25px] pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2",
                 text:
@@ -31,6 +31,16 @@ const textVariants = cva(
                     "text-[20px] pb-[28px] last:pb-0",
                 galleryTitle:
                     "text-[22px] font-semibold text-center",
+                date:
+                    "text-[12px] text-gray",
+                headerH1:
+                    "text-[60px] font-semibold leading-[56px] text-left pt-[60px] pb-[16px]",
+                pageDescription:
+                    "text-[16px] text-left mb-[16px]",
+                newsCardTitle:
+                    "text-[20px] font-semibold",
+                newsCardLink:
+                    "text-[16px]",
             },
         },
         defaultVariants: {

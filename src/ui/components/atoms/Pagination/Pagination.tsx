@@ -1,9 +1,10 @@
 import * as React from "react";
 import { MoreHorizontalIcon } from "lucide-react";
+import { LuArrowRight, LuArrowLeft } from "react-icons/lu";
 import Link from "next/link";
 
 import { cn } from "@utils"
-import { AtomButton, ArrowPrev, ArrowNext } from "@atoms";
+import { AtomButton } from "@atoms";
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
     return (
@@ -24,7 +25,7 @@ function PaginationContent({
     return (
         <ul
             data-slot="pagination-content"
-            className={cn("flex flex-row items-center gap-[25px]", className)}
+            className={cn("flex flex-row items-center gap-[16px]", className)}
             {...props}
         />
     )
@@ -56,8 +57,8 @@ function PaginationLink({
             data-slot="pagination-link"
             data-active={isActive}
             className={cn(
-                "w-[65px] h-[65px] rounded-[50%] flex justify-center items-center bg-white border-none text-[32px] font-semibold cursor-pointer select-none",
-                "hover:scale-[1.1] transition-all duration-300 will-change-transform",
+                "w-[4rem] h-[4rem] rounded-[50%] flex justify-center items-center bg-white border-none text-[1.6rem] font-semibold cursor-pointer select-none",
+                "hover:scale-[1.1] hover:bg-yellow transition-all duration-300 will-change-transform",
                 disabled && "pointer-events-none opacity-50",
                 className
             )}
@@ -79,7 +80,7 @@ function PaginationPrevious({
             disabled={disabled}
             {...props}
         >
-            <ArrowPrev />
+            <LuArrowLeft size={"2.4rem"} className="text-black" />
         </PaginationLink>
     )
 }
@@ -97,7 +98,7 @@ function PaginationNext({
             disabled={disabled}
             {...props}
         >
-            <ArrowNext />
+            <LuArrowRight size={"2.4rem"} className="text-black" />
         </PaginationLink>
     )
 }

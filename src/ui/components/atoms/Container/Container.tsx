@@ -6,13 +6,17 @@ import { JustChildrenType } from "@types";
 interface ContainerProps extends JustChildrenType {
     className?: string;
     space?: boolean;
+    start?: boolean;
+    full?: boolean;
 }
 
-export const Container = ({ children, className, space }: ContainerProps) => {
+export const Container = ({ children, className, space, start, full }: ContainerProps) => {
     return (
         <div className={cn(
-            "w-full max-w-[1760px] mx-auto",
+            "w-full max-w-[1286px] mx-auto",
             space && "py-[32px]",
+            start && "pt-[66px]",
+            full && "h-[100dvh]",
             className
         )}>
             {children}

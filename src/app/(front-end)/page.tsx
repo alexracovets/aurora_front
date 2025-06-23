@@ -22,7 +22,7 @@ export default async function Home() {
   if (!pageData) return <Container space>404</Container>;
 
   return (
-    <Container space>
+    <Container space start full>
       <Suspense fallback={<>Завантаження...</>}>
         <AtomText variant="h1" asChild>
           <h1>{pageData.title}</h1>

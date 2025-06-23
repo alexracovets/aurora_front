@@ -20,15 +20,15 @@ interface StepsBlockProps {
 
 export const StepsBlock = ({ steps }: StepsBlockProps) => {
     return (
-        <div className="flex w-full flex-wrap gap-[20px]">
+        <div className="w-full grid grid-cols-2 gap-[20px]">
             {steps.map((step, idx) => {
                 return (
                     <div
                         key={idx}
-                        className="flex items-center w-[calc(50%-10px)] bg-white py-[36px] px-[44px] rounded-[30px] gap-x-[8px]"
+                        className="flex items-center h-[38dvh] bg-white py-[36px] px-[44px] rounded-[30px] gap-x-[8px]"
                     >
                         {step.width === "1/1" && (
-                            <div className="flex w-full flex-col gap-[20px]">
+                            <div className="flex w-full flex-col gap-[10px]">
                                 {
                                     step.content && step.content.root.children.map((item: LexicalNode, idx: number) => {
                                         return <RichTextFilter item={item} key={idx} />
@@ -39,14 +39,14 @@ export const StepsBlock = ({ steps }: StepsBlockProps) => {
 
                         {step.width === "1/2" && (
                             <>
-                                <div className="flex w-full max-w-[calc(50%-4px)] flex-col gap-[20px]">
+                                <div className="flex w-full flex-col gap-[10px]">
                                     {
                                         step.contentLeft && step.contentLeft.root.children.map((item: LexicalNode, idx: number) => {
                                             return <RichTextFilter item={item} key={idx} />
                                         })
                                     }
                                 </div>
-                                <div className="flex w-full max-w-[calc(50%-4px)] flex-col gap-[20px]">
+                                <div className="flex w-full flex-col gap-[10px]">
                                     {
                                         step.contentRight && step.contentRight.root.children.map((item: LexicalNode, idx: number) => {
                                             return <RichTextFilter item={item} key={idx} />

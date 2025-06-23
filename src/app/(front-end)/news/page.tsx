@@ -5,8 +5,8 @@ import { Container, AtomText } from "@atoms";
 
 export default function News() {
   return (
-    <Container space className="max-w-[1760px]">
-      <AtomText variant="h1" asChild>
+    <Container space start full>
+      <AtomText variant="headerH1" asChild>
         <h1>Новини</h1>
       </AtomText>
       <NewsBlock />
