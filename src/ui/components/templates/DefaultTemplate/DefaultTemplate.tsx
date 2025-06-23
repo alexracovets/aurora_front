@@ -13,12 +13,12 @@ export const DefaultTemplate = ({ children }: JustChildrenType) => {
         <html lang="en">
             <body
                 className={cn(
-                    "min-h-screen w-full flex flex-col bg-bg",
+                    "w-full flex flex-col bg-bg",
                     gilroy.className,
                 )}
             >
                 <Header />
-                <main className="grow">
+                <main className="grow min-h-screen">
                     {children}
                 </main>
                 <Footer />
