@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { useCurrentGallery } from "@store";
 import { Gallery } from "@/payload-types";

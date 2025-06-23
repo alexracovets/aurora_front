@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
-import { AtomText } from "@atoms";
+import { AtomText, FullscreenImage } from "@atoms";
 import { getGalleries } from "@utils";
 import { Gallery } from "@payload-types";
 import { useEffect, useState } from "react";
@@ -37,7 +36,11 @@ export const GalleryBlock = () => {
                 <Link href={`/gallery/${item.slug}`} key={item.id}>
                     <div key={item.id} className="flex flex-col gap-[10px]">
                         <div className="relative w-[573px] h-[310px] rounded-[20px] overflow-hidden">
-                            <Image src={item.url || ''} alt={item.alt} fill className="object-cover" />
+                            <FullscreenImage 
+                                src={item.url || ''} 
+                                alt={item.alt} 
+                                className="w-full h-full"
+                            />
                         </div>
                         <AtomText variant="galleryTitle">
                             {item.title}

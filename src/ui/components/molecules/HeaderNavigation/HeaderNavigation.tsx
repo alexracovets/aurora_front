@@ -16,7 +16,7 @@ export const HeaderNavigation = () => {
 
     return (
         <nav className="flex">
-            <ul className="flex items-center">
+            <ul className="flex items-center gap-x-[4px]">
                 {navigation.map((nav, idx) => (
                     <li key={idx}>
                         <AtomLink key={idx} href={`/${nav.slug}`} variant="navigation" className={cn(activePage === nav.slug && "bg-bage")}>

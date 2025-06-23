@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
-import { Container, AtomText } from "@atoms";
+import { Container, AtomText, FullscreenImage } from "@atoms";
 import { useGetNextGalleries } from "@hooks";
 
 export const ShowCaseGallery = () => {
@@ -31,7 +30,11 @@ export const ShowCaseGallery = () => {
                 {galleries.map((item) => (
                     <Link key={item.id} href={`/gallery/${item.slug}`} className="flex flex-col gap-[10px]">
                         <div className="relative w-[420px] h-[230px] rounded-[20px] overflow-hidden">
-                            <Image src={item.url || ""} alt={item.alt || ""} fill className="object-cover" />
+                            <FullscreenImage 
+                                src={item.url || ""} 
+                                alt={item.alt || ""} 
+                                className="w-full h-full"
+                            />
                         </div>
                         <AtomText variant="galleryTitle">
                             {item.title}

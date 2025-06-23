@@ -1,12 +1,13 @@
 "use server";
 
-import { Container, AtomText, } from "@atoms";
 import { Suspense } from "react";
-import Image from "next/image";
+import Link from "next/link";
 
-import { Gallery } from "@payload-types";
+import { Container, AtomText, ArrowPrev, ArrowNext, FullscreenImage } from "@atoms";
+import { cn, getCollectionItem, getGalleries } from "@/utils";
 import { GalleryStateUpdater } from "./GalleryStateUpdater";
-import { getCollectionItem, getGalleries } from "@/utils";
+import { getNeighborGalleries } from "@hooks";
+import { Gallery } from "@payload-types";
 
 type PageProps = {
   params: Promise<{
@@ -28,20 +29,44 @@ export default async function GalleryPage({ params }: PageProps) {
   const page = await getCollectionItem({ collection: 'gallery', slug: gallery_page });
   const pageData = page as Gallery || null;
   if (!pageData) return <Container space>404</Container>;
+  const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug);
 
+
+  console.log(pageData)
   return (
-    <>
+    <div className="w-full relative">
+
+      <Link href={`/gallery/${prevPage?.slug}`} className={cn(
+        "absolute top-[50%] left-0 w-[65px] h-[65px] rounded-[50%] bg-white flex justify-center items-center",
+        !prevPage?.slug ? "pointer-events-none pointer-none opacity-50" : ""
+      )}>
+        <ArrowPrev />
+      </Link>
       <GalleryStateUpdater slug={pageData.slug} />
       <Suspense fallback={<>Завантаження...</>}>
         <div className="flex flex-col w-full">
           <div className="relative w-[1166px] h-[616px] mx-auto mb-[16px] rounded-[20px] overflow-hidden">
-            <Image src={pageData.url ? pageData.url : ""} alt={pageData.alt} fill className="object-cover" />
+            <FullscreenImage
+              src={pageData.url ? pageData.url : ""}
+              alt={pageData.alt}
+              width={pageData.width || 0}
+              height={pageData.height || 0}
+              className="w-full h-full"
+            />
           </div>
           <AtomText variant="h3" asChild className="text-center">
             <h1>{pageData.title}</h1>
           </AtomText>
         </div>
       </Suspense>
-    </>
+      <Link
+        href={nextPage?.slug ? `/gallery/${nextPage.slug}` : ""}
+        className={cn(
+          "absolute top-[50%] right-0 w-[65px] h-[65px] rounded-[50%] bg-white flex justify-center items-center",
+          !nextPage?.slug ? "pointer-events-none pointer-none opacity-50" : ""
+        )}>
+        <ArrowNext />
+      </Link>
+    </div>
   );
 };
