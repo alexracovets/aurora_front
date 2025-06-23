@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Container, AtomText, FullscreenImage } from "@atoms";
 import { useGetNextGalleries } from "@hooks";
+import { Media } from "@payload-types";
 
 export const ShowCaseGallery = () => {
     const { galleries, loading, error } = useGetNextGalleries();
@@ -31,7 +32,7 @@ export const ShowCaseGallery = () => {
                     <Link key={item.id} href={`/gallery/${item.slug}`} className="flex flex-col gap-[10px]">
                         <div className="relative w-[420px] h-[230px] rounded-[20px] overflow-hidden">
                             <FullscreenImage 
-                                src={item.url || ""} 
+                                image={item.image as Media}
                                 alt={item.alt || ""} 
                                 className="w-full h-full"
                             />

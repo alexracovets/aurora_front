@@ -7,7 +7,7 @@ import { Container, AtomText, ArrowPrev, ArrowNext, FullscreenImage } from "@ato
 import { cn, getCollectionItem, getGalleries } from "@/utils";
 import { GalleryStateUpdater } from "./GalleryStateUpdater";
 import { getNeighborGalleries } from "@hooks";
-import { Gallery } from "@payload-types";
+import { Gallery, Media } from "@payload-types";
 
 type PageProps = {
   params: Promise<{
@@ -30,13 +30,11 @@ export default async function GalleryPage({ params }: PageProps) {
   const pageData = page as Gallery || null;
   if (!pageData) return <Container space>404</Container>;
   const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug);
-
-
   console.log(pageData)
   return (
     <div className="w-full relative">
 
-      <Link href={`/gallery/${prevPage?.slug}`} className={cn(
+      <Link href={prevPage?.slug ? `/gallery/${prevPage?.slug}` : ""} className={cn(
         "absolute top-[50%] left-0 w-[65px] h-[65px] rounded-[50%] bg-white flex justify-center items-center",
         !prevPage?.slug ? "pointer-events-none pointer-none opacity-50" : ""
       )}>
@@ -47,10 +45,8 @@ export default async function GalleryPage({ params }: PageProps) {
         <div className="flex flex-col w-full">
           <div className="relative w-[1166px] h-[616px] mx-auto mb-[16px] rounded-[20px] overflow-hidden">
             <FullscreenImage
-              src={pageData.url ? pageData.url : ""}
+              image={pageData.image as Media}
               alt={pageData.alt}
-              width={pageData.width || 0}
-              height={pageData.height || 0}
               className="w-full h-full"
             />
           </div>

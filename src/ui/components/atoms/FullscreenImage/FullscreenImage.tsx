@@ -6,28 +6,27 @@ import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Modal } from "../Modal";
 import { cn } from "@utils";
+import { Media } from "@payload-types";
 
 interface FullscreenImageProps {
-    src: string;
+    image: Media;
     alt: string;
-    width?: number;
-    height?: number;
     className?: string;
 }
 
-export const FullscreenImage = ({ src, alt, width, height, className }: FullscreenImageProps) => {
+export const FullscreenImage = ({ image, alt, className }: FullscreenImageProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
-
+    
     return (
         <>
             <div
                 className={cn("cursor-pointer transition-transform hover:scale-[1.02]", className)}
                 onClick={openModal}
             >
-                <Image src={src} alt={alt} fill className="object-cover" />
+                <Image src={image?.url ? image?.url : ""} alt={alt} fill className="object-cover" />
             </div>
 
             <Modal isOpen={isOpen} onClose={closeModal}>
@@ -66,10 +65,10 @@ export const FullscreenImage = ({ src, alt, width, height, className }: Fullscre
                                         onClick={(e) => e.stopPropagation()}
                                     >
                                         <Image
-                                            src={src}
+                                            src={image?.url || ""}
                                             alt={alt}
-                                            width={width}
-                                            height={height}
+                                            width={image?.width || 0}
+                                            height={image?.height || 0}
                                             style={{ objectFit: "contain" }}
                                         />
                                     </div>

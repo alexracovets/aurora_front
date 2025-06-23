@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { AtomText, FullscreenImage } from "@atoms";
 import { getGalleries } from "@utils";
-import { Gallery } from "@payload-types";
+import { Gallery, Media } from "@payload-types";
 import { useEffect, useState } from "react";
 
 export const GalleryBlock = () => {
@@ -29,16 +29,16 @@ export const GalleryBlock = () => {
     if (loading) {
         return <div>Завантаження галереї...</div>;
     }
-
+    console.log(galleries)
     return (
         <div className="grid grid-cols-3 gap-[20px]">
             {galleries.map((item) => (
                 <Link href={`/gallery/${item.slug}`} key={item.id}>
                     <div key={item.id} className="flex flex-col gap-[10px]">
                         <div className="relative w-[573px] h-[310px] rounded-[20px] overflow-hidden">
-                            <FullscreenImage 
-                                src={item.url || ''} 
-                                alt={item.alt} 
+                            <FullscreenImage
+                                image={item.image as Media}
+                                alt={item.alt}
                                 className="w-full h-full"
                             />
                         </div>

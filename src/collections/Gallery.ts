@@ -11,6 +11,12 @@ export const Gallery: CollectionConfig = {
     },
     fields: [
         {
+            name: "image",
+            type: "upload",
+            relationTo: "media",
+            required: true,
+        },
+        {
             name: 'alt',
             type: 'text',
             required: true,
@@ -30,5 +36,4 @@ export const Gallery: CollectionConfig = {
             },
         },
     ],
-    upload: true,
 }
