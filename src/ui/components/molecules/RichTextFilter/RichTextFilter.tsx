@@ -34,7 +34,7 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
             }
             if (item.tag === "h3") {
                 return (
-                    <AtomText variant="description" asChild>
+                    <AtomText variant="description" asChild className="leading-[1.1]">
                         <h3>
                             {item?.children?.map((child: { text: string }, idx: number) => {
                                 return (
@@ -47,7 +47,7 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
             }
         case "paragraph":
             return (
-                <AtomText>
+                <AtomText className="leading-[1.1]">
                     {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
                         return (
                             <span key={idx} className={cn(

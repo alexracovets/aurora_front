@@ -21,7 +21,7 @@ interface StepsBlockProps {
 
 export const StepsBlock = ({ steps }: StepsBlockProps) => {
     return (
-        <div className="w-full grid grid-cols-2 gap-[1.6rem]">
+        <div className="w-full grid grid-cols-2 gap-[1.6rem] mt-[1.6rem]">
             {steps.map((step, idx) => {
                 return (
                     <div
@@ -43,7 +43,7 @@ export const StepsBlock = ({ steps }: StepsBlockProps) => {
 
                         {step.width === "1/2" && (
                             <>
-                                <div className="flex w-full justify-end flex-col gap-[1rem]">
+                                <div className="flex w-full flex-col gap-[1rem]">
                                     {
                                         step.contentLeft && step.contentLeft.root.children.map((item: LexicalNode, idx: number) => {
                                             return <RichTextFilter item={item} key={idx} />

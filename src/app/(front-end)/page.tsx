@@ -24,7 +24,7 @@ export default async function Home() {
   return (
     <Container space start full>
       <Suspense fallback={<>Завантаження...</>}>
-        <AtomText variant="h1" asChild>
+        <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
         {pageData.blocks?.[0]?.colums && <StepsBlock steps={pageData.blocks[0].colums.map(col => ({
