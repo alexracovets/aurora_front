@@ -17,7 +17,7 @@ export const Container = ({ children, className, space, start, full }: Container
             "min-[1920px]:max-w-[128.6rem]",
             space && "py-[32px]",
             start && "pt-[66px]",
-            full && "min-h-screen",
+            full && "h-screen",
             className
         )}>
             {children}
