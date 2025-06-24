@@ -11,7 +11,7 @@ export const findData = async <T>(api: string): Promise<T | null> => {
         const data = await req.json();
         return data as T;
     } catch (err) {
-        console.error('Помилка при отриманні даних:', err);
+        console.error('Failed to fetch data:', err);
         return null;
     }
 }

@@ -34,7 +34,7 @@ const textVariants = cva(
                 date:
                     "text-[12px] text-gray",
                 headerH1:
-                    "text-[60px] font-semibold leading-[56px] text-left pt-[60px] pb-[16px]",
+                    "text-[60px] font-semibold leading-[56px] text-left pt-[60px] pb-[16px] mb-[16px]",
                 pageDescription:
                     "text-[16px] text-left mb-[16px]",
                 newsCardTitle:

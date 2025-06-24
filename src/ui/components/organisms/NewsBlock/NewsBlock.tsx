@@ -23,7 +23,7 @@ export const NewsBlock = () => {
     const currentResults = NewsData.slice(startIndex, startIndex + resultsPerPage);
 
     return (
-        <div className="flex flex-col w-full mt-[16px] gap-y-[16px]">
+        <div className="flex flex-col w-full gap-y-[16px]">
             <div className="grid grid-cols-3 gap-[16px] w-full">
                 {currentResults.map((item, idx) => (
                     <div key={idx}

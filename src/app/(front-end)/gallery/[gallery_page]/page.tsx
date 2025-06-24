@@ -30,7 +30,7 @@ export default async function GalleryPage({ params }: PageProps) {
   const pageData = page as Gallery || null;
   if (!pageData) return <Container space>404</Container>;
   const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug);
-  console.log(pageData)
+  
   return (
     <div className="w-full relative">
 

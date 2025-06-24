@@ -29,7 +29,7 @@ export const GalleryBlock = () => {
     if (loading) {
         return <div>Завантаження галереї...</div>;
     }
-    console.log(galleries)
+    
     return (
         <div className="grid grid-cols-3 gap-[20px]">
             {galleries.map((item) => (

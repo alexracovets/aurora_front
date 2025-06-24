@@ -22,7 +22,7 @@ interface StepsBlockProps {
 export const StepsBlock = ({ steps }: StepsBlockProps) => {
     return (
 
-        <div className="w-full grow grid grid-cols-2 gap-[1.6rem] mt-[1.6rem] overflow-hidden">
+        <div className="w-full grow grid grid-cols-2 gap-[1.6rem] overflow-hidden">
             {steps.map((step, idx) => {
                 return (
                     <div
