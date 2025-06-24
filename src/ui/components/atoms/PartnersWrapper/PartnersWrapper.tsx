@@ -2,7 +2,7 @@
 
 export const PartnersWrapper = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="gap-[20px] grid grid-cols-2">
+        <div className="gap-[20px] grid grid-cols-3">
             {children}
         </div>
     )

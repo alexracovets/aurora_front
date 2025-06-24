@@ -1,41 +1,28 @@
 "use client";
 
+import { Partner } from "@/payload-types";
 import Image from "next/image";
 
-import { AtomHR, AtomText } from "@atoms";
-import { Partner } from "@/payload-types";
+import { AtomText } from "@atoms";
 
-export const PartnerItem = (data: Partner) => {
+export const PartnerItem = ({ name, upload }: Partner) => {
     return (
-        <>
+        <div className="flex flex-col justify-center items-center w-full">
             {
-                data && (
-                    <div
-                        className="bg-white rounded-[30px] py-[28px] px-[25px] gap-x-[28px] flex justify-center items-center w-full"
-                    >
-                        {
-                            data.upload &&
-                            typeof data.upload !== 'number' &&
-                            data.upload.url &&
-                            data.upload.alt && (
-                                <div
-                                    className="w-[303px] min-w-[303px] h-[164px] relative rounded-[20px] overflow-hidden"
-                                >
-                                    <Image src={data.upload.url} alt={data.upload.alt} fill className="object-cover" />
-                                </div>
-                            )
-                        }
-                        <div
-                            className="w-full flex flex-col gap-y-[56px]"
-                        >
-                            <AtomText variant={"cardTitle"}>
-                                {data.name}
-                            </AtomText>
-                            <AtomHR className="w-full" />
-                        </div>
-                    </div>
+                name && (
+                    <AtomText variant="cardTitle" className="bg-white rounded-t-[8px] py-[4px] px-[12px]">
+                        {name}
+                    </AtomText>
                 )
             }
-        </>
+            <div className="bg-white rounded-[8px] p-[8px] w-full">
+                {upload && typeof upload !== 'number' && (
+                    <div className="w-full h-[15rem] relative rounded-[8px] overflow-hidden">
+                        <Image src={upload.url || ''} alt={upload.alt || ''} fill className="object-cover" />
+                    </div>
+                )}
+            </div>
+
+        </div>
     )
 }

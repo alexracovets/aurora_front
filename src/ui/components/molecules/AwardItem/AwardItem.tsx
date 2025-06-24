@@ -25,7 +25,7 @@ export const AwardItem = ({ title, image, date, slug }: Award) => {
                 <AtomText variant="date" asChild>
                     {date && <p>{new Date(date).toLocaleDateString('uk-UA')}</p>}
                 </AtomText>
-                <AtomText variant="newsCardTitle" asChild>
+                <AtomText variant="cardTitle" asChild>
                     <h3>{title}</h3>
                 </AtomText>
                 <AtomLink href={`/awards/${slug}`} variant="cardLink" className="px-[8px]">

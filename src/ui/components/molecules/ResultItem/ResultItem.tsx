@@ -16,7 +16,7 @@ export const ResultItem = ({ title, image, slug, description }: Result) => {
                 )}
             </div>
             <div className="flex w-full flex-col py-[8px] gap-y-[8px] pb-[48px] relative">
-                <AtomText variant="newsCardTitle" asChild>
+                <AtomText variant="cardTitle" asChild>
                     <h3>{title}</h3>
                 </AtomText>
                 <AtomText variant="cardDescription" asChild>

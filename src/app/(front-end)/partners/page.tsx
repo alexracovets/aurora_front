@@ -1,7 +1,7 @@
 import { getPayload } from "payload";
 import { Suspense } from "react";
 
-import { AtomText, Container } from "@atoms"; 
+import { AtomText, Container } from "@atoms";
 import { PartnersBlock } from "@organisms";
 import config from "@/payload.config";
 
@@ -22,9 +22,9 @@ export default async function Partners() {
   if (!pageData) return <Container space>404</Container>;
 
   return (
-    <Container space className="max-w-[1760px]">
+    <Container space start full>
       <Suspense fallback={<>Завантаження...</>}>
-        <AtomText variant="h1" asChild>
+        <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
         <PartnersBlock />

@@ -26,7 +26,7 @@ export const NewsItem = ({ image, title, data, slug }: NewsItemProps) => {
                 <AtomText variant="date" asChild>
                     <h3>{data}</h3>
                 </AtomText>
-                <AtomText variant="newsCardTitle" asChild>
+                <AtomText variant="cardTitle" asChild>
                     <h3>{title}</h3>
                 </AtomText>
                 <AtomLink href={`/news/${slug}`} variant="cardLink">
