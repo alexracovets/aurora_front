@@ -172,7 +172,7 @@ export interface Page {
   id: number;
   name?: string | null;
   title?: string | null;
-  blocks?:
+  missions?:
     | {
         colums?:
           | {
@@ -226,8 +226,6 @@ export interface Page {
             }[]
           | null;
         id?: string | null;
-        blockName?: string | null;
-        blockType: 'missions';
       }[]
     | null;
   content?: {
@@ -455,24 +453,19 @@ export interface MediaSelect<T extends boolean = true> {
 export interface PagesSelect<T extends boolean = true> {
   name?: T;
   title?: T;
-  blocks?:
+  missions?:
     | T
     | {
-        missions?:
+        colums?:
           | T
           | {
-              colums?:
-                | T
-                | {
-                    width?: T;
-                    content?: T;
-                    contentLeft?: T;
-                    contentRight?: T;
-                    id?: T;
-                  };
+              width?: T;
+              content?: T;
+              contentLeft?: T;
+              contentRight?: T;
               id?: T;
-              blockName?: T;
             };
+        id?: T;
       };
   content?: T;
   slug?: T;

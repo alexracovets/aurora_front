@@ -26,7 +26,10 @@ export default async function Rules() {
       <AtomText variant="headerH1" asChild>
         <h1>{pageData.title}</h1>
       </AtomText>
-      {pageData.content?.root?.children && <RulesBlock content={pageData.content?.root?.children as any} />}
+      <RulesBlock 
+        content={pageData.content?.root?.children as any} 
+        rules={pageData.rules as any}
+      />
       <AtomButton variant="destructive_secondary" asChild className="text-[20px] font-semibold gap-x-[40px] w-max" >
         <Link href={"/"}>
           Переглянути шаблони описів та листів

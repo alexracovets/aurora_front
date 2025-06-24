@@ -23,9 +23,14 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
                 return (
                     <AtomText variant="h3" asChild>
                         <h2>
-                            {item?.children?.map((child: { text: string }, idx: number) => {
+                            {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
                                 return (
-                                    <span key={idx}>{child.text}</span>
+                                    <span key={idx} className={cn(
+                                        child.format === 1 && 'font-semibold',
+                                        child.format === 2 && 'italic',
+                                        child.format === 4 && 'underline',
+                                        child.format === 8 && 'line-through'
+                                    )}>{child.text}</span>
                                 )
                             })}
                         </h2>
@@ -36,9 +41,14 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
                 return (
                     <AtomText variant="description" asChild className="leading-[1.1]">
                         <h3>
-                            {item?.children?.map((child: { text: string }, idx: number) => {
+                            {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
                                 return (
-                                    <span key={idx}>{child.text}</span>
+                                    <span key={idx} className={cn(
+                                        child.format === 1 && 'font-semibold',
+                                        child.format === 2 && 'italic',
+                                        child.format === 4 && 'underline',
+                                        child.format === 8 && 'line-through'
+                                    )}>{child.text}</span>
                                 )
                             })}
                         </h3>
@@ -51,7 +61,10 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
                     {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
                         return (
                             <span key={idx} className={cn(
-                                child.format === 1 && 'font-semibold'
+                                child.format === 1 && 'font-semibold',
+                                child.format === 2 && 'italic',
+                                child.format === 4 && 'underline',
+                                child.format === 8 && 'line-through'
                             )}>{child.text}</span>
                         )
                     })}
@@ -79,7 +92,12 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
                                     {
                                         child.children?.map((child: { text: string, format?: number }, id: number) => {
                                             return (
-                                                <span key={id} className={cn(child.format === 1 && 'font-semibold')}>{child.text}</span>
+                                                <span key={id} className={cn(
+                                                    child.format === 1 && 'font-semibold',
+                                                    child.format === 2 && 'italic',
+                                                    child.format === 4 && 'underline',
+                                                    child.format === 8 && 'line-through'
+                                                )}>{child.text}</span>
                                             )
                                         })
                                     }

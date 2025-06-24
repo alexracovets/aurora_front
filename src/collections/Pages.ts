@@ -1,5 +1,8 @@
-import { Missions } from '@/blocks/Missions'
-import type { CollectionConfig } from 'payload'
+import { Missions } from '@/blocks';
+import type { CollectionConfig } from 'payload';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { ParagraphFeature, BoldFeature } from '@payloadcms/richtext-lexical';
+
 
 export const Pages: CollectionConfig = {
     slug: 'pages',
@@ -22,20 +25,16 @@ export const Pages: CollectionConfig = {
             name: 'title',
             type: 'text',
         },
-        {
-            name: "blocks",
-            type: "blocks",
-            label: "Missions",
-            admin: {
-                condition: (data: { slug?: string }) => data.slug === '/'
-            },
-            blocks: [
-                Missions
-            ],
-        },
+        Missions,
         {
             name: 'content',
             type: 'richText',
+            editor: lexicalEditor({
+                features: [
+                    ParagraphFeature(),
+                    BoldFeature()
+                ]
+            })
         },
         {
             name: 'slug',
