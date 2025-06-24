@@ -1,9 +1,26 @@
-"use client";
+import { getPayload } from "payload";
 
+import { AtomText, Container } from "@atoms";
 import { NewsBlock } from "@organisms";
-import { Container, AtomText } from "@atoms";
+import config from "@/payload.config";
 
-export default function News() {
+export default async function News() {
+
+  const payload = await getPayload({ config })
+
+  const page = await payload.find({
+    collection: 'pages',
+    where: {
+      slug: {
+        equals: 'awards'
+      }
+    }
+  });
+
+  const pageData = page.docs[0] || null;
+
+  if (!pageData) return <Container space>404</Container>;
+
   return (
     <Container space start full>
       <AtomText variant="headerH1" asChild>
