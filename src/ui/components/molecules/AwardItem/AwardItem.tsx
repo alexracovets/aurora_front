@@ -1,43 +1,41 @@
 "use client";
 
-import { MoveRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
-import { AtomButton, AtomHR, AtomText } from "@atoms";
+import { AtomText, AtomHR, ArrowTo, AtomLink, AtomButton } from "@atoms";
+import { cn } from "@utils";
 import { Award } from "@/payload-types";
+
 
 export const AwardItem = ({ title, image, date, slug }: Award) => {
     return (
-        <div
-            className="flex flex-col w-full gap-y-[10px] bg-white rounded-[30px] py-[25px] px-[35px]"
-        >
-            <div
-                className="w-[499px] min-w-[499px] h-[273px] relative rounded-[20px] overflow-hidden"
-            >
-                {image && typeof image === 'object' && 'url' in image && image.url && (
-                    <Image src={image.url} alt={image.alt || 'alt'} fill className="object-cover" />
-                )}
-            </div>
-            {date &&
-                <AtomText variant="text">
-                    {new Date(date).toLocaleDateString('uk-UA')}
-                </AtomText>
+        <div className={cn(
+            "w-full flex flex-col gap-[8px] bg-white rounded-[8px] p-[8px]",
+            "outline outline-1 outline-transparent transition transition-[300ms] ease-in",
+            "hover:outline-yellow"
+        )}>
+            {
+                typeof image !== 'number' && image && (
+                    <div className="w-full h-[15rem] relative rounded-[8px] overflow-hidden">
+                        <Image src={image.url || ''} alt={image.alt || ''} fill className="object-cover" />
+                    </div>
+                )
             }
-            <AtomText variant="h3" asChild>
-                <h3>{title}</h3>
-            </AtomText>
-            <AtomHR />
-            <AtomButton
-                variant="destructive"
-                asChild
-                className="flex justify-between items-center w-full px-0"
-            >
-                <Link href={`/awards/${slug}`}>
-                    Читати далі
-                    <MoveRight className="w-[24px] text-yellow" />
-                </Link>
-            </AtomButton>
+            <div className="flex w-full flex-col p-[8px] pb-[48px] relative">
+                <AtomText variant="date" asChild>
+                    {date && <p>{new Date(date).toLocaleDateString('uk-UA')}</p>}
+                </AtomText>
+                <AtomText variant="newsCardTitle" asChild>
+                    <h3>{title}</h3>
+                </AtomText>
+                <AtomLink href={`/awards/${slug}`} variant="cardLink" className="px-[8px]">
+                    <AtomHR />
+                    <AtomButton variant="cardLink">
+                        <AtomText variant="newsCardLink">Читати далі</AtomText>
+                        <ArrowTo />
+                    </AtomButton>
+                </AtomLink>
+            </div>
         </div>
     )
 };
