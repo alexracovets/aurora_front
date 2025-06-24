@@ -10,7 +10,7 @@ import { Partner } from "@/payload-types";
 export const ResultsBlock = () => {
     const [partners, setPartners] = useState<Partner[]>([]);
     const [loading, setLoading] = useState(true);
-    const RESULTS_PER_PAGE = 6;
+    const RESULTS_PER_PAGE = 3;
 
     const getData = async () => {
         try {

@@ -18,6 +18,9 @@ export const buttonVariants = cva(
                 toBack: "bg-transparent text-black text-[24px] border border-none flex justify-start items-center gap-x-[20px] w-max",
                 login: cn(
                     "flex justify-center items-center gap-x-[14px] h-fit self-start text-[20px] border-transparent"
+                ),
+                cardLink: cn(
+                    "w-full flex justify-between items-center border-none p-0"
                 )
             },
         },

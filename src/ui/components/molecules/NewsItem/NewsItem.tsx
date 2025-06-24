@@ -1,10 +1,9 @@
 "use client";
 
-import { LuArrowRight } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
 
-import { AtomText, AtomHR } from "@atoms";
+import { AtomText, AtomHR, ArrowTo, AtomLink, AtomButton } from "@atoms";
 import { cn } from "@utils";
 
 interface NewsItemProps {
@@ -16,13 +15,11 @@ interface NewsItemProps {
 
 export const NewsItem = ({ image, title, data, slug }: NewsItemProps) => {
     return (
-        <div
-            className={cn(
-                "w-full flex flex-col gap-[8px] bg-white rounded-[8px] p-[8px]",
-                "outline outline-1 outline-transparent transition transition-[300ms] ease-in",
-                "hover:outline-yellow"
-            )}
-        >
+        <div className={cn(
+            "w-full flex flex-col gap-[8px] bg-white rounded-[8px] p-[8px]",
+            "outline outline-1 outline-transparent transition transition-[300ms] ease-in",
+            "hover:outline-yellow"
+        )}>
             <div className="w-full h-[15rem] relative rounded-[8px] overflow-hidden">
                 <Image src={image} alt={title} fill className="object-cover" />
             </div>
@@ -33,20 +30,13 @@ export const NewsItem = ({ image, title, data, slug }: NewsItemProps) => {
                 <AtomText variant="newsCardTitle" asChild>
                     <h3>{title}</h3>
                 </AtomText>
-                <Link
-                    href={`/news/${slug}`}
-                    className={cn(
-                        "absolute bottom-0 left-0 w-full h-[48px] bg-white rounded-[8px] p-[8px] flex flex-col gap-[8px]",
-                        "transition transition-[300ms] ease-in",
-                        "hover:text-[#d5b904]"
-                    )}
-                >
+                <AtomLink href={`/news/${slug}`} variant="cardLink">
                     <AtomHR />
-                    <div className="w-full flex justify-between items-center">
+                    <AtomButton variant="cardLink">
                         <AtomText variant="newsCardLink">Читати далі</AtomText>
-                        <LuArrowRight size={"2.4rem"} color="#d5b904" />
-                    </div>
-                </Link>
+                        <ArrowTo />
+                    </AtomButton>
+                </AtomLink>
             </div>
         </div>
     )

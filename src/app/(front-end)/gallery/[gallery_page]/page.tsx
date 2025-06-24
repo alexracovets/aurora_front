@@ -33,7 +33,6 @@ export default async function GalleryPage({ params }: PageProps) {
   
   return (
     <div className="w-full relative">
-
       <Link href={prevPage?.slug ? `/gallery/${prevPage?.slug}` : ""} className={cn(
         "absolute top-[50%] left-0 w-[65px] h-[65px] rounded-[50%] bg-white flex justify-center items-center",
         !prevPage?.slug ? "pointer-events-none pointer-none opacity-50" : ""
