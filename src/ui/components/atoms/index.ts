@@ -16,3 +16,4 @@ export { FullscreenImage } from "./FullscreenImage";
 export { FooterSocials } from "./FooterSocials";
 export { NewsWrapper } from "./NewsWrapper";
 export { ArrowTo } from "./ArrowTo";
+export { GalleryWrapper } from "./GalleryWrapper";

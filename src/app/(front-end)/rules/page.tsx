@@ -1,55 +1,36 @@
-"use client";
-import { MoveRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { getPayload } from "payload";
 import Link from "next/link";
 
-import { AtomButton, AtomText, Container } from "@atoms";
-import { Page } from "@payload-types";
+import { AtomButton, AtomText, Container, ArrowTo } from "@atoms";
+import { RulesBlock } from "@organisms";
+import config from "@/payload.config";
 
-export default function Rules() {
-  const [data, setData] = useState<Page | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+export default async function Rules() {
+  const payload = await getPayload({ config })
 
-  useEffect(() => {
-    const fetchSection = async () => {
-      const res = await fetch(
-        `/api/pages?where[slug][equals]=rules`
-      );
-      const data = await res.json();
-      if (data?.docs?.length > 0) {
-        setData(data.docs[0]);
+  const page = await payload.find({
+    collection: 'pages',
+    where: {
+      slug: {
+        equals: 'rules'
       }
-      setIsLoading(false);
-    };
+    }
+  });
 
-    fetchSection();
-  }, []);
+  const pageData = page.docs[0] || null;
 
-  if (!data && !isLoading) return <Container space>404</Container>;
-  if (!data) return <Container space>Loading...</Container>;
+  if (!pageData) return <Container space>404</Container>;
 
   return (
     <Container space>
-      <AtomText variant="h1" asChild>
-        <h1>{data.title}</h1>
+      <AtomText variant="headerH1" asChild>
+        <h1>{pageData.title}</h1>
       </AtomText>
-      <div className="flex flex-col mb-[80px]">
-        {
-          data.content?.root?.children?.map((child: { type: string; children?: Array<{ text: string }> }, index) => {
-            if (child.type === 'paragraph') {
-              return (
-                <AtomText variant="paragraph" key={index}>
-                  {child?.children?.[0]?.text}
-                </AtomText>
-              )
-            }
-          })
-        }
-      </div>
+      {pageData.content?.root?.children && <RulesBlock content={pageData.content?.root?.children as any} />}
       <AtomButton variant="destructive_secondary" asChild className="text-[20px] font-semibold gap-x-[40px] w-max" >
         <Link href={"/"}>
           Переглянути шаблони описів та листів
-          <MoveRight size={24} className="text-yellow" />
+          <ArrowTo />
         </Link>
       </AtomButton>
     </Container>

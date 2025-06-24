@@ -22,7 +22,6 @@ export const PartnerItem = ({ name, upload }: Partner) => {
                     </div>
                 )}
             </div>
-
         </div>
     )
 }

@@ -11,3 +11,4 @@ export { FooterInfo } from "./FooterInfo";
 export { FooterNavigation } from "./FooterNavigation";
 export { FooterQuestions } from "./FooterQuestions";
 export { NewsItem } from "./NewsItem";
+export { GalleryItem } from "./GalleryItem";
