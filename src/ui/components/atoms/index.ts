@@ -14,3 +14,4 @@ export { ArrowNext } from "./ArrowNext";
 export { Modal } from "./Modal";
 export { FullscreenImage } from "./FullscreenImage";
 export { FooterSocials } from "./FooterSocials";
+export { NewsWrapper } from "./NewsWrapper";

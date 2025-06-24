@@ -1,9 +1,10 @@
 "use client";
 
+import { GoArrowRight } from "react-icons/go";
 import Image from "next/image";
 import Link from "next/link";
+
 import { AtomButton, AtomHR, AtomText } from "@atoms";
-import { MoveRight } from "lucide-react";
 import { Result } from "@/payload-types";
 
 export const ResultItem = ({ title, image, slug, description }: Result) => {
@@ -31,7 +32,7 @@ export const ResultItem = ({ title, image, slug, description }: Result) => {
                 <AtomButton variant="destructive" asChild>
                     <Link href={`/results/${slug}`}>
                         Читати далі
-                        <MoveRight className="w-[24px] text-yellow" />
+                        <GoArrowRight className="w-[24px] text-yellow" />
                     </Link>
                 </AtomButton>
             </div>

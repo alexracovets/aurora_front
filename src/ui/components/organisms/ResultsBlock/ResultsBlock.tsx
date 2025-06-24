@@ -10,6 +10,7 @@ import { Partner } from "@/payload-types";
 export const ResultsBlock = () => {
     const [partners, setPartners] = useState<Partner[]>([]);
     const [loading, setLoading] = useState(true);
+    const RESULTS_PER_PAGE = 6;
 
     const getData = async () => {
         try {
@@ -33,7 +34,7 @@ export const ResultsBlock = () => {
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            {partners && <PaginationBlock items={partners} countItemsPerPage={8} ItemComponent={ResultItem} WrapperItems={ResultsWrapper} />}
+            {partners && <PaginationBlock items={partners} countItemsPerPage={RESULTS_PER_PAGE} ItemComponent={ResultItem} WrapperItems={ResultsWrapper} />}
         </Suspense>
     );
 };
