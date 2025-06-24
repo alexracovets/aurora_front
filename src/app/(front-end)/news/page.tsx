@@ -12,7 +12,7 @@ export default async function News() {
     collection: 'pages',
     where: {
       slug: {
-        equals: 'awards'
+        equals: 'news'
       }
     }
   });
@@ -24,7 +24,7 @@ export default async function News() {
   return (
     <Container space start full>
       <AtomText variant="headerH1" asChild>
-        <h1>Новини</h1>
+        <h1>{pageData.title}</h1>
       </AtomText>
       <NewsBlock />
     </Container>
