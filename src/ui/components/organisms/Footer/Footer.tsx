@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { Container, Logo, FooterSocials, AtomHR } from "@atoms";
-import { FooterLinks } from "@molecules";
+import { FooterLinks, FooterInfo } from "@molecules";
 
 export const Footer = () => {
     return (
@@ -15,13 +15,11 @@ export const Footer = () => {
                     </Link>
                     <FooterSocials />
                 </div>
-                <AtomHR className="w-full" />
+                <AtomHR className="max-w-[calc(100%-30px)] translate-y-1 bg-light-pink" />
                 <div
                     className="flex w-full justify-between"
                 >
-                    <div>
-
-                    </div>
+                    <FooterInfo />
                     <FooterLinks />
                 </div>
             </Container>

@@ -41,6 +41,11 @@ const textVariants = cva(
                     "text-[20px] font-semibold",
                 newsCardLink:
                     "text-[16px]",
+                footerTitle:
+                    "text-[24px]",
+                footerText:
+                    "text-[16px] text-gray-secondary",
+                login: "text-[20px]"
             },
         },
         defaultVariants: {

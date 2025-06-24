@@ -16,6 +16,9 @@ export const buttonVariants = cva(
                 destructive: "bg-transparent text-black text-[20px] border border-none flex justify-center items-center gap-x-[15px] w-max",
                 destructive_secondary: "bg-transparent text-black text-[20px] flex justify-center items-center gap-x-[15px] pl-0 w-max pb-[10px] rounded-none border-x-0 border-t-0 border-b border-gray",
                 toBack: "bg-transparent text-black text-[24px] border border-none flex justify-start items-center gap-x-[20px] w-max",
+                login: cn(
+                    "flex justify-center items-center gap-x-[14px] h-fit self-start text-[20px] border-transparent"
+                )
             },
         },
         defaultVariants: {

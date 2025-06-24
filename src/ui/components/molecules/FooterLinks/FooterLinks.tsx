@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-
-import { cn } from "@utils";
+import { Login } from "@molecules";
+import { AtomLink } from "@atoms";
 
 export const FooterLinks = () => {
 
@@ -34,22 +33,22 @@ export const FooterLinks = () => {
     ]
 
     return (
-        <div className="p-[54px] pl-[108px] bg-light-pink rounded-[30px]">
+        <div className="flex justify-between items-start p-[54px] pl-[108px] bg-light-pink rounded-[30px] gap-x-[40px]">
             <ul className="flex flex-col gap-y-[16px] text-[20px] underline">
                 {links.map((link) => (
                     <li
                         key={link.name}
-                        className={cn(
-                            "relative",
-                            "before:content-[''] before:absolute before:left-0 before:top-1/2 before:translate-x-[-200%] before:-translate-y-1/2 before:w-[10px] before:h-[10px] before:bg-yellow before:rounded-full"
-                        )}
                     >
-                        <Link href={link.link}>
+                        <AtomLink
+                            href={link.link}
+                            variant="footerLink"
+                        >
                             {link.name}
-                        </Link>
+                        </AtomLink>
                     </li>
                 ))}
             </ul>
+            <Login />
         </div>
     )
 }

@@ -1,0 +1,1 @@
+export { FooterQuestions } from "./FooterQuestions";

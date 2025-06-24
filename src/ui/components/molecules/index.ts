@@ -6,3 +6,7 @@ export { PartnerItem } from "./PartnerItem";
 export { AwardItem } from "./AwardItem";
 export { RichTextFilter } from "./RichTextFilter";
 export { FooterLinks } from "./FooterLinks";
+export { Login } from "./Login";
+export { FooterInfo } from "./FooterInfo";
+export { FooterNavigation } from "./FooterNavigation";
+export { FooterQuestions } from "./FooterQuestions";

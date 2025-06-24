@@ -1,18 +1,13 @@
 "use client";
 
-import { AtomLink } from "@atoms";
-import { useCheckPage } from "@hooks";
-import { cn } from "@utils";
 import { useNavigationStore } from "@store";
-import { useEffect } from "react";
+import { useCheckPage } from "@hooks";
+import { AtomLink } from "@atoms";
+import { cn } from "@utils";
 
 export const HeaderNavigation = () => {
     const activePage = useCheckPage();
-    const { navigation, loadNavigation } = useNavigationStore();
-
-    useEffect(() => {
-        loadNavigation();
-    }, [loadNavigation]);
+    const { navigation } = useNavigationStore();
 
     return (
         <nav className="flex">
