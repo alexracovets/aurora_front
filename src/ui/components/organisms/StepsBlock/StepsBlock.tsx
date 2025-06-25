@@ -1,66 +1,11 @@
 "use client";
 
-import { SerializedEditorState, SerializedLexicalNode } from '@payloadcms/richtext-lexical/lexical'
 import { RichTextFilter } from "@molecules";
+import { Page } from '@/payload-types';
 import { cn } from '@/utils';
 
-interface LexicalNode extends SerializedLexicalNode {
-    type: string;
-    tag?: string;
-    children?: Array<{ text: string }>;
-}
-
-type StepsType = {
-    width?: ('1/1' | '1/2') | null;
-    content?: {
-        root: {
-            type: string;
-            children: {
-                type: string;
-                version: number;
-                [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-        };
-        [k: string]: unknown;
-    } | null;
-    contentLeft?: {
-        root: {
-            type: string;
-            children: {
-                type: string;
-                version: number;
-                [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-        };
-        [k: string]: unknown;
-    } | null;
-    contentRight?: {
-        root: {
-            type: string;
-            children: {
-                type: string;
-                version: number;
-                [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-        };
-        [k: string]: unknown;
-    } | null;
-    id?: string | null;
-};
-
-export const StepsBlock = ({ steps }: { steps: StepsType[] }) => {
+export const StepsBlock = ({ steps }: { steps: Page['steps'] }) => {
+    if (!steps) return null;
     return (
         <div className="w-full grow grid grid-cols-2 gap-[1.6rem] overflow-hidden">
             {steps.map((step, idx) => {
@@ -75,7 +20,7 @@ export const StepsBlock = ({ steps }: { steps: StepsType[] }) => {
                         {step.width === "1/1" && (
                             <div className="flex w-full flex-col gap-[1rem]">
                                 {
-                                    step.content && step.content.root.children.map((item: LexicalNode, idx: number) => {
+                                    step.content && step.content.root.children.map((item, idx) => {
                                         return <RichTextFilter item={item} key={idx} />
                                     })
                                 }
@@ -86,14 +31,14 @@ export const StepsBlock = ({ steps }: { steps: StepsType[] }) => {
                             <>
                                 <div className="flex w-full flex-col gap-[1rem]">
                                     {
-                                        step.contentLeft && step.contentLeft.root.children.map((item: LexicalNode, idx: number) => {
+                                        step.contentLeft && step.contentLeft.root.children.map((item, idx) => {
                                             return <RichTextFilter item={item} key={idx} />
                                         })
                                     }
                                 </div>
                                 <div className="flex w-full justify-center flex-col gap-[1rem]">
                                     {
-                                        step.contentRight && step.contentRight.root.children.map((item: LexicalNode, idx: number) => {
+                                        step.contentRight && step.contentRight.root.children.map((item, idx) => {
                                             return <RichTextFilter item={item} key={idx} />
                                         })
                                     }
@@ -104,5 +49,5 @@ export const StepsBlock = ({ steps }: { steps: StepsType[] }) => {
                 )
             })}
         </div>
-    )
-}
+    );
+};

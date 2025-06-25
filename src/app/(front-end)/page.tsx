@@ -28,7 +28,7 @@ export default async function Home() {
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
-        <StepsBlock steps={pageData.steps || []} />
+        <StepsBlock steps={pageData.steps} />
       </Suspense>
     </Container>
   );
