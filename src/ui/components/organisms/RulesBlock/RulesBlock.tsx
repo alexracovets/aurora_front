@@ -1,7 +1,7 @@
 "use client";
 
 import { Page } from '@payload-types';
-import { RichTextFilter } from '../../molecules/RichTextFilter/RichTextFilter';
+import { RichTextFilter } from '@molecules';
 
 
 export const RulesBlock = ({ content }: { content: Page['content'] }) => {

@@ -1,22 +1,15 @@
+import { RichTextItemType } from '@/types';
 import { cn } from '@/utils';
 import { AtomText, AtomHR } from '@atoms';
-import { SerializedLexicalNode } from '@payloadcms/richtext-lexical/lexical';
 import Image from 'next/image';
 
-interface LexicalNode extends SerializedLexicalNode {
-    type: string;
-    tag?: string;
-    children?: Array<{
-        text: string,
-        format?: number,
-    }>;
-    value?: {
-        url?: string;
-        alt?: string;
-    };
+interface RichTextFilterProps {
+    item: RichTextItemType;
+    rules?: boolean;
 }
 
-export const RichTextFilter = ({ item, rules }: { item: LexicalNode, rules?: boolean }) => {
+export const RichTextFilter = ({ item, rules }: RichTextFilterProps) => {
+    if (!item) return null;
     switch (item.type) {
         case "heading":
             if (item.tag === "h2") {
@@ -41,7 +34,7 @@ export const RichTextFilter = ({ item, rules }: { item: LexicalNode, rules?: boo
                 return (
                     <AtomText variant="description" asChild className="leading-[1.1]">
                         <h3>
-                            {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
+                            {item?.children?.map((child, idx) => {
                                 return (
                                     <span key={idx} className={cn(
                                         child.format === 1 && 'font-semibold',

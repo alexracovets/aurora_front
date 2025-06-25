@@ -1,12 +1,25 @@
 "use client";
 
-import { Result } from "@payload-types";
+import { RichTextItemType } from "@/types";
+import { Page, Result } from "@payload-types";
+import { RichTextFilter } from "@molecules";
 
-export const ItemsPageContent = ({ content }: { content: Result['content'] }) => {
- 
+interface ItemsPageContentProps {
+    content: Result['content'] | Page['content'];
+    image: Result['image'];
+}
+
+export const ItemsPageContent = ({ content, image }: ItemsPageContentProps) => {
+    if (!content) return null;
+
+    const contentData = content.root?.children;
+    if (!contentData) return null;
+    
     return (
-        <div>
-            
+        <div className="flex flex-col gap-y-[16px] mb-[40px]">
+            {contentData.map((item: RichTextItemType, idx: number) => {
+                return <RichTextFilter item={item} key={idx} />
+            })}
         </div>
     )
 }

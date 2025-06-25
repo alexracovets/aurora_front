@@ -1,4 +1,3 @@
-
 import { getPayload } from "payload";
 import { Suspense } from "react";
 
@@ -31,7 +30,7 @@ export default async function ResultPage({ params }: PageProps) {
   const pageData = page.docs[0] as Result;
 
   if (!pageData) return <Container space>404</Container>;
-  console.log(pageData);
+
   return (
     <ItemsPageWrapper>
       <Suspense fallback={<>Завантаження...</>}>
@@ -44,12 +43,12 @@ export default async function ResultPage({ params }: PageProps) {
         <AtomText variant="pageDate" asChild>
           <p>{pageData.date}</p>
         </AtomText>
-        <AtomText variant="pageDescription" asChild>
-          {pageData.description && (
+        {pageData.description && (
+          <AtomText variant="pageDescription" asChild>
             <p>{pageData.description}</p>
-          )}
-        </AtomText>
-        <ItemsPageContent content={pageData.content} />
+          </AtomText>
+        )}
+        <ItemsPageContent content={pageData.content} image={pageData.image} />
       </Suspense>
     </ItemsPageWrapper>
   );
