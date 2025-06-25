@@ -49,7 +49,7 @@ export default async function GalleryPage({ params }: PageProps) {
               className="w-full h-full"
             />
           </div>
-          <AtomText variant="h3" asChild className="text-center">
+          <AtomText variant="headerH3" asChild className="text-center">
             <h1>{pageData.title}</h1>
           </AtomText>
         </div>
