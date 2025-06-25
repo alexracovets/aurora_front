@@ -49,7 +49,7 @@ export default async function ResultPage({ params }: PageProps) {
             <p>{pageData.description}</p>
           )}
         </AtomText>
-        <ItemsPageContent />
+        <ItemsPageContent content={pageData.content || []} />
       </Suspense>
     </ItemsPageWrapper>
   );
