@@ -10,18 +10,58 @@ interface LexicalNode extends SerializedLexicalNode {
     children?: Array<{ text: string }>;
 }
 
-interface StepsBlockProps {
-    steps: Array<{
-        content: SerializedEditorState | null;
-        contentLeft: SerializedEditorState | null;
-        contentRight: SerializedEditorState | null;
-        width: string;
-    }>
-}
+type StepsType = {
+    width?: ('1/1' | '1/2') | null;
+    content?: {
+        root: {
+            type: string;
+            children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+        };
+        [k: string]: unknown;
+    } | null;
+    contentLeft?: {
+        root: {
+            type: string;
+            children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+        };
+        [k: string]: unknown;
+    } | null;
+    contentRight?: {
+        root: {
+            type: string;
+            children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+        };
+        [k: string]: unknown;
+    } | null;
+    id?: string | null;
+};
 
-export const StepsBlock = ({ steps }: StepsBlockProps) => {
+export const StepsBlock = ({ steps }: { steps: StepsType[] }) => {
     return (
-
         <div className="w-full grow grid grid-cols-2 gap-[1.6rem] overflow-hidden">
             {steps.map((step, idx) => {
                 return (

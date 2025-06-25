@@ -1,8 +1,14 @@
-import { Missions } from '@/blocks';
+import { Steps } from './fields';
 import type { CollectionConfig } from 'payload';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import { ParagraphFeature, BoldFeature } from '@payloadcms/richtext-lexical';
-
+import {
+    ParagraphFeature,
+    BoldFeature,
+    ItalicFeature,
+    StrikethroughFeature,
+    UnderlineFeature,
+    FixedToolbarFeature
+} from '@payloadcms/richtext-lexical';
 
 export const Pages: CollectionConfig = {
     slug: 'pages',
@@ -20,22 +26,19 @@ export const Pages: CollectionConfig = {
         {
             name: 'name',
             type: 'text',
+            label: 'Назва сторінки',
         },
         {
             name: 'title',
             type: 'text',
+            label: 'Титульний заголовок',
         },
-        Missions,
         {
             name: 'content',
             type: 'richText',
-            editor: lexicalEditor({
-                features: [
-                    ParagraphFeature(),
-                    BoldFeature()
-                ]
-            })
+            label: 'Контент',
         },
+        Steps,
         {
             name: 'slug',
             type: 'text',
@@ -43,7 +46,5 @@ export const Pages: CollectionConfig = {
                 position: 'sidebar',
             },
         },
-
-
     ],
 }

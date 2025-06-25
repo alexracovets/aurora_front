@@ -2,6 +2,7 @@
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { ParagraphFeature, BoldFeature, ItalicFeature, StrikethroughFeature, UnderlineFeature, FixedToolbarFeature, UnorderedListFeature } from '@payloadcms/richtext-lexical';
 import { seoPlugin } from '@payloadcms/plugin-seo';
 import { s3Storage } from '@payloadcms/storage-s3';
 
@@ -44,7 +45,19 @@ export default buildConfig({
   },
   collections: [Users, Media, Pages, Results, Partners, Awards, Gallery],
   globals: [Header],
-  editor: lexicalEditor(),
+  editor: lexicalEditor(
+    {
+      features: [
+        ParagraphFeature(),
+        BoldFeature(),
+        ItalicFeature(),
+        StrikethroughFeature(),
+        UnderlineFeature(),
+        UnorderedListFeature(),
+        FixedToolbarFeature()
+      ],
+    }
+  ),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
