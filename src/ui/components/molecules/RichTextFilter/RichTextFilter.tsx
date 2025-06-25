@@ -16,7 +16,7 @@ interface LexicalNode extends SerializedLexicalNode {
     };
 }
 
-export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
+export const RichTextFilter = ({ item, rules }: { item: LexicalNode, rules?: boolean }) => {
     switch (item.type) {
         case "heading":
             if (item.tag === "h2") {
@@ -57,7 +57,7 @@ export const RichTextFilter = ({ item }: { item: LexicalNode }) => {
             }
         case "paragraph":
             return (
-                <AtomText className="leading-[1.1]">
+                <AtomText className="leading-[1.1]" variant={rules ? "rulesText" : "default"}>
                     {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
                         return (
                             <span key={idx} className={cn(

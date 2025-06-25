@@ -22,7 +22,7 @@ const textVariants = cva(
                 description:
                     "text-[18px] font-semibold",
                 missionList:
-                    "text-[14px] uppercase px-[25px] pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2",
+                    "text-[14px] uppercase pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2",
                 text:
                     "text-[20px]",
                 paragraph:
@@ -47,7 +47,8 @@ const textVariants = cva(
                     "text-[24px]",
                 footerText:
                     "text-[16px] text-gray-secondary",
-                login: "text-[20px]"
+                login: "text-[20px]",
+                rulesText: "text-[16px]"
             },
         },
         defaultVariants: {
