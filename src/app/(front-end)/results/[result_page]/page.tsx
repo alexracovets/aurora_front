@@ -28,7 +28,7 @@ export default async function ResultPage({ params }: PageProps) {
     }
   });
 
-  const pageData = page.docs[0] as Result || null;
+  const pageData = page.docs[0] as Result;
 
   if (!pageData) return <Container space>404</Container>;
   console.log(pageData);
@@ -49,7 +49,7 @@ export default async function ResultPage({ params }: PageProps) {
             <p>{pageData.description}</p>
           )}
         </AtomText>
-        <ItemsPageContent content={pageData.content || []} />
+        <ItemsPageContent content={pageData.content} />
       </Suspense>
     </ItemsPageWrapper>
   );

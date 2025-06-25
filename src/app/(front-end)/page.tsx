@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import { AtomText, Container } from "@atoms";
 import { StepsBlock } from "@organisms";
+import { Page } from "@/payload-types";
 import config from "@/payload.config";
 
 export default async function Home() {
@@ -17,7 +18,7 @@ export default async function Home() {
     }
   });
 
-  const pageData = page.docs[0] || null;
+  const pageData = page.docs[0] as Page;
 
   if (!pageData) return <Container space>404</Container>;
 

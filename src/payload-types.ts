@@ -258,7 +258,7 @@ export interface Result {
   id: number;
   title: string;
   description?: string | null;
-  content: {
+  content?: {
     root: {
       type: string;
       children: {
@@ -272,7 +272,7 @@ export interface Result {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   image: number | Media;
   slug?: string | null;
   date?: string | null;

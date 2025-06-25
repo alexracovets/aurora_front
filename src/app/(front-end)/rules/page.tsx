@@ -2,8 +2,9 @@ import { getPayload } from "payload";
 import Link from "next/link";
 
 import { AtomButton, AtomText, Container, ArrowTo } from "@atoms";
-// import { RulesBlock } from "@organisms";
+import { RulesBlock } from "@organisms";
 import config from "@/payload.config";
+import { Page } from "@/payload-types";
 
 export default async function Rules() {
   const payload = await getPayload({ config })
@@ -17,7 +18,7 @@ export default async function Rules() {
     }
   });
 
-  const pageData = page.docs[0] || null;
+  const pageData = page.docs[0] as Page || null;
 
   if (!pageData) return <Container space>404</Container>;
 
@@ -26,10 +27,7 @@ export default async function Rules() {
       <AtomText variant="headerH1" asChild>
         <h1>{pageData.title}</h1>
       </AtomText>
-      {/* <RulesBlock 
-        content={pageData.content?.root?.children as any} 
-        rules={pageData.rules as any}
-      /> */}
+      <RulesBlock content={pageData.content} />
       <AtomButton variant="destructive_secondary" asChild className="text-[20px] font-semibold gap-x-[40px] w-max" >
         <Link href={"/"}>
           Переглянути шаблони описів та листів

@@ -24,7 +24,7 @@ export const Results: CollectionConfig = {
         {
             name: 'content',
             type: 'richText',
-            required: true,
+            required: false,
         },
         {
             name: "image",
