@@ -16,7 +16,7 @@ export const RichTextFilter = ({ item, steps }: RichTextFilterProps) => {
                 return (
                     <AtomText variant="headerH3" asChild>
                         <h2>
-                            {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
+                            {item?.children?.map((child, idx) => {
                                 return (
                                     <span key={idx} className={cn(
                                         child.format === 1 && 'font-semibold',
@@ -51,7 +51,7 @@ export const RichTextFilter = ({ item, steps }: RichTextFilterProps) => {
         case "paragraph":
             return (
                 <AtomText variant={steps ? "stepsText" : "regularText"}>
-                    {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
+                    {item?.children?.map((child, idx) => {
                         return (
                             <span key={idx} className={cn(
                                 child.format === 1 && 'font-semibold',
@@ -77,13 +77,13 @@ export const RichTextFilter = ({ item, steps }: RichTextFilterProps) => {
             )
         case "list":
             return (
-                <ul className="gap-[1rem] py-[1.6rem] px-[1.2rem] bg-light-pink rounded-[1rem]">
-                    {item?.children?.map((child: { text: string, children?: Array<{ text: string, format?: number }> }, idx: number) => {
-                        return (
-                            <AtomText variant="missionList" asChild key={idx}>
-                                <li>
-                                    {
-                                        child.children?.map((child: { text: string, format?: number }, id: number) => {
+                <AtomText variant={steps ? "stepsListWrapper" : "regularListWrapper"} asChild>
+                    <ul>
+                        {item?.children?.map((child: { text: string, children?: Array<{ text: string, format?: number }> }, idx: number) => {
+                            return (
+                                <AtomText variant={steps ? "stepsListItem" : "regularList"} asChild key={idx}>
+                                    <li>
+                                        {child.children?.map((child, id) => {
                                             return (
                                                 <span key={id} className={cn(
                                                     child.format === 1 && 'font-semibold',
@@ -92,13 +92,13 @@ export const RichTextFilter = ({ item, steps }: RichTextFilterProps) => {
                                                     child.format === 8 && 'line-through'
                                                 )}>{child.text}</span>
                                             )
-                                        })
-                                    }
-                                </li>
-                            </AtomText>
-                        )
-                    })}
-                </ul>
+                                        })}
+                                    </li>
+                                </AtomText>
+                            )
+                        })}
+                    </ul>
+                </AtomText>
             )
         default:
             return null;

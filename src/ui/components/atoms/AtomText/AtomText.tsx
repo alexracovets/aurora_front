@@ -19,8 +19,6 @@ const textVariants = cva(
                     "text-[32px] font-semibold",
                 description:
                     "text-[18px] font-semibold",
-                missionList:
-                    "text-[14px] uppercase pl-[33px] relative before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2",
                 text:
                     "text-[20px]",
                 paragraph:
@@ -45,8 +43,18 @@ const textVariants = cva(
                     "text-[16px] text-gray-secondary",
                 login: "text-[20px]",
                 rulesText: "text-[16px]",
-                regularText: "text-[16px] mb-[16px] leading-[1.25]",
-                stepsText: "text-[16px]"
+                regularText: "text-[18px] mb-[16px] leading-[1.25]",
+                regularListWrapper: "flex flex-col",
+                regularList: cn(
+                    "relative text-[18px] mb-[16px] pl-[40px]",
+                    "before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[4px] before:h-[4px] before:bg-black before:rounded-full"
+                ),
+                stepsText: "text-[16px]",
+                stepsListWrapper: "flex flex-col gap-[8px] px-[12px] py-[16px] bg-light-pink rounded-[10px] before:-translate-y-1/2 before:-translate-x-1/2",
+                stepsListItem: cn(
+                    "text-[14px] uppercase pl-[33px] relative",
+                    "before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2"
+                ),
             },
         },
         defaultVariants: {
