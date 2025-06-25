@@ -35,6 +35,8 @@ const textVariants = cva(
                     "text-[60px] font-semibold leading-[56px] text-left pt-[60px] pb-[16px] mb-[16px]",
                 pageDescription:
                     "text-[16px] text-left mb-[16px]",
+                pageDate:
+                    "text-[16px]",
                 cardTitle:
                     "text-[20px] font-semibold",
                 newsCardLink:

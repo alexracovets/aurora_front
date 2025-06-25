@@ -256,9 +256,9 @@ export interface Page {
  */
 export interface Result {
   id: number;
-  title?: string | null;
+  title: string;
   description?: string | null;
-  content?: {
+  content: {
     root: {
       type: string;
       children: {
@@ -272,9 +272,10 @@ export interface Result {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
-  image?: (number | null) | Media;
+  };
+  image: number | Media;
   slug?: string | null;
+  date?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -479,6 +480,7 @@ export interface ResultsSelect<T extends boolean = true> {
   content?: T;
   image?: T;
   slug?: T;
+  date?: T;
   updatedAt?: T;
   createdAt?: T;
 }

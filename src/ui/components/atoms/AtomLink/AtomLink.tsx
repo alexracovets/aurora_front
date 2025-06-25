@@ -38,6 +38,9 @@ const linksVariants = cva(
                     "absolute bottom-0 left-0 w-full h-[48px] bg-white rounded-[8px] py-[8px] flex flex-col gap-[8px]",
                     "transition transition-[300ms] ease-in",
                     "hover:text-yellow"
+                ),
+                toBack: cn(
+                    "flex items-center gap-x-[12px] bg-transparent text-[16px] border border-none"
                 )
             },
         },

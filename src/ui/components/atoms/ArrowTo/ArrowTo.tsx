@@ -1,11 +1,22 @@
 "use client";
 
-import { GoArrowRight } from "react-icons/go";
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
 import { cn } from "@utils";
 
-export const ArrowTo = ({ className }: { className?: string }) => {
+interface ArrowToProps {
+    className?: string;
+    back?: boolean;
+}
+
+export const ArrowTo = ({ className, back }: ArrowToProps) => {
     return (
-        <GoArrowRight className={cn("text-[24px] text-yellow", className)} />
+        <>
+            {back ? (
+                <GoArrowLeft className={cn("text-[24px] text-yellow", className)} />
+            ) : (
+                <GoArrowRight className={cn("text-[24px] text-yellow", className)} />
+            )}
+        </>
     )
 }

@@ -13,19 +13,24 @@ export const Results: CollectionConfig = {
         {
             name: 'title',
             type: 'text',
+            label: 'Заголовок',
+            required: true,
         },
         {
             name: "description",
             type: "text",
+            label: 'Короткий опис',
         },
         {
             name: 'content',
             type: 'richText',
+            required: true,
         },
         {
             name: "image",
             type: "upload",
             relationTo: "media",
+            required: true,
         },
         {
             name: 'slug',
@@ -34,5 +39,13 @@ export const Results: CollectionConfig = {
                 position: 'sidebar',
             },
         },
+        {
+            name: 'date',
+            type: 'date',
+            label: 'Дата створення',
+            admin: {
+                position: 'sidebar',
+            },
+        }
     ],
 };
