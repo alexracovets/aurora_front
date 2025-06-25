@@ -5,16 +5,16 @@ import Image from 'next/image';
 
 interface RichTextFilterProps {
     item: RichTextItemType;
-    rules?: boolean;
+    steps?: boolean;
 }
 
-export const RichTextFilter = ({ item, rules }: RichTextFilterProps) => {
+export const RichTextFilter = ({ item, steps }: RichTextFilterProps) => {
     if (!item) return null;
     switch (item.type) {
         case "heading":
             if (item.tag === "h2") {
                 return (
-                    <AtomText variant="h3" asChild>
+                    <AtomText variant="headerH3" asChild>
                         <h2>
                             {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
                                 return (
@@ -32,7 +32,7 @@ export const RichTextFilter = ({ item, rules }: RichTextFilterProps) => {
             }
             if (item.tag === "h3") {
                 return (
-                    <AtomText variant="description" asChild className="leading-[1.1]">
+                    <AtomText variant="description" asChild>
                         <h3>
                             {item?.children?.map((child, idx) => {
                                 return (
@@ -50,7 +50,7 @@ export const RichTextFilter = ({ item, rules }: RichTextFilterProps) => {
             }
         case "paragraph":
             return (
-                <AtomText className="leading-[1.1]" variant={rules ? "rulesText" : "default"}>
+                <AtomText variant={steps ? "stepsText" : "regularText"}>
                     {item?.children?.map((child: { text: string, format?: number }, idx: number) => {
                         return (
                             <span key={idx} className={cn(

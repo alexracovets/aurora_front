@@ -7,17 +7,15 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@utils"
 
 const textVariants = cva(
-    "",
+    "leading-[1.1]",
     {
         variants: {
             variant: {
                 default:
                     "text-[16px]",
-                h1:
-                    "text-[40px] font-semibold text-center my-[30px]",
-                h1_secondary:
-                    "text-[40px] font-semibold text-left mt-[15px] mb-[35px]",
-                h3:
+                headerH1:
+                    "text-[60px] font-semibold text-left pt-[60px] pb-[16px] mb-[16px]",
+                headerH3:
                     "text-[32px] font-semibold",
                 description:
                     "text-[18px] font-semibold",
@@ -31,12 +29,10 @@ const textVariants = cva(
                     "text-[22px] font-semibold text-center",
                 date:
                     "text-[12px] text-gray",
-                headerH1:
-                    "text-[60px] font-semibold leading-[56px] text-left pt-[60px] pb-[16px] mb-[16px]",
                 pageDescription:
                     "text-[16px] text-left mb-[16px]",
                 pageDate:
-                    "text-[16px]",
+                    "text-[16px] mb-[16px]",
                 cardTitle:
                     "text-[20px] font-semibold",
                 newsCardLink:
@@ -48,7 +44,9 @@ const textVariants = cva(
                 footerText:
                     "text-[16px] text-gray-secondary",
                 login: "text-[20px]",
-                rulesText: "text-[16px]"
+                rulesText: "text-[16px]",
+                regularText: "text-[16px] mb-[16px] leading-[1.25]",
+                stepsText: "text-[16px]"
             },
         },
         defaultVariants: {

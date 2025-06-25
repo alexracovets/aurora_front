@@ -21,7 +21,7 @@ export const StepsBlock = ({ steps }: { steps: Page['steps'] }) => {
                             <div className="flex w-full flex-col gap-[1rem]">
                                 {
                                     step.content && step.content.root.children.map((item, idx) => {
-                                        return <RichTextFilter item={item} key={idx} />
+                                        return <RichTextFilter item={item} key={idx} steps />
                                     })
                                 }
                             </div>
@@ -32,14 +32,14 @@ export const StepsBlock = ({ steps }: { steps: Page['steps'] }) => {
                                 <div className="flex w-full flex-col gap-[1rem]">
                                     {
                                         step.contentLeft && step.contentLeft.root.children.map((item, idx) => {
-                                            return <RichTextFilter item={item} key={idx} />
+                                            return <RichTextFilter item={item} key={idx} steps />
                                         })
                                     }
                                 </div>
                                 <div className="flex w-full justify-center flex-col gap-[1rem]">
                                     {
                                         step.contentRight && step.contentRight.root.children.map((item, idx) => {
-                                            return <RichTextFilter item={item} key={idx} />
+                                            return <RichTextFilter item={item} key={idx} steps />
                                         })
                                     }
                                 </div>

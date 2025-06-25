@@ -9,9 +9,9 @@ export const RulesBlock = ({ content }: { content: Page['content'] }) => {
     const contentData = content?.root?.children;
 
     return (
-        <div className='flex flex-col gap-y-[16px] mb-[40px]'>
+        <div className='flex flex-col mb-[40px]'>
             {contentData.map((item, idx) => {
-                return <RichTextFilter item={item} key={idx} rules />
+                return <RichTextFilter item={item} key={idx} />
             })}
         </div>
     );

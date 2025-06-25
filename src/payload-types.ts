@@ -296,7 +296,8 @@ export interface Partner {
  */
 export interface Award {
   id: number;
-  title?: string | null;
+  title: string;
+  description?: string | null;
   content?: {
     root: {
       type: string;
@@ -312,7 +313,7 @@ export interface Award {
     };
     [k: string]: unknown;
   } | null;
-  image?: (number | null) | Media;
+  image: number | Media;
   slug?: string | null;
   date?: string | null;
   updatedAt: string;
@@ -500,6 +501,7 @@ export interface PartnersSelect<T extends boolean = true> {
  */
 export interface AwardsSelect<T extends boolean = true> {
   title?: T;
+  description?: T;
   content?: T;
   image?: T;
   slug?: T;

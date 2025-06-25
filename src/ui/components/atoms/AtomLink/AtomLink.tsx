@@ -22,17 +22,17 @@ const linksVariants = cva(
                     "hover:bg-bage transition-colors duration-300"
                 ),
                 footerNavigation: cn(
-                    "text-[20px] leading-[1]"
+                    "text-[20px]"
                 ),
                 footerLink: cn(
                     "relative",
                     "before:content-[''] before:absolute before:left-0 before:top-1/2 before:translate-x-[-200%] before:-translate-y-1/2 before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full"
                 ),
                 footerCall: cn(
-                    "text-[24px] underline font-semibold leading-[1]"
+                    "text-[24px] underline font-semibold"
                 ),
                 footerMail: cn(
-                    "text-[20px] font-semibold leading-[1]"
+                    "text-[20px] font-semibold"
                 ),
                 cardLink: cn(
                     "absolute bottom-0 left-0 w-full h-[48px] bg-white rounded-[8px] py-[8px] flex flex-col gap-[8px]",

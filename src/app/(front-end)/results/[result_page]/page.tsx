@@ -4,8 +4,9 @@ import { Suspense } from "react";
 
 import { Container, AtomText, ItemsPageWrapper, ArrowTo, AtomLink } from "@atoms";
 import { ItemsPageContent } from "@molecules";
-import { Result } from "@payload-types";
+import { Media, Result } from "@payload-types";
 import config from "@/payload.config";
+import { formatDate } from "@/utils";
 
 type PageProps = {
   params: Promise<{
@@ -41,14 +42,14 @@ export default async function ResultPage({ params }: PageProps) {
           <h1>{pageData.title}</h1>
         </AtomText>
         <AtomText variant="pageDate" asChild>
-          <p>{pageData.date}</p>
+          <p>{formatDate(pageData.date)}</p>
         </AtomText>
         {pageData.description && (
           <AtomText variant="pageDescription" asChild>
             <p>{pageData.description}</p>
           </AtomText>
         )}
-        <ItemsPageContent content={pageData.content} image={pageData.image} />
+        <ItemsPageContent content={pageData.content} image={pageData.image as Media} />
       </Suspense>
     </ItemsPageWrapper>
   );
