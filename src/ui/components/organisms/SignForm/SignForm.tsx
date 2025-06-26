@@ -102,6 +102,7 @@ export const SignForm = () => {
                                             {...field}
                                             mask="+380 (00) 000-00-00"
                                             placeholder="+380 (__) ___ _ _"
+                                            name="phone"
                                             className={cn(
                                                 "text-[20px] bg-white rounded-[8px] border border-transparent px-[45px] py-[16px] outline-none",
                                                 "focus:border-yellow focus:ring-yellow focus:ring-[3px]",
