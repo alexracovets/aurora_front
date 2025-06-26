@@ -22,6 +22,7 @@ export const ReCaptcha: React.FC<ReCaptchaProps> = ({
         onChange={onChange}
         theme="light"
         size="normal"
+
       />
     </div>
   );

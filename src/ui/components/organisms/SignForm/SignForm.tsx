@@ -4,11 +4,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
+import { IMaskInput } from 'react-imask';
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, AtomButton, Input, ReCaptcha } from "@atoms";
+import { cn } from "@utils";
+
 
 const formSchema = z.object({
-    phone: z.string().min(10).max(10),
+    phone: z.string()
+        .min(18, "Номер телефону повинен бути повним")
+        .max(18, "Номер телефону занадто довгий")
+        .regex(/^\+380 \(\d{2}\) \d{3}-\d{2}-\d{2}$/, "Невірний формат номера телефону"),
     recaptcha: z.string().min(1, "Будь ласка, підтвердіть, що ви не робот"),
 })
 
@@ -92,10 +98,17 @@ export const SignForm = () => {
                                 <FormLabel className="whitespace-nowrap text-[20px] font-semibold">Введіть Ваш номер телефону :</FormLabel>
                                 <div className="relative">
                                     <FormControl className="flex flex-col">
-                                        <Input
-                                            placeholder="+380 (ХХ) 123 45 67"
-                                            className="text-[16px]"
+                                        <IMaskInput
                                             {...field}
+                                            mask="+380 (00) 000-00-00"
+                                            placeholder="+380 (__) ___ _ _"
+                                            className={cn(
+                                                "text-[20px] bg-white rounded-[8px] border border-transparent px-[45px] py-[16px] outline-none",
+                                                "focus:border-yellow focus:ring-yellow focus:ring-[3px]",
+                                            )}
+                                            onAccept={(value) => {
+                                                field.onChange(value);
+                                            }}
                                         />
                                     </FormControl>
                                     <FormMessage className="absolute top-0 left-0 translate-y-[-100%]" />
