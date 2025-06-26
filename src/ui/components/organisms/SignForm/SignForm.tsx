@@ -27,7 +27,7 @@ export const SignForm = () => {
     const handleRecaptchaChange = (token: string | null) => {
         setRecaptchaToken(token);
         form.setValue("recaptcha", token || "");
-        
+
         if (token) {
             form.clearErrors("recaptcha");
         }
@@ -90,14 +90,16 @@ export const SignForm = () => {
                         render={({ field }) => (
                             <FormItem className="flex justify-start items-center gap-x-[24px]">
                                 <FormLabel className="whitespace-nowrap text-[20px] font-semibold">Введіть Ваш номер телефону :</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        placeholder="+380 (ХХ) 123 45 67"
-                                        className="text-[16px]"
-                                        {...field}
-                                    />
-                                </FormControl>
-                                <FormMessage />
+                                <div className="relative">
+                                    <FormControl className="flex flex-col">
+                                        <Input
+                                            placeholder="+380 (ХХ) 123 45 67"
+                                            className="text-[16px]"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage className="absolute top-0 left-0 translate-y-[-100%]" />
+                                </div>
                             </FormItem>
                         )}
                     />
@@ -114,13 +116,12 @@ export const SignForm = () => {
                     control={form.control}
                     name="recaptcha"
                     render={({ field }) => (
-                        <FormItem>
+                        <FormItem className="relative">
                             <ReCaptcha
                                 siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "your_site_key_here"}
                                 onChange={handleRecaptchaChange}
-                                className="mt-[16px]"
                             />
-                            <FormMessage />
+                            <FormMessage className="absolute top-0 left-0 translate-y-[-100%]" />
                         </FormItem>
                     )}
                 />
