@@ -5,20 +5,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, AtomButton, PhoneInput, ReCaptcha } from "@atoms";
-import { isValidUkrainianPhone, getPhoneDigits } from "@utils";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, AtomButton, Input, ReCaptcha } from "@atoms";
 
 const formSchema = z.object({
-    phone: z.string()
-        .min(1, "Номер телефону обов'язковий")
-        .refine((value) => {
-            // Видаляємо всі символи крім цифр для перевірки
-            const cleaned = value.replace(/\D/g, '');
-            return cleaned.length >= 10;
-        }, "Номер телефону повинен містити мінімум 10 цифр")
-        .refine((value) => {
-            return isValidUkrainianPhone(value);
-        }, "Введіть коректний український номер телефону"),
+    phone: z.string().min(10).max(10),
     recaptcha: z.string().min(1, "Будь ласка, підтвердіть, що ви не робот"),
 })
 
@@ -44,9 +34,6 @@ export const SignForm = () => {
     };
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log("onSubmit called with values:", values);
-        console.log("Current phone value before submission:", form.getValues("phone"));
-
         if (!recaptchaToken) {
             form.setError("recaptcha", {
                 type: "manual",
@@ -76,17 +63,10 @@ export const SignForm = () => {
                 return;
             }
 
-            // Отримуємо тільки цифри номера для збереження
-            const phoneDigits = getPhoneDigits(values.phone);
-
-            console.log("Form values:", { ...values, phone: phoneDigits });
+            console.log("Form values:", values);
             console.log("reCAPTCHA verification successful");
-            console.log("Phone value before clearing recaptcha:", form.getValues("phone"));
-
-            // Очищаємо тільки reCAPTCHA, зберігаючи номер телефону
+            form.reset();
             setRecaptchaToken(null);
-
-            console.log("Phone value after clearing recaptcha:", form.getValues("phone"));
             alert("Форму успішно відправлено!");
 
         } catch (error) {
@@ -97,19 +77,12 @@ export const SignForm = () => {
             });
         } finally {
             setIsSubmitting(false);
-            console.log("Phone value in finally block:", form.getValues("phone"));
         }
     }
 
-    const handleButtonClick = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log("Button clicked, current phone value:", form.getValues("phone"));
-        form.handleSubmit(onSubmit)();
-    };
-
     return (
         <Form {...form}>
-            <form onSubmit={(e) => handleButtonClick(e)} className="flex flex-col items-start gap-y-[24px] my-[24px]">
+            <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit(onSubmit)(); }} className="flex flex-col items-start gap-y-[24px] my-[24px]">
                 <div className="flex justify-start items-center gap-x-[24px]" >
                     <FormField
                         control={form.control}
@@ -119,7 +92,7 @@ export const SignForm = () => {
                                 <FormLabel className="whitespace-nowrap text-[20px] font-semibold">Введіть Ваш номер телефону :</FormLabel>
                                 <div className="relative">
                                     <FormControl className="flex flex-col">
-                                        <PhoneInput
+                                        <Input
                                             placeholder="+380 (ХХ) 123 45 67"
                                             className="text-[16px]"
                                             {...field}
@@ -131,12 +104,12 @@ export const SignForm = () => {
                         )}
                     />
                     <AtomButton
-                        type="button"
+                        type="submit"
                         variant="form"
                         className="self-start"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !form.formState.isValid}
                     >
-                        {isSubmitting ? "Перевірка..." : "Далі"}
+                        {isSubmitting ? "Відправляємо..." : "Далі"}
                     </AtomButton>
                 </div>
                 <FormField
