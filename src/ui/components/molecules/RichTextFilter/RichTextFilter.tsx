@@ -1,5 +1,5 @@
 import { RichTextItemType } from '@/types';
-import { cn } from '@/utils';
+import { cn } from '@utils';
 import { AtomText, AtomHR } from '@atoms';
 import Image from 'next/image';
 

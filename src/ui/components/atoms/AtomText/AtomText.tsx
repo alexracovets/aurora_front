@@ -41,7 +41,7 @@ const textVariants = cva(
                     "text-[24px]",
                 footerText:
                     "text-[16px] text-gray-secondary",
-                login: "text-[20px]",
+                login: "text-[16px]",
                 rulesText: "text-[16px]",
                 regularText: "text-[18px] mb-[16px] leading-[1.25]",
                 regularListWrapper: "flex flex-col",

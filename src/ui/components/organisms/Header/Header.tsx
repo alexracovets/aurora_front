@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { Container, Logo } from "@atoms";
-import { HeaderNavigation } from "@molecules";
+import { HeaderNavigation, Login } from "@molecules";
 import { useNavigationStore } from "@store";
 import { cn } from "@utils";
 
@@ -16,11 +16,12 @@ export const Header = () => {
             "translate-y-[-100%] transition-all duration-300",
             navigation.length > 0 && "translate-y-0"
         )}>
-            <Container className="flex items-center gap-x-[16px] py-[12px]">
+            <Container className="grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-[12px]">
                 <Link href="/">
                     <Logo />
                 </Link>
                 <HeaderNavigation />
+                <Login />
             </Container>
         </header>
     )

@@ -17,10 +17,13 @@ export const buttonVariants = cva(
                 destructive_secondary: "bg-transparent text-black text-[20px] flex justify-center items-center gap-x-[15px] pl-0 w-max pb-[10px] rounded-none border-x-0 border-t-0 border-b border-gray",
                 toBack: "bg-transparent text-black text-[24px] border border-none flex justify-start items-center gap-x-[20px] w-max",
                 login: cn(
-                    "flex justify-center items-center gap-x-[14px] h-fit self-start text-[20px] border-transparent"
+                    "flex justify-center items-center gap-x-[8px] h-fit self-start text-[16px] border-transparent bg-yellow"
                 ),
                 cardLink: cn(
                     "w-full flex justify-between items-center border-none p-0"
+                ),
+                form: cn(
+                    "bg-yellow text-black text-[24px] border-transparent py-[12px] px-[24px] rounded-[8px]"
                 )
             },
         },

@@ -4,7 +4,7 @@ import { Gallery, Media } from "@payload-types";
 import { Suspense } from "react";
 
 import { Container, AtomText, FullscreenImage } from "@atoms";
-import { getCollectionItem, getGalleries, getGalleriesNext } from "@/utils";
+import { getCollectionItem, getGalleries, getGalleriesNext } from "@utils";
 import { getNeighborGalleries } from "@hooks";
 import { GalleryStateUpdater } from "./GalleryStateUpdater";
 import { ShowCaseGallery } from "@organisms";

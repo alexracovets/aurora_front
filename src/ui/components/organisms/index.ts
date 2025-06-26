@@ -9,3 +9,4 @@ export { AwardsBlock } from "./AwardsBlock";
 export { GalleryBlock } from "./GalleryBlock";
 export { ShowCaseGallery } from "./ShowCaseGallery";
 export { RulesBlock } from "./RulesBlock";
+export { SignForm } from "./SignForm";

@@ -6,7 +6,7 @@ import { Container, AtomText, ItemsPageWrapper, ArrowTo, AtomLink } from "@atoms
 import { ItemsPageContent } from "@molecules";
 import { Media, Result } from "@payload-types";
 import config from "@/payload.config";
-import { formatDate } from "@/utils";
+import { formatDate } from "@utils";
 
 type PageProps = {
   params: Promise<{

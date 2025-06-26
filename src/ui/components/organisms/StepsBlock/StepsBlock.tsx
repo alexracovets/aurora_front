@@ -2,7 +2,7 @@
 
 import { RichTextFilter } from "@molecules";
 import { Page } from '@/payload-types';
-import { cn } from '@/utils';
+import { cn } from '@utils';
 
 export const StepsBlock = ({ steps }: { steps: Page['steps'] }) => {
     if (!steps) return null;

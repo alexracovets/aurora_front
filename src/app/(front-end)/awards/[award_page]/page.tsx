@@ -5,7 +5,7 @@ import { ItemsPageContent } from "@molecules";
 import { Award, Media } from "@/payload-types";
 import { getPayload } from "payload";
 import config from "@/payload.config";
-import { formatDate } from "@/utils";
+import { formatDate } from "@utils";
 
 type PageProps = {
   params: Promise<{
