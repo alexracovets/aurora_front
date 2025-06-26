@@ -1,13 +1,14 @@
 "use server";
 
-import { Suspense } from "react";
-import Link from "next/link";
-
-import { Container, AtomText, ArrowPrev, ArrowNext, FullscreenImage } from "@atoms";
-import { cn, getCollectionItem, getGalleries } from "@/utils";
-import { GalleryStateUpdater } from "./GalleryStateUpdater";
-import { getNeighborGalleries } from "@hooks";
 import { Gallery, Media } from "@payload-types";
+import { Suspense } from "react";
+
+import { Container, AtomText, FullscreenImage } from "@atoms";
+import { getCollectionItem, getGalleries, getGalleriesNext } from "@/utils";
+import { getNeighborGalleries } from "@hooks";
+import { GalleryStateUpdater } from "./GalleryStateUpdater";
+import { ShowCaseGallery } from "@organisms";
+import { PreloadImages } from "./PreloadImages";
 
 type PageProps = {
   params: Promise<{
@@ -30,38 +31,25 @@ export default async function GalleryPage({ params }: PageProps) {
   const pageData = page as Gallery || null;
   if (!pageData) return <Container space>404</Container>;
   const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug);
-  
+
+  // Отримуємо наступні галереї для preloading
+  const nextGalleriesResult = await getGalleriesNext(gallery_page, 4);
+  const nextGalleries = nextGalleriesResult.success ? nextGalleriesResult.data : [];
+
   return (
-    <div className="w-full relative">
-      <Link href={prevPage?.slug ? `/gallery/${prevPage?.slug}` : ""} className={cn(
-        "absolute top-[50%] left-0 w-[65px] h-[65px] rounded-[50%] bg-white flex justify-center items-center",
-        !prevPage?.slug ? "pointer-events-none pointer-none opacity-50" : ""
-      )}>
-        <ArrowPrev />
-      </Link>
+    <Suspense fallback={<>Завантаження...</>}>
       <GalleryStateUpdater slug={pageData.slug} />
-      <Suspense fallback={<>Завантаження...</>}>
-        <div className="flex flex-col w-full">
-          <div className="relative w-[1166px] h-[616px] mx-auto mb-[16px] rounded-[20px] overflow-hidden">
-            <FullscreenImage
-              image={pageData.image as Media}
-              alt={pageData.alt}
-              className="w-full h-full"
-            />
-          </div>
-          <AtomText variant="headerH3" asChild className="text-center">
-            <h1>{pageData.title}</h1>
-          </AtomText>
-        </div>
-      </Suspense>
-      <Link
-        href={nextPage?.slug ? `/gallery/${nextPage.slug}` : ""}
-        className={cn(
-          "absolute top-[50%] right-0 w-[65px] h-[65px] rounded-[50%] bg-white flex justify-center items-center",
-          !nextPage?.slug ? "pointer-events-none pointer-none opacity-50" : ""
-        )}>
-        <ArrowNext />
-      </Link>
-    </div>
+      <PreloadImages galleries={nextGalleries} />
+      <FullscreenImage
+        image={pageData.image as Media}
+        alt={pageData.alt}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
+      <AtomText variant="headerH1" asChild>
+        <h1>{pageData.title}</h1>
+      </AtomText>
+      <ShowCaseGallery />
+    </Suspense>
   );
 };

@@ -10,6 +10,7 @@ import { cn } from "@utils";
 
 export const GalleryItem = ({ id, title, image, alt, slug }: Gallery) => {
     const [isHover, setIsHover] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
         <Link
@@ -20,7 +21,23 @@ export const GalleryItem = ({ id, title, image, alt, slug }: Gallery) => {
             <div key={id} className="flex flex-col justify-center items-center">
                 <div className={"relative w-full h-[250px] rounded-t-[8px] overflow-hidden"}>
                     {image && typeof image !== 'number' && (
-                        <Image src={image.url || ''} alt={alt || ''} fill className="object-cover z-0" />
+                        <>
+                            <Image 
+                                src={image.url || ''} 
+                                alt={alt || ''} 
+                                fill 
+                                className={cn(
+                                    "object-cover z-0 transition-opacity duration-300",
+                                    imageLoaded ? "opacity-100" : "opacity-0"
+                                )}
+                                onLoad={() => setImageLoaded(true)}
+                                priority={true}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                            />
+                            {!imageLoaded && (
+                                <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                            )}
+                        </>
                     )}
                 </div>
                 <AtomText

@@ -13,7 +13,7 @@ interface ContainerProps extends JustChildrenType {
 export const Container = ({ children, className, space, start, full }: ContainerProps) => {
     return (
         <div className={cn(
-            "w-full max-w-[1286px] mx-auto",
+            "w-full max-w-[1286px] mx-auto relative",
             "min-[1920px]:max-w-[128.6rem]",
             space && "py-[32px]",
             start && "pt-[66px]",

@@ -12,7 +12,7 @@ export const Header = () => {
 
     return (
         <header className={cn(
-            "absolute top-0 left-0 w-full shadow-md bg-white",
+            "absolute top-0 left-0 w-full shadow-md bg-white z-10",
             "translate-y-[-100%] transition-all duration-300",
             navigation.length > 0 && "translate-y-0"
         )}>
