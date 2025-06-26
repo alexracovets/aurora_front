@@ -5,10 +5,20 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, AtomButton, Input, ReCaptcha } from "@atoms";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, AtomButton, PhoneInput, ReCaptcha } from "@atoms";
+import { isValidUkrainianPhone, getPhoneDigits } from "@utils";
 
 const formSchema = z.object({
-    phone: z.string().min(10).max(10),
+    phone: z.string()
+        .min(1, "Номер телефону обов'язковий")
+        .refine((value) => {
+            // Видаляємо всі символи крім цифр для перевірки
+            const cleaned = value.replace(/\D/g, '');
+            return cleaned.length >= 10;
+        }, "Номер телефону повинен містити мінімум 10 цифр")
+        .refine((value) => {
+            return isValidUkrainianPhone(value);
+        }, "Введіть коректний український номер телефону"),
     recaptcha: z.string().min(1, "Будь ласка, підтвердіть, що ви не робот"),
 })
 
@@ -63,7 +73,10 @@ export const SignForm = () => {
                 return;
             }
 
-            console.log("Form values:", values);
+            // Отримуємо тільки цифри номера для збереження
+            const phoneDigits = getPhoneDigits(values.phone);
+
+            console.log("Form values:", { ...values, phone: phoneDigits });
             console.log("reCAPTCHA verification successful");
             form.reset();
             setRecaptchaToken(null);
@@ -92,7 +105,7 @@ export const SignForm = () => {
                                 <FormLabel className="whitespace-nowrap text-[20px] font-semibold">Введіть Ваш номер телефону :</FormLabel>
                                 <div className="relative">
                                     <FormControl className="flex flex-col">
-                                        <Input
+                                        <PhoneInput
                                             placeholder="+380 (ХХ) 123 45 67"
                                             className="text-[16px]"
                                             {...field}
@@ -107,9 +120,9 @@ export const SignForm = () => {
                         type="submit"
                         variant="form"
                         className="self-start"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !form.formState.isValid}
                     >
-                        {isSubmitting ? "Відправляємо..." : "Далі"}
+                        {isSubmitting ? "Перевірка..." : "Далі"}
                     </AtomButton>
                 </div>
                 <FormField

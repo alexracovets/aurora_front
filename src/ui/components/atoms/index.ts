@@ -21,4 +21,5 @@ export { ItemsPageWrapper } from "./ItemsPageWrapper";
 export { Label } from "./Label";
 export { Form, useFormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField } from "./Form";
 export { Input } from "./Input";
+export { PhoneInput } from "./PhoneInput";
 export { ReCaptcha } from "./ReCaptcha";

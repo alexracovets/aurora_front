@@ -23,7 +23,7 @@ export const buttonVariants = cva(
                     "w-full flex justify-between items-center border-none p-0"
                 ),
                 form: cn(
-                    "bg-yellow text-black text-[24px] border-transparent py-[12px] px-[24px] rounded-[8px]"
+                    "bg-yellow text-black text-[24px] border-transparent py-[12px] px-[24px] rounded-[8px] disabled:bg-gray-200 disabled:text-black"
                 )
             },
         },
