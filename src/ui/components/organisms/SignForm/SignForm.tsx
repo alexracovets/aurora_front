@@ -44,6 +44,9 @@ export const SignForm = () => {
     };
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        console.log("onSubmit called with values:", values);
+        console.log("Current phone value before submission:", form.getValues("phone"));
+
         if (!recaptchaToken) {
             form.setError("recaptcha", {
                 type: "manual",
@@ -78,8 +81,12 @@ export const SignForm = () => {
 
             console.log("Form values:", { ...values, phone: phoneDigits });
             console.log("reCAPTCHA verification successful");
-            form.reset();
+            console.log("Phone value before clearing recaptcha:", form.getValues("phone"));
+
+            // Очищаємо тільки reCAPTCHA, зберігаючи номер телефону
             setRecaptchaToken(null);
+
+            console.log("Phone value after clearing recaptcha:", form.getValues("phone"));
             alert("Форму успішно відправлено!");
 
         } catch (error) {
@@ -90,12 +97,19 @@ export const SignForm = () => {
             });
         } finally {
             setIsSubmitting(false);
+            console.log("Phone value in finally block:", form.getValues("phone"));
         }
     }
 
+    const handleButtonClick = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log("Button clicked, current phone value:", form.getValues("phone"));
+        form.handleSubmit(onSubmit)();
+    };
+
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-start gap-y-[24px] my-[24px]">
+            <form onSubmit={(e) => handleButtonClick(e)} className="flex flex-col items-start gap-y-[24px] my-[24px]">
                 <div className="flex justify-start items-center gap-x-[24px]" >
                     <FormField
                         control={form.control}
@@ -117,10 +131,10 @@ export const SignForm = () => {
                         )}
                     />
                     <AtomButton
-                        type="submit"
+                        type="button"
                         variant="form"
                         className="self-start"
-                        disabled={isSubmitting || !form.formState.isValid}
+                        disabled={isSubmitting}
                     >
                         {isSubmitting ? "Перевірка..." : "Далі"}
                     </AtomButton>
