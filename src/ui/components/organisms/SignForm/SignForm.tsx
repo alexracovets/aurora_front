@@ -14,7 +14,11 @@ const formSchema = z.object({
     phone: z.string()
         .min(18, "Номер телефону повинен бути повним")
         .max(19, "Номер телефону занадто довгий")
-        .regex(/^\+380 \(\d{2}\) \d{3}-\d{2}-\d{2}$/, "Невірний формат номера телефону"),
+        .regex(/^\+380 \(\d{2}\) \d{3}-\d{2}-\d{2}$/, "Невірний формат номера телефону")
+        .refine((value) => {
+            // Додаткова перевірка для повного номера
+            return value.replace(/\D/g, '').length === 12;
+        }, "Номер телефону повинен містити 12 цифр"),
     recaptcha: z.string().min(1, "Будь ласка, підтвердіть, що ви не робот"),
 })
 
@@ -34,7 +38,9 @@ export const SignForm = () => {
     useEffect(() => {
         const subscription = form.watch((value) => {
             console.log("Поточні значення форми:", value.phone);
-            console.log("Поточні значення форми:", value.phone?.length);
+            console.log("Довжина номера:", value.phone?.length);
+            console.log("Тільки цифри:", value.phone?.replace(/\D/g, ''));
+            console.log("Кількість цифр:", value.phone?.replace(/\D/g, '').length);
         });
 
         return () => subscription.unsubscribe();
@@ -118,6 +124,7 @@ export const SignForm = () => {
                                                 "focus:border-yellow focus:ring-yellow focus:ring-[3px]",
                                             )}
                                             onAccept={(value) => {
+                                                console.log("IMaskInput onAccept value:", value);
                                                 field.onChange(value);
                                             }}
                                         />
