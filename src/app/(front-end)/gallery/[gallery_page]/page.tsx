@@ -46,7 +46,7 @@ export default async function GalleryPage({ params }: PageProps) {
         prevPage={prevPage}
         nextPage={nextPage}
       />
-      <AtomText variant="headerH1" asChild>
+      <AtomText variant="galleryDescription" asChild>
         <h1>{pageData.title}</h1>
       </AtomText>
       <ShowCaseGallery />

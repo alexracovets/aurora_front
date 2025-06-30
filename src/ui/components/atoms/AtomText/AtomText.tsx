@@ -23,8 +23,6 @@ const textVariants = cva(
                     "text-[20px]",
                 paragraph:
                     "text-[20px] pb-[28px] last:pb-0",
-                galleryTitle:
-                    "text-[22px] font-semibold text-center",
                 date:
                     "text-[12px] text-gray",
                 pageDescription:
@@ -55,6 +53,8 @@ const textVariants = cva(
                     "text-[14px] uppercase pl-[33px] relative",
                     "before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2"
                 ),
+                galleryDescription: "text-[24px] font-semibold text-center mb-[16px]",
+                galleryShowCaseTitle: "text-[20px] font-semibold text-center py-[16px]",
             },
         },
         defaultVariants: {

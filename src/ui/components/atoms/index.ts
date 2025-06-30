@@ -9,8 +9,6 @@ export { AtomText } from "./AtomText";
 export { PartnersWrapper } from "./PartnersWrapper";
 export { ResultsWrapper } from "./ResultsWrapper";
 export { AwardsWrapper } from "./AwardsWrapper";
-export { ArrowPrev } from "./ArrowPrev";
-export { ArrowNext } from "./ArrowNext";
 export { Modal } from "./Modal";
 export { FullscreenImage } from "./FullscreenImage";
 export { FooterSocials } from "./FooterSocials";
