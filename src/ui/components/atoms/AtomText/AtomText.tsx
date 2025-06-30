@@ -24,7 +24,7 @@ const textVariants = cva(
                 paragraph:
                     "text-[20px] pb-[28px] last:pb-0",
                 date:
-                    "text-[12px] text-gray",
+                    "text-[12px] text-gray mb-[8px]",
                 pageDescription:
                     "text-[16px] text-left mb-[16px]",
                 pageDate:

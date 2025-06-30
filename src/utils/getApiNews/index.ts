@@ -1,0 +1,1 @@
+export { getApiNews, getApiNewsBySlug, getApiNewsList } from "./getApiNews"; 

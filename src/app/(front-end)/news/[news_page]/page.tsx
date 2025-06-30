@@ -3,34 +3,43 @@
 import { Container } from "@atoms";
 import { useEffect, useState, use } from "react";
 
-import { NewsType } from "@types";
-import { NewsData } from "@data";
+import { getApiNewsBySlug } from "@utils";
+import { ApiNewsResponse } from "@/types";
 
 interface ExampleStepsProps {
   params: Promise<{ news_page: string; }>
 }
 
 export default function NewsPage({ params }: ExampleStepsProps) {
-  const [data, setData] = useState<NewsType | null>(null);
   const resolvedParams = use(params);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchData = async (slug: string) => {
-    const data = NewsData.find((item) => item.slug === slug);
-    if (!data) return setIsLoading(false);
-    setData(data);
-  };
+  const [news, setNews] = useState<ApiNewsResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchData(resolvedParams.news_page);
-  }, [resolvedParams]);
+    const fetchNews = async () => {
+      try {
+        setLoading(true);
+        const newsData = await getApiNewsBySlug(resolvedParams.news_page);
+        setNews(newsData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Помилка завантаження новин');
+        console.error('Помилка при отриманні новин:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!data && !isLoading) return <Container space>404</Container>;
-  if (!data) return <Container space>Loading...</Container>;
+    fetchNews();
+  }, []);
+
+  if (loading) return <div>Завантаження новин...</div>;
+  if (error) return <div>Помилка: {error}</div>;
+  if (!news) return <div>Новини не знайдено</div>;
 
   return (
     <Container space>
-      <h1 className="text-[64px] font-bold mb-[48px]">{data.title}</h1>
+      <h1 className="text-[64px] font-bold mb-[48px]">{news.data[0].title}</h1>
     </Container>
   );
 }
