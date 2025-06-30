@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IMaskInput } from 'react-imask';
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, AtomButton, Input, ReCaptcha } from "@atoms";
@@ -13,7 +13,7 @@ import { cn } from "@utils";
 const formSchema = z.object({
     phone: z.string()
         .min(18, "Номер телефону повинен бути повним")
-        .max(18, "Номер телефону занадто довгий")
+        .max(19, "Номер телефону занадто довгий")
         .regex(/^\+380 \(\d{2}\) \d{3}-\d{2}-\d{2}$/, "Невірний формат номера телефону"),
     recaptcha: z.string().min(1, "Будь ласка, підтвердіть, що ви не робот"),
 })
@@ -29,6 +29,16 @@ export const SignForm = () => {
             recaptcha: "",
         },
     })
+
+    // Відстеження змін форми
+    useEffect(() => {
+        const subscription = form.watch((value) => {
+            console.log("Поточні значення форми:", value.phone);
+            console.log("Поточні значення форми:", value.phone?.length);
+        });
+
+        return () => subscription.unsubscribe();
+    }, [form]);
 
     const handleRecaptchaChange = (token: string | null) => {
         setRecaptchaToken(token);
@@ -121,7 +131,7 @@ export const SignForm = () => {
                         type="submit"
                         variant="form"
                         className="self-start"
-                        disabled={isSubmitting || !form.formState.isValid}
+                        disabled={isSubmitting}
                     >
                         {isSubmitting ? "Відправляємо..." : "Далі"}
                     </AtomButton>
