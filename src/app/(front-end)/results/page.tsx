@@ -5,6 +5,8 @@ import { AtomText, Container } from "@atoms";
 import { ResultsBlock } from "@organisms";
 import config from "@/payload.config";
 
+export const revalidate = 60;
+
 export default async function Results() {
   const payload = await getPayload({ config })
 
