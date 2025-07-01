@@ -21,17 +21,15 @@ export const NewsItem = ({ images, title, date, slug }: NewsItemProps) => {
             "outline outline-1 outline-transparent transition transition-[300ms] ease-in",
             "hover:outline-yellow"
         )}>
-            <div className="w-full h-[17rem] relative rounded-[8px] overflow-hidden mb-[8px]">
+            <div className="w-full h-[210px] relative rounded-[8px] overflow-hidden mb-[8px]">
                 <Image src={images.banner[0]} alt={title} fill className="object-cover" />
             </div>
             <div className="flex w-full flex-col p-[8px] pb-[48px] relative flex-1">
-                {
-                    date && (
-                        <AtomText variant="date" asChild>
-                            <h3>{formatDate(date)}</h3>
-                        </AtomText>
-                    )
-                }
+                {date && (
+                    <AtomText variant="date" asChild>
+                        <h3>{formatDate(date)}</h3>
+                    </AtomText>
+                )}
                 <AtomText variant="cardTitle" asChild>
                     <h3>{title}</h3>
                 </AtomText>

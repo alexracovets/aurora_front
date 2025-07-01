@@ -2,9 +2,10 @@
 
 import { getGalleries } from "@utils";
 import { Gallery } from "@payload-types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { GalleryItem } from "@molecules";
 import { GalleryWrapper } from "@atoms";
+import { PaginationBlock } from "@organisms";
 
 export const GalleryBlock = () => {
     const [galleries, setGalleries] = useState<Gallery[]>([]);
@@ -30,10 +31,8 @@ export const GalleryBlock = () => {
     }
 
     return (
-        <GalleryWrapper>
-            {galleries.map((item) => (
-                <GalleryItem key={item.id} {...item} />
-            ))}
-        </GalleryWrapper>
+        <Suspense fallback={<div>Loading...</div>}>
+            {galleries && <PaginationBlock items={galleries} countItemsPerPage={6} ItemComponent={GalleryItem} WrapperItems={GalleryWrapper} />}
+        </Suspense>
     );
 };

@@ -19,7 +19,7 @@ export const GalleryItem = ({ id, title, image, alt, slug }: Gallery) => {
             onMouseLeave={() => setIsHover(false)}
         >
             <div key={id} className="flex flex-col justify-center items-center">
-                <div className={"relative w-full h-[250px] rounded-t-[8px] overflow-hidden"}>
+                <div className={"relative w-full h-[220px] rounded-t-[8px] overflow-hidden"}>
                     {image && typeof image !== 'number' && (
                         <>
                             <Image 

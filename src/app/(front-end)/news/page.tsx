@@ -29,7 +29,7 @@ export default async function News() {
           <h1>{pageData.title}</h1>
         </AtomText>
       </Container>
-      <Container transparent className="px-0">
+      <Container transparent>
         <NewsBlock />
       </Container>
     </Suspense>
