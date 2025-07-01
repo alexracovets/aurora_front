@@ -36,9 +36,9 @@ const textVariants = cva(
                 cardDescription:
                     "text-[16px]",
                 footerTitle:
-                    "text-[24px]",
+                    "text-[16px]",
                 footerText:
-                    "text-[16px] text-gray-secondary",
+                    "text-[12px] text-gray-secondary",
                 login: "text-[16px]",
                 rulesText: "text-[16px]",
                 regularText: "text-[18px] mb-[16px] leading-[1.25]",
@@ -47,10 +47,12 @@ const textVariants = cva(
                     "relative text-[18px] mb-[16px] pl-[40px]",
                     "before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[4px] before:h-[4px] before:bg-black before:rounded-full"
                 ),
-                stepsText: "text-[16px]",
+                stepsTitle: "text-[32px] font-semibold",
+                stepsDescription: "text-[18px] font-semibold leading-[1]",
+                stepsText: "text-[16px] leading-[1]",
                 stepsListWrapper: "flex flex-col gap-[8px] px-[12px] py-[16px] bg-light-pink rounded-[10px] before:-translate-y-1/2 before:-translate-x-1/2",
                 stepsListItem: cn(
-                    "text-[14px] uppercase pl-[33px] relative",
+                    "text-[14px] uppercase pl-[33px] leading-[1] relative",
                     "before:content-[''] before:absolute before:left-[10px] before:top-[50%] before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2"
                 ),
                 galleryDescription: "text-[24px] font-semibold text-center mb-[24px]",

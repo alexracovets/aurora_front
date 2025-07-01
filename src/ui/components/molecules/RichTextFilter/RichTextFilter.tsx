@@ -14,7 +14,7 @@ export const RichTextFilter = ({ item, steps }: RichTextFilterProps) => {
         case "heading":
             if (item.tag === "h2") {
                 return (
-                    <AtomText variant="headerH3" asChild>
+                    <AtomText variant="stepsTitle" asChild>
                         <h2>
                             {item?.children?.map((child, idx) => {
                                 return (
@@ -32,7 +32,7 @@ export const RichTextFilter = ({ item, steps }: RichTextFilterProps) => {
             }
             if (item.tag === "h3") {
                 return (
-                    <AtomText variant="description" asChild>
+                    <AtomText variant="stepsDescription" asChild>
                         <h3>
                             {item?.children?.map((child, idx) => {
                                 return (

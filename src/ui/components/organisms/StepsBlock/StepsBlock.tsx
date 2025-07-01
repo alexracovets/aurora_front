@@ -1,13 +1,18 @@
 "use client";
 
-import { RichTextFilter } from "@molecules";
+import { StepsColumn } from "@molecules";
 import { Page } from '@/payload-types';
 import { cn } from '@utils';
 
-export const StepsBlock = ({ steps }: { steps: Page['steps'] }) => {
+interface StepsBlockProps {
+    steps: Page['steps'];
+}
+
+export const StepsBlock = ({ steps }: StepsBlockProps) => {
     if (!steps) return null;
+
     return (
-        <div className="w-full grow grid grid-cols-2 gap-[1.6rem] overflow-hidden">
+        <div className="w-full grow grid grid-cols-2 gap-[1.6rem] pt-[16px]">
             {steps.map((step, idx) => {
                 return (
                     <div
@@ -18,31 +23,13 @@ export const StepsBlock = ({ steps }: { steps: Page['steps'] }) => {
                         )}
                     >
                         {step.width === "1/1" && (
-                            <div className="flex w-full flex-col gap-[1rem]">
-                                {
-                                    step.content && step.content.root.children.map((item, idx) => {
-                                        return <RichTextFilter item={item} key={idx} steps />
-                                    })
-                                }
-                            </div>
+                            <StepsColumn content={step.content?.root.children ?? []} />
                         )}
 
                         {step.width === "1/2" && (
                             <>
-                                <div className="flex w-full flex-col gap-[1rem]">
-                                    {
-                                        step.contentLeft && step.contentLeft.root.children.map((item, idx) => {
-                                            return <RichTextFilter item={item} key={idx} steps />
-                                        })
-                                    }
-                                </div>
-                                <div className="flex w-full justify-center flex-col gap-[1rem]">
-                                    {
-                                        step.contentRight && step.contentRight.root.children.map((item, idx) => {
-                                            return <RichTextFilter item={item} key={idx} steps />
-                                        })
-                                    }
-                                </div>
+                                <StepsColumn content={step.contentLeft?.root.children ?? []} />
+                                <StepsColumn content={step.contentRight?.root.children ?? []} center />
                             </>
                         )}
                     </div>

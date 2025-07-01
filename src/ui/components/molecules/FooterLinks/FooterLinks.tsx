@@ -34,7 +34,7 @@ export const FooterLinks = () => {
 
     return (
         <div className="flex justify-between items-start p-[54px] pl-[108px] bg-light-pink rounded-[30px] gap-x-[40px]">
-            <ul className="flex flex-col gap-y-[16px] text-[20px] underline">
+            <ul className="flex flex-col gap-y-[8px] underline">
                 {links.map((link) => (
                     <li
                         key={link.name}

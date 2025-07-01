@@ -9,6 +9,7 @@ interface AtomLinkProps extends JustChildrenType {
     href: string;
     className?: string;
     variant?: VariantProps<typeof linksVariants>["variant"];
+    target?: string;
 }
 
 const linksVariants = cva(
@@ -22,14 +23,14 @@ const linksVariants = cva(
                     "hover:bg-bage transition-colors duration-300"
                 ),
                 footerNavigation: cn(
-                    "text-[20px]"
+                    "text-[16px]"
                 ),
                 footerLink: cn(
-                    "relative",
+                    "relative text-[16px]",
                     "before:content-[''] before:absolute before:left-0 before:top-1/2 before:translate-x-[-200%] before:-translate-y-1/2 before:w-[16px] before:h-[16px] before:bg-yellow before:rounded-full"
                 ),
                 footerCall: cn(
-                    "text-[24px] underline font-semibold"
+                    "text-[20px] underline font-semibold"
                 ),
                 footerMail: cn(
                     "text-[20px] font-semibold"
@@ -41,6 +42,9 @@ const linksVariants = cva(
                 ),
                 toBack: cn(
                     "flex items-center gap-x-[12px] bg-transparent text-[16px] border border-none"
+                ),
+                social: cn(
+                    "text-[3.6rem] text-yellow"
                 )
             },
         },
@@ -50,7 +54,7 @@ const linksVariants = cva(
     }
 );
 
-export const AtomLink = ({ href, className, variant, ...props }: AtomLinkProps) => {
+export const AtomLink = ({ href, className, variant, target, ...props }: AtomLinkProps) => {
     return (
         <Link
             href={href}

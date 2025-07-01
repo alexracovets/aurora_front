@@ -56,13 +56,7 @@ export default function NewsPage({ params }: ExampleStepsProps) {
           </AtomText>
         )
       }
-      <div className="page-content mb-[32px]">
-        {pageData.short_description && (
-          <AtomText variant="pageDescription" asChild>
-            <p>{pageData.short_description}</p>
-          </AtomText>
-        )}
-      </div>
+      <div className="page-content mb-[32px]" dangerouslySetInnerHTML={{ __html: pageData.short_description ?? "" }} />
       <NewsItemContent content={pageData.description} image={pageData.images.banner[0]} />
     </div >
   );

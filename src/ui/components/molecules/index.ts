@@ -1,6 +1,5 @@
 export { PagitationComponent } from "./PagitationComponent";
 export { HeaderNavigation } from "./HeaderNavigation";
-export { Step } from "./Step";
 export { ResultItem } from "./ResultItem";
 export { PartnerItem } from "./PartnerItem";
 export { AwardItem } from "./AwardItem";
@@ -14,3 +13,4 @@ export { NewsItem } from "./NewsItem";
 export { GalleryItem } from "./GalleryItem";
 export { ItemsPageContent } from "./ItemsPageContent";
 export { NewsItemContent } from "./NewsItemContent";
+export { StepsColumn } from "./StepsColumn";

@@ -16,9 +16,7 @@ export const Footer = () => {
                     <FooterSocials />
                 </div>
                 <AtomHR className="max-w-[calc(100%-30px)] translate-y-1 bg-light-pink" />
-                <div
-                    className="flex w-full justify-between"
-                >
+                <div className="flex w-full justify-between">
                     <FooterInfo />
                     <FooterLinks />
                 </div>
