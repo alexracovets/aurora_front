@@ -21,8 +21,8 @@ export const NewsItem = ({ images, title, date, slug }: NewsItemProps) => {
         )}>
             <AtomImage src={images.banner[0]} alt={title} variant="newsItem" />
             <div className="flex w-full flex-col p-[8px] pb-[48px] relative flex-1">
-                {date && <AtomText variant="date" asChild><h3>{formatDate(date)}</h3></AtomText>}
-                <AtomText variant="cardTitle" asChild><h3>{title}</h3></AtomText>
+                {date && <AtomText variant="date" asChild><p>{formatDate(date)}</p></AtomText>}
+                <AtomText variant="cardTitle" asChild><p>{title}</p></AtomText>
                 <AtomLink href={`/news/${slug}`} variant="cardLink" className="px-[8px] mt-auto">
                     <AtomHR />
                     <AtomButton variant="cardLink">

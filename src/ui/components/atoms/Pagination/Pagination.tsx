@@ -53,6 +53,7 @@ function PaginationLink({
 
     return (
         <Component
+            role="button"
             aria-current={isActive ? "page" : undefined}
             data-slot="pagination-link"
             data-active={isActive}
@@ -109,7 +110,8 @@ function PaginationEllipsis({
 }: React.ComponentProps<"span">) {
     return (
         <span
-            aria-hidden
+            role="presentation"
+            aria-hidden="true"
             data-slot="pagination-ellipsis"
             className={cn("flex size-9 items-center justify-center", className)}
             {...props}

@@ -14,6 +14,7 @@ export const FooterQuestions = () => {
                     "relative translate-y-[4px]",
                     "before:content-[''] before:absolute before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:w-[40px] before:h-[40px] before:bg-yellow before:rounded-full"
                 )}
+                aria-label="Phone"
             >
                 <LuPhoneCall className="text-[20px] relative z-[1]" />
             </Link>
@@ -30,6 +31,7 @@ export const FooterQuestions = () => {
                     <AtomLink
                         href="tel:+380800300066"
                         variant="footerCall"
+                        aria-label="Phone"
                     >
                         0 (800) 30 00 66
                     </AtomLink>
@@ -40,12 +42,14 @@ export const FooterQuestions = () => {
                 <AtomLink
                     href="mailto:info@avrora.ua"
                     variant="footerMail"
+                    aria-label="Email"
                 >
                     info@avrora.ua
                 </AtomLink>
                 <AtomLink
                     href="mailto:pr@avrora.ua"
                     variant="footerMail"
+                    aria-label="Email"
                 >
                     pr@avrora.ua
                 </AtomLink>
