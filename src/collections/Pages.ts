@@ -47,26 +47,4 @@ export const Pages: CollectionConfig = {
             },
         },
     ],
-    hooks: {
-        afterChange: [
-            async ({ doc, collection }) => {
-                const webhookUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/revalidate`;
-                
-                try {
-                    await fetch(webhookUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            collection: collection.slug,
-                            slug: doc.slug || doc.id,
-                        }),
-                    });
-                } catch (error) {
-                    console.error('Помилка відправки webhook:', error);
-                }
-            },
-        ],
-    },
 }
