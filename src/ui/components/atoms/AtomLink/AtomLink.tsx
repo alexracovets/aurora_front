@@ -1,9 +1,10 @@
 "use client";
 
-import { JustChildrenType } from "@/types";
-import Link from "next/link";
-import { cn } from "@utils";
 import { cva, type VariantProps } from "class-variance-authority";
+import Link from "next/link";
+
+import { JustChildrenType } from "@types";
+import { cn } from "@utils";
 
 interface AtomLinkProps extends JustChildrenType {
     href: string;
@@ -35,6 +36,9 @@ const linksVariants = cva(
                 footerMail: cn(
                     "text-[20px] font-semibold"
                 ),
+                footerSocial: cn(
+                    "w-[36px] h-[36px] flex items-center justify-center text-[20px] text-black bg-yellow rounded-full"
+                ),
                 cardLink: cn(
                     "absolute bottom-0 left-0 w-full h-[48px] bg-white rounded-[8px] py-[8px] flex flex-col gap-[8px]",
                     "transition transition-[300ms] ease-in",
@@ -43,9 +47,6 @@ const linksVariants = cva(
                 toBack: cn(
                     "flex items-center gap-x-[12px] bg-transparent text-[16px] border border-none"
                 ),
-                social: cn(
-                    "text-[3.6rem] text-yellow"
-                )
             },
         },
         defaultVariants: {
@@ -59,6 +60,7 @@ export const AtomLink = ({ href, className, variant, target, ...props }: AtomLin
         <Link
             href={href}
             className={cn(linksVariants({ variant, className }))}
+            target={target}
             {...props}
         />
     )

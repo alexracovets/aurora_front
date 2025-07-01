@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 
-import { Container, Logo, FooterSocials, AtomHR } from "@atoms";
-import { FooterLinks, FooterInfo } from "@molecules";
+import { Container, Logo, AtomHR } from "@atoms";
+import { FooterLinks, FooterInfo, FooterSocials } from "@molecules";
 
 export const Footer = () => {
     return (

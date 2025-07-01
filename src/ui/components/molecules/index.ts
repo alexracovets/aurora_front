@@ -9,6 +9,7 @@ export { Login } from "./Login";
 export { FooterInfo } from "./FooterInfo";
 export { FooterNavigation } from "./FooterNavigation";
 export { FooterQuestions } from "./FooterQuestions";
+export { FooterSocials } from "./FooterSocials";
 export { NewsItem } from "./NewsItem";
 export { GalleryItem } from "./GalleryItem";
 export { ItemsPageContent } from "./ItemsPageContent";
