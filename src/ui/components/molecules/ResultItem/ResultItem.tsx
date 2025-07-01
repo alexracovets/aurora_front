@@ -7,9 +7,7 @@ import { Result } from "@/payload-types";
 
 export const ResultItem = ({ title, image, slug, description }: Result) => {
     return (
-        <div
-            className="grid grid-cols-[26rem_1fr] gap-x-[24px] bg-white rounded-[8px] p-[8px]"
-        >
+        <div className="grid grid-cols-[26rem_1fr] gap-x-[24px] bg-white rounded-[8px] p-[8px]">
             <div className="w-full h-[15rem] relative rounded-[8px] overflow-hidden">
                 {image && typeof image === 'object' && 'url' in image && image.url && (
                     <Image src={image.url} alt={image.alt || 'alt'} fill className="object-cover" />

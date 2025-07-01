@@ -6,7 +6,7 @@ export interface ApiNewsItem {
     id: number;
     date: string;
     title: string;
-    short_description: string;
+    short_description?: string;
     description: string;
     slug: string;
     url: string;

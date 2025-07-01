@@ -33,10 +33,7 @@ export const SignForm = () => {
     // Відстеження змін форми
     useEffect(() => {
         const subscription = form.watch((value) => {
-            console.log("Поточні значення форми:", value.phone);
-            console.log("Довжина номера:", value.phone?.length);
-            console.log("Тільки цифри:", value.phone?.replace(/\D/g, ''));
-            console.log("Кількість цифр:", value.phone?.replace(/\D/g, '').length);
+            console.log("Поточні значення форми:", value);
         });
 
         return () => subscription.unsubscribe();
@@ -81,8 +78,6 @@ export const SignForm = () => {
                 return;
             }
 
-            console.log("Form values:", values);
-            console.log("reCAPTCHA verification successful");
             form.reset();
             setRecaptchaToken(null);
             alert("Форму успішно відправлено!");
@@ -120,7 +115,6 @@ export const SignForm = () => {
                                                 "focus:border-yellow focus:ring-yellow focus:ring-[3px]",
                                             )}
                                             onAccept={(value) => {
-                                                console.log("IMaskInput onAccept value:", value);
                                                 field.onChange(value);
                                             }}
                                         />

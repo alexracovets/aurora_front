@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import { AtomText, AtomHR, ArrowTo, AtomLink, AtomButton } from "@atoms";
-import { cn } from "@utils";
+import { cn, formatDate } from "@utils";
 import { Award } from "@/payload-types";
 
 
@@ -22,9 +22,13 @@ export const AwardItem = ({ title, image, date, slug }: Award) => {
                 )
             }
             <div className="flex w-full flex-col p-[8px] pb-[48px] relative">
-                <AtomText variant="date" asChild>
-                    {date && <p>{new Date(date).toLocaleDateString('uk-UA')}</p>}
-                </AtomText>
+                {
+                    date && (
+                        <AtomText variant="date" asChild>
+                            <p>{formatDate(date)}</p>
+                        </AtomText>
+                    )
+                }
                 <AtomText variant="cardTitle" asChild>
                     <h3>{title}</h3>
                 </AtomText>

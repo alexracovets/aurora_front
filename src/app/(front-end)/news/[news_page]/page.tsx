@@ -1,10 +1,15 @@
 "use client";
 
-import { Container } from "@atoms";
 import { useEffect, useState, use } from "react";
 
+
+import { ApiNewsResponse, ApiNewsItem } from "@types";
+import { NewsItemContent } from "@molecules";
 import { getApiNewsBySlug } from "@utils";
-import { ApiNewsResponse } from "@/types";
+import { formatDate } from "@utils";
+import { AtomText } from "@atoms";
+
+import "@styles/news_content.scss";
 
 interface ExampleStepsProps {
   params: Promise<{ news_page: string; }>
@@ -37,9 +42,28 @@ export default function NewsPage({ params }: ExampleStepsProps) {
   if (error) return <div>Помилка: {error}</div>;
   if (!news) return <div>Новини не знайдено</div>;
 
+  const pageData = news.data[0] as ApiNewsItem;
+
   return (
-    <Container space>
-      <h1 className="text-[64px] font-bold mb-[48px]">{news.data[0].title}</h1>
-    </Container>
+    <div className="flex flex-col w-full">
+      <AtomText variant="headerH1" asChild className="pt-0 mt-[16px]">
+        <h1> {pageData.title}</h1>
+      </AtomText >
+      {
+        pageData.date && (
+          <AtomText variant="pageDate" asChild>
+            <p>{formatDate(pageData.date)}</p>
+          </AtomText>
+        )
+      }
+      <div className="page-content mb-[32px]">
+        {pageData.short_description && (
+          <AtomText variant="pageDescription" asChild>
+            <p>{pageData.short_description}</p>
+          </AtomText>
+        )}
+      </div>
+      <NewsItemContent content={pageData.description} image={pageData.images.banner[0]} />
+    </div >
   );
 }

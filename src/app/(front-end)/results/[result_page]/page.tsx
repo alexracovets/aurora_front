@@ -41,9 +41,13 @@ export default async function ResultPage({ params }: PageProps) {
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
-        <AtomText variant="pageDate" asChild>
-          <p>{formatDate(pageData.date)}</p>
-        </AtomText>
+        {
+          pageData.date && (
+            <AtomText variant="pageDate" asChild>
+              <p>{formatDate(pageData.date)}</p>
+            </AtomText>
+          )
+        }
         {pageData.description && (
           <AtomText variant="pageDescription" asChild>
             <p>{pageData.description}</p>

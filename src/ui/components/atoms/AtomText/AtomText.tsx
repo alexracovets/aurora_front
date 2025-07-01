@@ -14,7 +14,7 @@ const textVariants = cva(
                 default:
                     "text-[16px]",
                 headerH1:
-                    "text-[60px] font-semibold text-left pt-[60px] pb-[16px] mb-[16px]",
+                    "text-[60px] font-semibold text-left pt-[60px] my-[16px] leading-[0.93]",
                 headerH3:
                     "text-[32px] font-semibold",
                 description:

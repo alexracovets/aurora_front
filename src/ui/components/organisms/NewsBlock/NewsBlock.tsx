@@ -42,7 +42,6 @@ export const NewsBlock = () => {
     if (!news) {
         return <div>Новин не знайдено</div>;
     }
-    console.log(news);
     return (
         <div className="flex flex-col w-full gap-y-[16px]">
             <PaginationBlock

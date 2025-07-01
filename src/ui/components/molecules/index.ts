@@ -13,3 +13,4 @@ export { FooterQuestions } from "./FooterQuestions";
 export { NewsItem } from "./NewsItem";
 export { GalleryItem } from "./GalleryItem";
 export { ItemsPageContent } from "./ItemsPageContent";
+export { NewsItemContent } from "./NewsItemContent";

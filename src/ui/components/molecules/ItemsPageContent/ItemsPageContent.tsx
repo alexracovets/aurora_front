@@ -1,9 +1,11 @@
 "use client";
 
-import { RichTextItemType } from "@/types";
 import { Award, Media, Page, Result } from "@payload-types";
+import { RichTextItemType } from "@/types";
 import { RichTextFilter } from "@molecules";
 import Image from "next/image";
+
+import "@styles/news_content.scss";
 
 interface ItemsPageContentProps {
     content: Result['content'] | Page['content'] | Award['content'];
