@@ -22,7 +22,7 @@ export default async function Partners() {
   if (!pageData) return <Container space>404</Container>;
 
   return (
-    <Container space start>
+    <Container space spaceBottom >
       <Suspense fallback={<>Завантаження...</>}>
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>

@@ -22,7 +22,7 @@ export default async function News() {
   if (!pageData) return <Container space>404</Container>;
 
   return (
-    <Container space start>
+    <Container space spaceBottom className="rounded-b-[16px] mb-[-16px]">
       <AtomText variant="headerH1" asChild>
         <h1>{pageData.title}</h1>
       </AtomText>

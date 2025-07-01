@@ -22,7 +22,7 @@ export default async function Results() {
   if (!pageData) return <Container space>404</Container>;
 
   return (
-    <Container space start className="grid grid-rows-[auto_1fr]">
+    <Container space spaceBottom className="grid grid-rows-[auto_1fr]">
       <Suspense fallback={<>Завантаження...</>}>
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
