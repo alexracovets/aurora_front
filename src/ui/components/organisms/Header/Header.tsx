@@ -48,7 +48,7 @@ export const Header = () => {
             <Container
                 padding
                 className={cn(
-                    "grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-[12px] my-0",
+                    "grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-0 my-0",
                     isShadow ? "shadow-md" : "shadow-none"
                 )}
             >
@@ -56,7 +56,9 @@ export const Header = () => {
                     <Logo />
                 </Link>
                 <HeaderNavigation />
-                <Login />
+                <div>
+                    <Login />
+                </div>
             </Container>
         </motion.header>
     )

@@ -1,9 +1,8 @@
 "use client";
 
 import { Partner } from "@/payload-types";
-import Image from "next/image";
 
-import { AtomText } from "@atoms";
+import { AtomText, AtomImage } from "@atoms";
 
 export const PartnerItem = ({ name, upload }: Partner) => {
     return (
@@ -16,11 +15,7 @@ export const PartnerItem = ({ name, upload }: Partner) => {
                 )
             }
             <div className="bg-white rounded-[8px] p-[8px] w-full">
-                {upload && typeof upload !== 'number' && (
-                    <div className="w-full h-[15rem] relative rounded-[8px] overflow-hidden">
-                        <Image src={upload.url || ''} alt={upload.alt || ''} fill className="object-cover" />
-                    </div>
-                )}
+                {upload && typeof upload !== 'number' && <AtomImage src={upload.url || ''} alt={upload.alt || ''} variant="partnerItem" />}
             </div>
         </div>
     )

@@ -6,6 +6,7 @@ export { AtomButton, buttonVariants } from "./AtomButton";
 export { AtomLink } from "./AtomLink";
 export { AtomHR } from "./AtomHR";
 export { AtomText } from "./AtomText";
+export { AtomImage } from "./AtomImage";
 export { PartnersWrapper } from "./PartnersWrapper";
 export { ResultsWrapper } from "./ResultsWrapper";
 export { AwardsWrapper } from "./AwardsWrapper";

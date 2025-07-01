@@ -5,10 +5,9 @@ import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { Gallery, Media } from "@payload-types";
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
-import { Modal } from "@atoms";
+import { AtomImage, Modal } from "@atoms";
 import { cn } from "@utils";
 
 interface FullscreenImageProps {
@@ -27,9 +26,12 @@ export const FullscreenImage = ({ image, alt, prevPage, nextPage }: FullscreenIm
     return (
         <div className="relative w-[80rem] h-[40rem] mx-auto mb-[16px]">
             <div className="relative w-full h-full rounded-[8px] overflow-hidden">
-                <div className={cn("cursor-pointer transition-transform hover:scale-[1.02] w-full h-full ")} onClick={openModal} >
-                    <Image src={image?.url ? image?.url : ""} alt={alt} fill className="object-cover" />
-                </div>
+                <AtomImage
+                    variant="fullscreen"
+                    src={image?.url || null}
+                    alt={alt}
+                    onClick={openModal}
+                />
                 <Modal isOpen={isOpen} onClose={closeModal} >
                     <TransformWrapper
                         initialScale={1}
@@ -61,16 +63,15 @@ export const FullscreenImage = ({ image, alt, prevPage, nextPage }: FullscreenIm
                                 </div>
                                 <TransformComponent>
                                     <div className="relative w-[100vw] h-[100dvh] flex justify-center items-center">
-                                        <div onClick={(e) => e.stopPropagation()}>
-                                            <Image
-                                                src={image?.url || ""}
-                                                alt={alt}
-                                                width={image?.width || 0}
-                                                height={image?.height || 0}
-                                                style={{ objectFit: "contain" }}
-                                            />
-                                        </div>
-
+                                        <AtomImage
+                                            onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+                                            src={image?.url || null}
+                                            alt={alt}
+                                            width={image?.width || 0}
+                                            height={image?.height || 0}
+                                            priority={false}
+                                            classNameImage="object-contain"
+                                        />
                                     </div>
                                 </TransformComponent>
                             </>
