@@ -22,13 +22,13 @@ export default async function Gallery() {
   if (!pageData) return <Container>404</Container>;
 
   return (
-    <Suspense fallback={<>Завантаження...</>}>
-      <Container roundedBottom>
+    <Suspense fallback={<Container>Завантаження...</Container>}>
+      <Container transparent>
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
       </Container>
-      <Container transparent className="px-0">
+      <Container transparent>
         <GalleryBlock />
       </Container>
     </Suspense>

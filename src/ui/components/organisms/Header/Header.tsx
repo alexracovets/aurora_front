@@ -16,10 +16,12 @@ export const Header = () => {
             "translate-y-[-100%] transition-all duration-300",
             navigation.length > 0 && "translate-y-0"
         )}>
-            <Container className={cn(
-                "grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-[12px]",
-                // shadow-md
-            )}
+            <Container
+                padding
+                className={cn(
+                    "grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-[12px] my-0",
+                    // shadow-md
+                )}
             >
                 <Link href="/">
                     <Logo />

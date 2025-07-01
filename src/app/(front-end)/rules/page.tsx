@@ -23,7 +23,7 @@ export default async function Rules() {
   if (!pageData) return <Container>404</Container>;
 
   return (
-    <Container space roundedBottom>
+    <Container padding roundedBottom className="mt-0">
       <AtomText variant="headerH1" asChild>
         <h1>{pageData.title}</h1>
       </AtomText>

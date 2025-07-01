@@ -30,7 +30,7 @@ export default async function ResultPage({ params }: PageProps) {
 
   const pageData = page.docs[0] as Result;
 
-  if (!pageData) return <Container space>404</Container>;
+  if (!pageData) return <Container>404</Container>;
 
   return (
     <ItemsPageWrapper>

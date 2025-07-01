@@ -22,13 +22,13 @@ export default async function Partners() {
   if (!pageData) return <Container>404</Container>;
 
   return (
-    <Suspense fallback={<Container space>Завантаження...</Container>}>
-      <Container roundedBottom>
+    <Suspense fallback={<Container>Завантаження...</Container>}>
+      <Container transparent>
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
       </Container>
-      <Container transparent className="px-0">
+      <Container transparent>
         <PartnersBlock />
       </Container>
     </Suspense>

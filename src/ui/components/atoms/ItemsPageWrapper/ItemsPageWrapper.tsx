@@ -2,9 +2,14 @@
 
 import { Container } from "@atoms";
 
-export const ItemsPageWrapper = ({ children }: { children: React.ReactNode }) => {
+interface ItemsPageWrapperProps {
+    children: React.ReactNode;
+    transparent?: boolean;
+}
+
+export const ItemsPageWrapper = ({ children, transparent }: ItemsPageWrapperProps) => {
     return (
-        <Container space roundedBottom >
+        <Container padding roundedBottom transparent={transparent} className="mt-0">
             <div className="flex flex-col pt-[24px] w-full">
                 {children}
             </div>
