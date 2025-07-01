@@ -9,23 +9,18 @@ import { AtomText } from "@atoms";
 import { cn } from "@utils";
 
 export const GalleryItem = ({ id, title, image, alt, slug }: Gallery) => {
-    const [isHover, setIsHover] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <Link
-            href={`/gallery/${slug}`}
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
-        >
+        <Link href={`/gallery/${slug}`}>
             <div key={id} className="flex flex-col justify-center items-center">
                 <div className={"relative w-full h-[220px] rounded-t-[8px] overflow-hidden"}>
                     {image && typeof image !== 'number' && (
                         <>
-                            <Image 
-                                src={image.url || ''} 
-                                alt={alt || ''} 
-                                fill 
+                            <Image
+                                src={image.url || ''}
+                                alt={alt || ''}
+                                fill
                                 className={cn(
                                     "object-cover z-0 transition-opacity duration-300",
                                     imageLoaded ? "opacity-100" : "opacity-0"
