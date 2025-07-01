@@ -6,7 +6,7 @@ import { JustChildrenType } from "@types";
 export default function NewsLayout({ children }: JustChildrenType) {
     return (
         <ItemsPageWrapper>
-            <AtomLink variant="toBack" href={`/results`}>
+            <AtomLink variant="toBack" href={`/news`}>
                 <ArrowTo back /> Назад
             </AtomLink>
             {children}

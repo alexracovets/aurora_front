@@ -22,7 +22,7 @@ export default async function Awards() {
   if (!pageData) return <Container space>404</Container>;
 
   return (
-    <Container space start full>
+    <Container space start>
       <Suspense fallback={<>Завантаження...</>}>
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>

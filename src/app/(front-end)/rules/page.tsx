@@ -23,7 +23,7 @@ export default async function Rules() {
   if (!pageData) return <Container space>404</Container>;
 
   return (
-    <Container space start full>
+    <Container space start>
       <AtomText variant="headerH1" asChild>
         <h1>{pageData.title}</h1>
       </AtomText>

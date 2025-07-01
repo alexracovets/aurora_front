@@ -6,7 +6,7 @@ import { SignForm } from "@organisms";
 export default function SignInPage() {
 
   return (
-    <Container space start full>
+    <Container space start>
       <AtomText variant="cardTitle" asChild className="mt-[60px] text-[28px]">
         <p>Для можливості подачі запиту про допомогу, Вам потрібно авторизуватися або зареєструватися.</p>
       </AtomText>
