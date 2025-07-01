@@ -12,11 +12,11 @@ export const Header = () => {
 
     return (
         <header className={cn(
-            "absolute top-0 left-0 w-full shadow-md bg-white z-10",
+            "absolute top-0 left-0 w-full z-10",
             "translate-y-[-100%] transition-all duration-300",
             navigation.length > 0 && "translate-y-0"
         )}>
-            <Container className="grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-[12px]">
+            <Container className="grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-[12px] shadow-md">
                 <Link href="/">
                     <Logo />
                 </Link>

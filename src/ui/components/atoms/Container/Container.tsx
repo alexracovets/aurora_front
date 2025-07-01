@@ -7,20 +7,38 @@ interface ContainerProps extends JustChildrenType {
     className?: string;
     space?: boolean;
     start?: boolean;
-    full?: boolean;
+    spaceTop?: boolean;
+    spaceBottom?: boolean;
 }
 
-export const Container = ({ children, className, space, start, full }: ContainerProps) => {
+export const Container = ({ children, className, space, start, spaceTop, spaceBottom }: ContainerProps) => {
+    const adaptiveWidth = cn(
+        "w-full max-w-[1286px] mx-auto relative",
+        "min-[1920px]:max-w-[128.6rem]",
+    )
     return (
-        <div className={cn(
-            "w-full max-w-[1286px] mx-auto relative px-[16px]",
-            "min-[1920px]:max-w-[128.6rem]",
-            space && "py-[32px]",
-            start && "pt-[66px]",
-            full && "min-h-screen",
-            className
-        )}>
-            {children}
-        </div>
+        <>
+            {spaceTop && <div
+                className={cn(
+                    adaptiveWidth,
+                    "h-[48px] bg-yellow z-[-1]"
+                )}
+            />}
+            <div className={cn(
+                adaptiveWidth,
+                "bg-white px-[16px]",
+                space && "py-[32px]",
+                start && "pt-[66px]",
+                className
+            )}>
+                {children}
+            </div>
+            {spaceBottom && <div
+                className={cn(
+                    adaptiveWidth,
+                    "h-[48px] bg-yellow z-[-1]"
+                )}
+            />}
+        </>
     )
 }
