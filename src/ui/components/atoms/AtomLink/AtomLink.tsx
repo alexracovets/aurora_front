@@ -3,10 +3,10 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import Link from "next/link";
 
-import { JustChildrenType } from "@types";
 import { cn } from "@utils";
 
-interface AtomLinkProps extends JustChildrenType {
+interface AtomLinkProps {
+    children: React.ReactNode;
     href: string;
     className?: string;
     variant?: VariantProps<typeof linksVariants>["variant"];

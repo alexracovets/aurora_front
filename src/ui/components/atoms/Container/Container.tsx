@@ -1,9 +1,9 @@
 "use client";
 
-import { JustChildrenType } from "@types";
 import { cn } from "@utils";
 
-interface ContainerProps extends JustChildrenType {
+interface ContainerProps {
+    children: React.ReactNode;
     className?: string;
     padding?: boolean;
     transparent?: boolean;

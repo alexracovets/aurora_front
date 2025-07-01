@@ -1,7 +1,6 @@
 
 import { DefaultTemplate } from "@templates";
-import { JustChildrenType } from "@types";
 
-export default function RootLayout({ children }: JustChildrenType) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <DefaultTemplate>{children}</DefaultTemplate>;
 }

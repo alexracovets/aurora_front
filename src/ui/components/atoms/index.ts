@@ -19,3 +19,4 @@ export { Label } from "./Label";
 export { Form, useFormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField } from "./Form";
 export { Input } from "./Input";
 export { ReCaptcha } from "./ReCaptcha";
+export { CustomScroll } from "./CustomScroll";

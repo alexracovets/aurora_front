@@ -1,9 +1,8 @@
 "use client";
 
 import { ItemsPageWrapper } from "@atoms";
-import { JustChildrenType } from "@types";
 
-export default function AwardLayout({ children }: JustChildrenType) {
+export default function AwardLayout({ children }: { children: React.ReactNode }) {
     return (
         <ItemsPageWrapper>
             {children}

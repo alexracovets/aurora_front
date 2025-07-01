@@ -11,6 +11,7 @@ import { cn } from "@utils";
 export const Header = () => {
     const headerRef = useRef<HTMLDivElement>(null);
     const [isSticky, setIsSticky] = useState(true);
+    const [isShadow, setIsShadow] = useState(false);
     const { scrollY } = useScroll();
 
     useMotionValueEvent(scrollY, "change", (latest) => {
@@ -19,9 +20,10 @@ export const Header = () => {
         const previous = scrollY.getPrevious();
 
         if (previous !== undefined) {
-            const scrollThreshold = (headerRef.current?.clientHeight || 60) + 40;
+            const headerHeight = headerRef.current?.clientHeight || 60;
+            const scrollThreshold = headerHeight + 40;
             const scrollDelta = latest - previous;
-
+            latest > headerHeight ? setIsShadow(true) : setIsShadow(false);
             scrollDelta < 0 || latest < scrollThreshold ? setIsSticky(true) : setIsSticky(false);
         }
     });
@@ -47,7 +49,7 @@ export const Header = () => {
                 padding
                 className={cn(
                     "grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-[12px] my-0",
-                    isSticky && "shadow-md"
+                    isShadow ? "shadow-md" : "shadow-none"
                 )}
             >
                 <Link href="/">

@@ -1,9 +1,8 @@
 "use client";
 
 import { AtomLink, ItemsPageWrapper, ArrowTo } from "@atoms";
-import { JustChildrenType } from "@types";
 
-export default function NewsLayout({ children }: JustChildrenType) {
+export default function NewsLayout({ children }: { children: React.ReactNode }) {
     return (
         <ItemsPageWrapper>
             <AtomLink variant="toBack" href={`/news`}>
