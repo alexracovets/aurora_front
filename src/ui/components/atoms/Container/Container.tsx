@@ -9,9 +9,10 @@ interface ContainerProps extends JustChildrenType {
     transparent?: boolean;
     roundedBottom?: boolean;
     roundedTop?: boolean;
+    fixHeader?: boolean;
 }
 
-export const Container = ({ children, className, padding, transparent, roundedBottom, roundedTop }: ContainerProps) => {
+export const Container = ({ children, className, padding, transparent, roundedBottom, roundedTop, fixHeader }: ContainerProps) => {
     const adaptiveWidth = cn(
         "w-full max-w-[1366px] mx-auto relative",
         "min-[1920px]:max-w-[136.6rem]",
@@ -24,6 +25,7 @@ export const Container = ({ children, className, padding, transparent, roundedBo
             roundedTop && "rounded-t-[16px]",
             padding && "py-[32px]",
             transparent ? "bg-transparent" : "bg-white",
+            fixHeader && "pt-[32px]",
             className
         )}>
             {children}

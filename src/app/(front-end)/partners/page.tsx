@@ -23,7 +23,7 @@ export default async function Partners() {
 
   return (
     <Suspense fallback={<Container>Завантаження...</Container>}>
-      <Container transparent>
+      <Container transparent fixHeader>
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>

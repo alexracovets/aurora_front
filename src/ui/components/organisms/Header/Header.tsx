@@ -1,26 +1,53 @@
 "use client";
 
+import { useState, useRef } from "react";
 import Link from "next/link";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 import { Container, Logo } from "@atoms";
 import { HeaderNavigation, Login } from "@molecules";
-import { useNavigationStore } from "@store";
 import { cn } from "@utils";
 
 export const Header = () => {
-    const { navigation } = useNavigationStore();
+    const headerRef = useRef<HTMLDivElement>(null);
+    const [isSticky, setIsSticky] = useState(true);
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        if (!scrollY) return null;
+
+        const previous = scrollY.getPrevious();
+
+        if (previous !== undefined) {
+            const scrollThreshold = (headerRef.current?.clientHeight || 60) + 40;
+            const scrollDelta = latest - previous;
+
+            scrollDelta < 0 || latest < scrollThreshold ? setIsSticky(true) : setIsSticky(false);
+        }
+    });
 
     return (
-        <header className={cn(
-            "absolute top-0 left-0 w-full z-10",
-            "translate-y-[-100%] transition-all duration-300",
-            navigation.length > 0 && "translate-y-0"
-        )}>
+        <motion.header
+            ref={headerRef}
+            variants={{
+                visible: { y: 0 },
+                hidden: { y: -100 },
+            }}
+            initial="visible"
+            animate={isSticky ? "visible" : "hidden"}
+            transition={{
+                duration: 0.4,
+                ease: [0.4, 0, 0.2, 1],
+            }}
+            className={cn(
+                "fixed w-full z-10 translate-y-0"
+            )}
+        >
             <Container
                 padding
                 className={cn(
                     "grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-[12px] my-0",
-                    // shadow-md
+                    isSticky && "shadow-md"
                 )}
             >
                 <Link href="/">
@@ -29,6 +56,6 @@ export const Header = () => {
                 <HeaderNavigation />
                 <Login />
             </Container>
-        </header>
+        </motion.header>
     )
 }; 

@@ -13,7 +13,7 @@ export const DefaultTemplate = ({ children }: JustChildrenType) => {
         <html lang="en">
             <body
                 className={cn(
-                    "w-full flex flex-col bg-bg min-h-screen pt-[64px]",
+                    "w-full grid grid-rows-[auto_1fr_auto] bg-bg min-h-screen",
                     gilroy.className,
                 )}
             >
