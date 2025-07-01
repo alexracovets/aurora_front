@@ -28,7 +28,7 @@ export default async function AwardPage({ params }: PageProps) {
   });
   const pageData = page.docs[0] as Award;
 
-  if (!pageData) return <Container space>404</Container>;
+  if (!pageData) return <Container>404</Container>;
 
   return (
     <Suspense fallback={<>Завантаження...</>}>

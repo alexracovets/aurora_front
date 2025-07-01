@@ -17,7 +17,7 @@ export const PaginationBlock = ({ items, countItemsPerPage, ItemComponent, Wrapp
     const startIndex = (currentPage - 1) * countItemsPerPage;
     const currentItems = items.slice(startIndex, startIndex + countItemsPerPage);
     return (
-        <div className="flex flex-col w-full gap-y-[60px]">
+        <div className="flex flex-col w-full gap-y-[32px]">
             <WrapperItems>
                 {currentItems.map((item, idx) => <ItemComponent key={item.id || idx} {...item} />)}
             </WrapperItems>

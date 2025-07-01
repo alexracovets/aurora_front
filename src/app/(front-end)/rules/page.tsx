@@ -20,10 +20,10 @@ export default async function Rules() {
 
   const pageData = page.docs[0] as Page || null;
 
-  if (!pageData) return <Container space>404</Container>;
+  if (!pageData) return <Container>404</Container>;
 
   return (
-    <Container space spaceBottom>
+    <Container space roundedBottom>
       <AtomText variant="headerH1" asChild>
         <h1>{pageData.title}</h1>
       </AtomText>

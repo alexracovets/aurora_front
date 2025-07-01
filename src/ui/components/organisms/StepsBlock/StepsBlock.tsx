@@ -12,7 +12,7 @@ export const StepsBlock = ({ steps }: StepsBlockProps) => {
     if (!steps) return null;
 
     return (
-        <div className="w-full grow grid grid-cols-2 gap-[1.6rem] pt-[16px]">
+        <div className="w-full grow grid grid-cols-2 gap-[1.6rem]">
             {steps.map((step, idx) => {
                 return (
                     <div

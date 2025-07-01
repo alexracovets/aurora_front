@@ -46,7 +46,7 @@ export default function NewsPage({ params }: ExampleStepsProps) {
 
   return (
     <div className="flex flex-col w-full">
-      <AtomText variant="headerH1" asChild className="pt-0 mt-[16px]">
+      <AtomText variant="headerH1" asChild >
         <h1> {pageData.title}</h1>
       </AtomText >
       {

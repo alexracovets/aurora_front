@@ -70,7 +70,7 @@ export const RichTextFilter = ({ item, steps }: RichTextFilterProps) => {
         case "upload":
             return (
                 <div className='flex h-full w-full justify-center items-center'>
-                    <div className="relative w-full h-[50%] rounded-[1rem] overflow-hidden">
+                    <div className="relative w-full h-[180px] rounded-[1rem] overflow-hidden">
                         <Image src={item.value?.url || ''} alt={item.value?.alt || 'photo =( '} fill className="object-cover" />
                     </div>
                 </div>

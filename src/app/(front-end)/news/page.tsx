@@ -1,4 +1,5 @@
 import { getPayload } from "payload";
+import { Suspense } from "react";
 
 import { AtomText, Container } from "@atoms";
 import { NewsBlock } from "@organisms";
@@ -19,14 +20,18 @@ export default async function News() {
 
   const pageData = page.docs[0] || null;
 
-  if (!pageData) return <Container space>404</Container>;
+  if (!pageData) return <Container>404</Container>;
 
   return (
-    <Container space spaceBottom className="rounded-b-[16px] mb-[-16px]">
-      <AtomText variant="headerH1" asChild>
-        <h1>{pageData.title}</h1>
-      </AtomText>
-      <NewsBlock />
-    </Container>
+    <Suspense fallback={<>Завантаження...</>}>
+      <Container roundedBottom>
+        <AtomText variant="headerH1" asChild>
+          <h1>{pageData.title}</h1>
+        </AtomText>
+      </Container>
+      <Container transparent className="px-0">
+        <NewsBlock />
+      </Container>
+    </Suspense>
   );
 }

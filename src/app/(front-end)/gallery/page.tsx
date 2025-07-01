@@ -19,16 +19,18 @@ export default async function Gallery() {
 
   const pageData = page.docs[0] || null;
 
-  if (!pageData) return <Container space>404</Container>;
+  if (!pageData) return <Container>404</Container>;
 
   return (
-    <Container space spaceBottom>
-      <Suspense fallback={<>Завантаження...</>}>
+    <Suspense fallback={<>Завантаження...</>}>
+      <Container roundedBottom>
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
+      </Container>
+      <Container transparent className="px-0">
         <GalleryBlock />
-      </Suspense>
-    </Container>
+      </Container>
+    </Suspense>
   );
 }

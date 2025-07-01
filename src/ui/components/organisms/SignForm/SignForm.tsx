@@ -111,7 +111,7 @@ export const SignForm = () => {
                                             placeholder="+380 (__) ___ _ _"
                                             name="phone"
                                             className={cn(
-                                                "text-[20px] bg-white rounded-[8px] border border-transparent px-[45px] py-[16px] outline-none",
+                                                "text-[20px] bg-white rounded-[8px] border border-transparent px-[45px] py-[16px] outline-none bg-bg border-black/10 transition-all duration-300",
                                                 "focus:border-yellow focus:ring-yellow focus:ring-[3px]",
                                             )}
                                             onAccept={(value) => {

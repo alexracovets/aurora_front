@@ -20,16 +20,19 @@ export default async function Home() {
 
   const pageData = page.docs[0] as Page;
 
-  if (!pageData) return <Container space>404</Container>;
+  if (!pageData) return <Container>404</Container>;
 
   return (
-    <Container space spaceBottom className="grid grid-rows-[auto_1fr]">
-      <Suspense fallback={<>Завантаження...</>}>
+    <Suspense fallback={<>Завантаження...</>}>
+      <Container roundedBottom>
         <AtomText variant="headerH1" asChild>
           <h1>{pageData.title}</h1>
         </AtomText>
+      </Container>
+      <Container transparent className="px-0">
         <StepsBlock steps={pageData.steps} />
-      </Suspense>
-    </Container>
+      </Container>
+    </Suspense>
+
   );
 };

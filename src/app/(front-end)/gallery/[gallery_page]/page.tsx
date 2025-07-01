@@ -29,7 +29,7 @@ export default async function GalleryPage({ params }: PageProps) {
   const { gallery_page } = await params;
   const page = await getCollectionItem({ collection: 'gallery', slug: gallery_page });
   const pageData = page as Gallery || null;
-  if (!pageData) return <Container space>404</Container>;
+  if (!pageData) return <Container>404</Container>;
   const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug);
 
   // Отримуємо наступні галереї для preloading
