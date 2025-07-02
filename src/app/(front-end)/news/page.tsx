@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 
-import { AtomText, Container } from "@atoms";
 import { getNews, getPayloadItem } from "@utils";
+import { AtomText, Container } from "@atoms";
 import { NewsBlock } from "@organisms";
 import { Page } from "@/payload-types";
 
