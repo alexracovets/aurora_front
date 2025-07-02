@@ -27,7 +27,7 @@ export default async function News() {
 
   const pageData = page.docs[0] || null;
   if (!pageData) return <Container>404</Container>;
-  
+
   let newsData = null;
   try {
     const news = await fetch("https://robota.avrora.ua/api/page/news/", {
@@ -35,17 +35,17 @@ export default async function News() {
         revalidate: 60
       }
     });
-    
+
     if (!news.ok) {
       throw new Error(`HTTP error! status: ${news.status}`);
     }
-    
+
     newsData = await news.json();
   } catch (error) {
     console.error('Помилка завантаження новин:', error);
     newsData = [];
   }
-
+  console.log(newsData)
   return (
     <Suspense fallback={<>Завантаження...</>}>
       <Container transparent fixHeader>
