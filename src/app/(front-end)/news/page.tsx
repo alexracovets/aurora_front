@@ -1,51 +1,25 @@
-import { getPayload } from "payload";
 import { Suspense } from "react";
 import { Metadata } from "next";
 
 import { AtomText, Container } from "@atoms";
+import { getNews, getPayloadItem } from "@utils";
 import { NewsBlock } from "@organisms";
-import config from "@/payload.config";
+import { Page } from "@/payload-types";
 
 export const metadata: Metadata = {
   title: 'Новини | Aurora',
   description: 'Останні новини та події Aurora',
 };
 
-export const revalidate = 60; // Альтернативний спосіб встановлення revalidate
+export const revalidate = 60;
 
 export default async function News() {
-  const payload = await getPayload({ config })
+  const pageData = await getPayloadItem('pages', 'news') as Page;
 
-  const page = await payload.find({
-    collection: 'pages',
-    where: {
-      slug: {
-        equals: 'news'
-      }
-    }
-  });
-
-  const pageData = page.docs[0] || null;
   if (!pageData) return <Container>404</Container>;
 
-  let newsData = null;
-  try {
-    const news = await fetch("https://robota.avrora.ua/api/page/news/", {
-      next: {
-        revalidate: 60
-      }
-    });
+  const newsData = await getNews();
 
-    if (!news.ok) {
-      throw new Error(`HTTP error! status: ${news.status}`);
-    }
-
-    newsData = await news.json();
-  } catch (error) {
-    console.error('Помилка завантаження новин:', error);
-    newsData = [];
-  }
-  console.log(newsData)
   return (
     <Suspense fallback={<>Завантаження...</>}>
       <Container transparent fixHeader>

@@ -5,3 +5,5 @@ export { getCollectionItem } from "./getCollectionItem";
 export { getGalleryItem } from "./getGalleryItem";
 export { formatDate } from "./formatDate";
 export { getApiNews, getApiNewsBySlug, getApiNewsList } from "./getApiNews";
+export { getNews } from "./getNews";
+export { getPayloadItem } from "./getPayloadItem";
