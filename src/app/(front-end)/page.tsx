@@ -6,6 +6,10 @@ import { StepsBlock } from "@organisms";
 import { Page } from "@/payload-types";
 import config from "@/payload.config"; 
 
+export const revalidate = 3600;
+export const dynamic = "force-static";
+export const dynamicParams = true;
+
 export default async function Home() {
     const payload = await getPayload({ config })
 
