@@ -7,7 +7,7 @@ export const Steps: Field = {
     type: "array",
     label: "Кроки",
     admin: {
-        condition: (_, siblingData) => siblingData?.slug === '/'
+        condition: (_, siblingData) => siblingData?.slug === ''
     },
     labels: {
         singular: "Крок",
