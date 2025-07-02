@@ -22,10 +22,8 @@ export default async function Home() {
         }
     });
 
-    const pageData = page.docs[0] as Page;
-
+    const pageData = page.docs[0] as Page; 
     if (!pageData) return <Container>404</Container>;
-
     return (
         <Suspense fallback={<>Завантаження...</>}>
             <Container transparent fixHeader>
