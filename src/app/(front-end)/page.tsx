@@ -8,7 +8,7 @@ import config from "@/payload.config";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export default async function Home() {
     const payload = await getPayload({ config })
