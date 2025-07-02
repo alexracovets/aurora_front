@@ -7,8 +7,10 @@ import { FooterLinks, FooterInfo, FooterSocials } from "@molecules";
 
 export const Footer = () => {
     return (
-        <footer>
-            <Container roundedTop padding className="my-0">
+        <footer
+            className="bg-white"
+        >
+            <Container transparent padding className="my-0">
                 <div className="flex w-full justify-between items-center gap-[1.6rem] mb-[30px]">
                     <Link href="/">
                         <Logo />

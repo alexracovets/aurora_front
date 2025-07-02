@@ -6,17 +6,19 @@ import { AtomText, AtomImage } from "@atoms";
 
 export const PartnerItem = ({ name, upload }: Partner) => {
     return (
-        <div className="flex flex-col justify-center items-center w-full">
+        <div className="flex flex-col justify-center items-center">
             {
-                name && (
-                    <AtomText variant="cardTitle" className="bg-white rounded-t-[8px] py-[4px] px-[12px]">
-                        {name}
-                    </AtomText>
-                )
+                upload &&
+                typeof upload !== 'number' &&
+                <AtomImage
+                    src={upload.url || ''}
+                    alt={name || ''}
+                    className="w-full h-[220px] rounded-t-[8px] overflow-hidden"
+                />
             }
-            <div className="bg-white rounded-[8px] p-[8px] w-full">
-                {upload && typeof upload !== 'number' && <AtomImage src={upload.url || ''} alt={upload.alt || ''} variant="partnerItem" />}
-            </div>
+            <AtomText variant="cardTitle" className={"bg-white rounded-b-[8px] p-[8px] w-full text-center"}>
+                {name}
+            </AtomText>
         </div>
     )
 }

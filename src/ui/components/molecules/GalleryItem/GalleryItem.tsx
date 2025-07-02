@@ -5,11 +5,11 @@ import Link from "next/link";
 
 import { AtomText, AtomImage } from "@atoms";
 
-export const GalleryItem = ({ id, title, image, alt, slug }: Gallery) => {
+export const GalleryItem = ({ title, image, alt, slug }: Gallery) => {
 
     return (
         <Link href={`/gallery/${slug}`}>
-            <div key={id} className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
                 {
                     image &&
                     typeof image !== 'number' &&

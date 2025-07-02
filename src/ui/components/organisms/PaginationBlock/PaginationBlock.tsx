@@ -18,14 +18,14 @@ export const PaginationBlock = ({ items, countItemsPerPage, ItemComponent, Wrapp
     const currentItems = items.slice(startIndex, startIndex + countItemsPerPage);
     return (
         <div className="flex flex-col w-full gap-y-[32px]">
-            <WrapperItems>
-                {currentItems.map((item, idx) => <ItemComponent key={item.id || idx} {...item} />)}
-            </WrapperItems>
             <PagitationComponent
                 totalPages={totalPages}
                 currentPage={currentPage}
                 onPageChange={setCurrentPage}
             />
+            <WrapperItems>
+                {currentItems.map((item, idx) => <ItemComponent key={item.id || idx} {...item} />)}
+            </WrapperItems>
         </div>
     )
 }

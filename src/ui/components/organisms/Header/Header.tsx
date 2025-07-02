@@ -42,14 +42,15 @@ export const Header = () => {
                 ease: [0.4, 0, 0.2, 1],
             }}
             className={cn(
-                "fixed w-full z-10 translate-y-0"
+                "fixed w-full z-10 translate-y-0 bg-white",
+                isShadow ? "shadow-md" : "shadow-none"
             )}
         >
             <Container
+                transparent
                 padding
                 className={cn(
                     "grid grid-cols-[auto_1fr_auto] items-center gap-x-[16px] py-0 my-0",
-                    isShadow ? "shadow-md" : "shadow-none"
                 )}
             >
                 <Link href="/">
