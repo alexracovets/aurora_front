@@ -42,7 +42,7 @@ export default function NewsPage({ params }: ExampleStepsProps) {
   if (error) return <div>Помилка: {error}</div>;
   if (!news) return <div>Новини не знайдено</div>;
 
-  const pageData = news.data[0] as ApiNewsItem;
+  const pageData = news[0] as ApiNewsItem;
 
   return (
     <div className="flex flex-col w-full">
