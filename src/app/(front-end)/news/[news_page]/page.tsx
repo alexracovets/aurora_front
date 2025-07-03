@@ -3,7 +3,7 @@
 import { useEffect, useState, use } from "react";
 
 
-import { ApiNewsResponse, ApiNewsItem } from "@types";
+import { ApiNewsItem } from "@types";
 import { NewsItemContent } from "@molecules";
 import { getApiNewsBySlug } from "@utils";
 import { formatDate } from "@utils";
@@ -17,7 +17,7 @@ interface ExampleStepsProps {
 
 export default function NewsPage({ params }: ExampleStepsProps) {
   const resolvedParams = use(params);
-  const [news, setNews] = useState<ApiNewsResponse | null>(null);
+  const [news, setNews] = useState<ApiNewsItem[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
