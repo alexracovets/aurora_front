@@ -33,10 +33,4 @@ export interface ApiNewsMeta {
     per_page: number;
     to: number;
     total: number;
-}
-
-export interface ApiNewsResponse {
-    data: ApiNewsItem[];
-    links: ApiNewsLinks;
-    meta: ApiNewsMeta;
 } 

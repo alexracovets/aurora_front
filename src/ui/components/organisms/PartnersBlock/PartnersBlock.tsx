@@ -1,39 +1,22 @@
 "use client";
 
+import { Suspense } from "react";
+
 import { PaginationBlock } from "@organisms";
+import { Partner } from "@/payload-types";
 import { PartnerItem } from "@molecules";
 import { PartnersWrapper } from "@atoms";
-import { Suspense, useEffect, useState } from "react";
-import { Partner } from "@/payload-types";
 
-export const PartnersBlock = () => {
-    const [partners, setPartners] = useState<Partner[]>([]);
-    const [loading, setLoading] = useState(true);
-    const RESULTS_PER_PAGE = 6;
+interface PartnersBlockProps {
+    items: Partner[]
+};
 
-    const getData = async () => {
-        try {
-            const response = await fetch(`/api/partners`);
-            const data = await response.json();
-            setPartners(data.docs);
-        } catch (error) {
-            console.error('Failed to fetch partners:', error);
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    useEffect(() => {
-        getData();
-    }, []);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+export const PartnersBlock = ({ items }: PartnersBlockProps) => {
+    const PARTNERS_PER_PAGE = 6;
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            {partners && <PaginationBlock items={partners} countItemsPerPage={RESULTS_PER_PAGE} ItemComponent={PartnerItem} WrapperItems={PartnersWrapper} />}
+            {items && <PaginationBlock items={items} countItemsPerPage={PARTNERS_PER_PAGE} ItemComponent={PartnerItem} WrapperItems={PartnersWrapper} />}
         </Suspense>
     );
 }

@@ -30,7 +30,7 @@ export default async function News() {
         </AtomText>
       </Container>
       <Container transparent>
-        <NewsBlock newsData={newsData} />
+        <NewsBlock items={newsData} />
       </Container>
     </Suspense>
   );

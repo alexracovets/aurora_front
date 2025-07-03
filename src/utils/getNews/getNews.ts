@@ -12,5 +12,5 @@ export const getNews = async () => {
     }
 
     const newsData = await news.json();
-    return newsData;
+    return newsData.data;
 };

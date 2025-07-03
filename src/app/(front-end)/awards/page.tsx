@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 
-import { generateMeta, getCollectionItem } from "@utils";
+import { generateMeta, getCollection, getCollectionItem } from "@utils";
 import { AtomText, Container } from "@atoms";
 import { AwardsBlock } from "@organisms";
-import { Page } from "@/payload-types";
+import { Award, Page } from "@/payload-types";
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -20,6 +20,8 @@ export default async function Awards() {
 
   if (!pageData) return <Container>404</Container>;
 
+  const awards = await getCollection({ collection: 'awards' }) as Award[];
+
   return (
     <Suspense fallback={<>Завантаження...</>}>
       <Container transparent fixHeader>
@@ -28,7 +30,7 @@ export default async function Awards() {
         </AtomText>
       </Container>
       <Container transparent>
-        <AwardsBlock />
+        <AwardsBlock items={awards} />
       </Container>
     </Suspense>
   );

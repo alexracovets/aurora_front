@@ -1,10 +1,10 @@
-import { ApiNewsResponse } from "@/types";
+import { ApiNewsItem } from "@/types";
 
 interface GetApiNewsOptions {
     slug?: string;
 }
 
-export async function getApiNews(options: GetApiNewsOptions = {}): Promise<ApiNewsResponse> {
+export async function getApiNews(options: GetApiNewsOptions = {}): Promise<ApiNewsItem[]> {
     const { slug } = options;
 
     let url = "/api/news";
@@ -25,7 +25,7 @@ export async function getApiNews(options: GetApiNewsOptions = {}): Promise<ApiNe
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data: ApiNewsResponse = await response.json(); 
+        const data: ApiNewsItem[] = await response.json();
         return data;
     } catch (error) {
         console.error('Помилка при отриманні даних з API:', error);
@@ -33,10 +33,10 @@ export async function getApiNews(options: GetApiNewsOptions = {}): Promise<ApiNe
     }
 }
 
-export async function getApiNewsBySlug(slug: string): Promise<ApiNewsResponse> {
+export async function getApiNewsBySlug(slug: string): Promise<ApiNewsItem[]> {
     return getApiNews({ slug });
 }
 
-export async function getApiNewsList(): Promise<ApiNewsResponse> {
+export async function getApiNewsList(): Promise<ApiNewsItem[]> {
     return getApiNews();
 } 

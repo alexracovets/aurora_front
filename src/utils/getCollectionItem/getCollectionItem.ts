@@ -8,6 +8,7 @@ interface getCollectionItemProps {
     slug: string;
 }
 
+
 export async function getCollectionItem({ collection, slug }: getCollectionItemProps) {
     const payload = await getPayload({ config });
     const item = await payload.find({

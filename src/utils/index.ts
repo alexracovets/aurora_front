@@ -8,3 +8,4 @@ export { getApiNews, getApiNewsBySlug, getApiNewsList } from "./getApiNews";
 export { getNews } from "./getNews";
 export { getPayloadItem } from "./getPayloadItem";
 export { generateMeta } from "./generateMeta";
+export { getCollection } from "./getCollection";

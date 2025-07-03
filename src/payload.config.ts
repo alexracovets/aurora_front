@@ -43,7 +43,7 @@ export default buildConfig({
       }
     }
   },
-  collections: [Users, Media, Pages, Results, Partners, Awards, Gallery],
+  collections: [Users, Pages, Results, Awards, Partners, Gallery, Media],
   globals: [Header],
   editor: lexicalEditor(
     {
@@ -72,7 +72,7 @@ export default buildConfig({
     payloadCloudPlugin(),
     seoPlugin(
       {
-        collections: [Pages.slug],
+        collections: [Pages.slug, Results.slug, Awards.slug, Gallery.slug],
         tabbedUI: true,
         uploadsCollection: 'media',
       }

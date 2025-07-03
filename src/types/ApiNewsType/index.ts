@@ -1,5 +1,4 @@
 export type {
-    ApiNewsResponse,
     ApiNewsItem,
     ApiNewsImage,
     ApiNewsLinks,

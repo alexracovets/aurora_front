@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 
-import { generateMeta, getCollectionItem } from "@utils";
+import { generateMeta, getCollection, getCollectionItem } from "@utils";
 import { AtomText, Container } from "@atoms";
 import { GalleryBlock } from "@organisms";
-import { Page } from "@/payload-types";
+import type { Gallery, Page } from "@/payload-types";
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -20,6 +20,8 @@ export default async function Gallery() {
 
   if (!pageData) return <Container>404</Container>;
 
+  const galleries = await getCollection({ collection: 'gallery' }) as Gallery[];
+
   return (
     <Suspense fallback={<Container>Завантаження...</Container>}>
       <Container transparent fixHeader>
@@ -28,7 +30,7 @@ export default async function Gallery() {
         </AtomText>
       </Container>
       <Container transparent>
-        <GalleryBlock />
+        <GalleryBlock items={galleries} />
       </Container>
     </Suspense>
   );

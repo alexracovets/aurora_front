@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 
-import { generateMeta, getCollectionItem } from "@utils";
+import { generateMeta, getCollection, getCollectionItem } from "@utils";
 import { AtomText, Container } from "@atoms";
 import { PartnersBlock } from "@organisms";
-import { Page } from "@/payload-types";
+import { Page, Partner } from "@/payload-types";
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -17,8 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Partners() {
   const pageData = await getCollectionItem({ collection: 'pages', slug: 'partners' }) as Page;
-
   if (!pageData) return <Container>404</Container>;
+  const partners = await getCollection({ collection: 'partners' }) as Partner[];
 
   return (
     <Suspense fallback={<Container>Завантаження...</Container>}>
@@ -28,7 +28,7 @@ export default async function Partners() {
         </AtomText>
       </Container>
       <Container transparent>
-        <PartnersBlock />
+        <PartnersBlock items={partners} />
       </Container>
     </Suspense>
   );
