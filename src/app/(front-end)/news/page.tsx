@@ -1,17 +1,19 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 
-import { getNews, getPayloadItem } from "@utils";
+import { generateMeta, getCollectionItem, getNews, getPayloadItem } from "@utils";
 import { AtomText, Container } from "@atoms";
 import { NewsBlock } from "@organisms";
 import { Page } from "@/payload-types";
 
-export const metadata: Metadata = {
-  title: 'Новини | Aurora',
-  description: 'Останні новини та події Aurora',
-};
-
 export const revalidate = 60;
+export const dynamicParams = false;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getCollectionItem({ collection: 'pages', slug: 'news' }) as Page;
+
+  return generateMeta({ doc: page })
+}
 
 export default async function News() {
   const pageData = await getPayloadItem('pages', 'news') as Page;

@@ -1,24 +1,22 @@
-import { getPayload } from "payload";
 import Link from "next/link";
+import { Metadata } from "next";
 
 import { AtomButton, AtomText, Container, ArrowTo } from "@atoms";
+import { generateMeta, getCollectionItem } from "@utils";
 import { RulesBlock } from "@organisms";
-import config from "@/payload.config";
 import { Page } from "@/payload-types";
 
+export const revalidate = 60;
+export const dynamicParams = false;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getCollectionItem({ collection: 'pages', slug: 'rules' }) as Page;
+
+  return generateMeta({ doc: page })
+}
+
 export default async function Rules() {
-  const payload = await getPayload({ config })
-
-  const page = await payload.find({
-    collection: 'pages',
-    where: {
-      slug: {
-        equals: 'rules'
-      }
-    }
-  });
-
-  const pageData = page.docs[0] as Page || null;
+  const pageData = await getCollectionItem({ collection: 'pages', slug: 'rules' }) as Page;
 
   if (!pageData) return <Container>404</Container>;
 
