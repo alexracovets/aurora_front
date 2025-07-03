@@ -1,12 +1,11 @@
-import { getPayload } from "payload";
 import { Suspense } from "react";
+import { Metadata } from "next";
 
 
 import { Container, AtomText, ItemsPageWrapper, ArrowTo, AtomLink } from "@atoms";
+import { formatDate, generateMeta, getCollectionItem } from "@utils";
 import { ItemsPageContent } from "@molecules";
 import { Media, Result } from "@payload-types";
-import config from "@/payload.config";
-import { formatDate } from "@utils";
 
 type PageProps = {
   params: Promise<{
@@ -14,21 +13,15 @@ type PageProps = {
   }>;
 }
 
-export default async function ResultPage({ params }: PageProps) {
-
-  const payload = await getPayload({ config })
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { result_page } = await params;
+  const page = await getCollectionItem({ collection: 'results', slug: result_page }) as Result;
+  return generateMeta({ doc: page })
+}
 
-  const page = await payload.find({
-    collection: 'results',
-    where: {
-      slug: {
-        equals: result_page
-      }
-    }
-  });
-
-  const pageData = page.docs[0] as Result;
+export default async function ResultPage({ params }: PageProps) {
+  const { result_page } = await params;
+  const pageData = await getCollectionItem({ collection: 'results', slug: result_page }) as Result;
 
   if (!pageData) return <Container>404</Container>;
 

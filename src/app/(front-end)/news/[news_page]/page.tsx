@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 
-import { generateMeta, getCollectionItem, getNewsItem } from "@utils";
+import { generateMeta, getCollectionItem, getNews, getNewsItem } from "@utils";
 import { NewsItemContent } from "@molecules";
 import { Page } from "@/payload-types";
 import { ApiNewsItem } from "@/types";
@@ -13,14 +13,26 @@ import "@styles/news_content.scss";
 export const revalidate = 60;
 export const dynamicParams = false;
 
+interface ExampleStepsProps {
+  params: Promise<{ news_page: string; }>
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getCollectionItem({ collection: 'pages', slug: 'news' }) as Page;
 
   return generateMeta({ doc: page })
 }
 
-interface ExampleStepsProps {
-  params: Promise<{ news_page: string; }>
+export async function generateStaticParams() {
+  try {
+    const news = await getNews();
+    return news.map((news: ApiNewsItem) => ({
+      news_page: news.slug,
+    }));
+  } catch (error) {
+    console.error('Помилка при генерації статичних параметрів:', error);
+    return [];
+  }
 }
 
 export default async function NewsPage({ params }: ExampleStepsProps) {

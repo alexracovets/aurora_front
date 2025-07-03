@@ -1,11 +1,10 @@
 import { Suspense } from "react";
+import { Metadata } from "next";
 
 import { AtomLink, AtomText, Container, ArrowTo } from "@atoms";
 import { ItemsPageContent } from "@molecules";
 import { Award, Media } from "@/payload-types";
-import { getPayload } from "payload";
-import config from "@/payload.config";
-import { formatDate } from "@utils";
+import { formatDate, generateMeta, getCollection, getCollectionItem } from "@utils";
 
 type PageProps = {
   params: Promise<{
@@ -13,20 +12,30 @@ type PageProps = {
   }>;
 };
 
-export default async function AwardPage({ params }: PageProps) {
+export const revalidate = 60;
+export const dynamicParams = false;
 
-  const payload = await getPayload({ config })
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { award_page } = await params;
+  const page = await getCollectionItem({ collection: 'awards', slug: award_page }) as Award;
+  return generateMeta({ doc: page })
+}
 
-  const page = await payload.find({
-    collection: 'awards',
-    where: {
-      slug: {
-        equals: award_page
-      }
-    }
-  });
-  const pageData = page.docs[0] as Award;
+export async function generateStaticParams() {
+  try {
+    const awards = await getCollection({ collection: 'awards' }) as Award[];
+    return awards.map((award: Award) => ({
+      award_page: award.slug,
+    }));
+  } catch (error) {
+    console.error('Помилка при генерації статичних параметрів:', error);
+    return [];
+  }
+}
+
+export default async function AwardPage({ params }: PageProps) {
+  const { award_page } = await params;
+  const pageData = await getCollectionItem({ collection: 'awards', slug: award_page }) as Award;
 
   if (!pageData) return <Container>404</Container>;
 

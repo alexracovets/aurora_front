@@ -1,14 +1,13 @@
-"use server";
-
-import { Gallery, Media } from "@payload-types";
 import { Suspense } from "react";
+import { Metadata } from "next";
 
-import { Container, AtomText, FullscreenImage } from "@atoms";
-import { getCollectionItem, getGalleries, getGalleriesNext } from "@utils";
-import { getNeighborGalleries } from "@hooks";
+import { generateMeta, getCollectionItem, getGalleries, getGalleriesNext } from "@utils";
 import { GalleryStateUpdater } from "./GalleryStateUpdater";
-import { ShowCaseGallery } from "@organisms";
+import { Container, AtomText, FullscreenImage } from "@atoms";
 import { PreloadImages } from "./PreloadImages";
+import { Gallery, Media } from "@payload-types";
+import { getNeighborGalleries } from "@hooks";
+import { ShowCaseGallery } from "@organisms";
 
 type PageProps = {
   params: Promise<{
@@ -16,23 +15,35 @@ type PageProps = {
   }>;
 }
 
-// статична генерація
-export async function generateStaticParams() {
-  const galleries = await getGalleries();
+export const revalidate = 60;
+export const dynamicParams = false;
 
-  return galleries.map((gallery) => ({
-    gallery_page: gallery.slug,
-  }));
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { gallery_page } = await params;
+  const page = await getCollectionItem({ collection: 'gallery', slug: gallery_page }) as Gallery;
+  
+  return generateMeta({ doc: page });
+}
+
+export async function generateStaticParams() {
+  try {
+    const galleries = await getGalleries();
+
+    return galleries.map((gallery) => ({
+      gallery_page: gallery.slug,
+    }));
+  } catch (error) {
+    console.error('Помилка при генерації статичних параметрів:', error);
+    return [];
+  }
 }
 
 export default async function GalleryPage({ params }: PageProps) {
   const { gallery_page } = await params;
-  const page = await getCollectionItem({ collection: 'gallery', slug: gallery_page });
-  const pageData = page as Gallery || null;
+  const pageData = await getCollectionItem({ collection: 'gallery', slug: gallery_page }) as Gallery;
   if (!pageData) return <Container>404</Container>;
-  const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug);
 
-  // Отримуємо наступні галереї для preloading
+  const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug);
   const nextGalleriesResult = await getGalleriesNext(gallery_page, 4);
   const nextGalleries = nextGalleriesResult.success ? nextGalleriesResult.data : [];
 
