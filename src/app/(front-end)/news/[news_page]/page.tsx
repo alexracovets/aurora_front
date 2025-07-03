@@ -1,12 +1,23 @@
 import { Suspense } from "react";
+import { Metadata } from "next";
 
+import { generateMeta, getCollectionItem, getNewsItem } from "@utils";
 import { NewsItemContent } from "@molecules";
-import { getNewsItem } from "@utils";
+import { Page } from "@/payload-types";
+import { ApiNewsItem } from "@/types";
 import { formatDate } from "@utils";
 import { AtomText } from "@atoms";
-import { ApiNewsItem } from "@/types";
 
 import "@styles/news_content.scss";
+
+export const revalidate = 60;
+export const dynamicParams = false;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getCollectionItem({ collection: 'pages', slug: 'news' }) as Page;
+
+  return generateMeta({ doc: page })
+}
 
 interface ExampleStepsProps {
   params: Promise<{ news_page: string; }>
@@ -15,7 +26,7 @@ interface ExampleStepsProps {
 export default async function NewsPage({ params }: ExampleStepsProps) {
   const { news_page } = await params;
   const pageData = await getNewsItem(news_page) as ApiNewsItem;
-  
+
   return (
     <Suspense fallback={<>Завантаження...</>}>
       <AtomText variant="headerH1" asChild >
