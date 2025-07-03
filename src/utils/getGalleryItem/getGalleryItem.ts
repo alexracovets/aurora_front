@@ -2,8 +2,10 @@ import { Gallery } from '@payload-types';
 
 export async function getGalleryItem(slug: string): Promise<Gallery | null> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/gallery/${slug}`, {
-      cache: 'no-store'
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/api/gallery/${slug}`, {
+      next: {
+        revalidate: 60,
+      },
     });
 
     if (!response.ok) {
