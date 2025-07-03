@@ -1,1 +1,0 @@
-export { getNeighborGalleries } from "./getNeighborGalleries";

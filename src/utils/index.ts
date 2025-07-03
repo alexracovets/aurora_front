@@ -1,11 +1,9 @@
 export { cn } from "./cn";
-export { getGalleries } from "./getGalleries";
 export { getGalleriesNext } from "./getGalleriesNext";
+export { getNeighborGalleries } from "./getNeighborGalleries";
 export { getCollectionItem } from "./getCollectionItem";
-export { getGalleryItem } from "./getGalleryItem";
 export { formatDate } from "./formatDate";
 export { getNews } from "./getNews";
 export { getNewsItem } from "./getNewsItem";
-export { getPayloadItem } from "./getPayloadItem";
 export { generateMeta } from "./generateMeta";
 export { getCollection } from "./getCollection";

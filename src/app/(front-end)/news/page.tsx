@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 
-import { generateMeta, getCollectionItem, getNews, getPayloadItem } from "@utils";
+import { generateMeta, getCollectionItem, getNews } from "@utils";
 import { AtomText, Container } from "@atoms";
 import { NewsBlock } from "@organisms";
 import { Page } from "@/payload-types";
@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function News() {
   
-  const pageData = await getPayloadItem('pages', 'news') as Page;
+  const pageData = await getCollectionItem({ collection: 'pages', slug: 'news' }) as Page;
   if (!pageData) return <Container>404</Container>;
   const newsData = await getNews();
   

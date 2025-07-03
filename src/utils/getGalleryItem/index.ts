@@ -1,1 +1,0 @@
-export { getGalleryItem } from './getGalleryItem'; 

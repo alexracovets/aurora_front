@@ -2,28 +2,15 @@
 
 import Link from "next/link";
 
-import { Container, AtomText, AtomImage } from "@atoms";
-import { useGetNextGalleries } from "@hooks";
+import { AtomText, AtomImage } from "@atoms";
 import { Gallery } from "@payload-types";
 
-export const ShowCaseGallery = () => {
-    const { galleries, loading, error } = useGetNextGalleries();
+interface ShowCaseGalleryProps {
+    galleries: Gallery[];
+}
 
-    if (loading) {
-        return (
-            <Container>
-                <div>Завантаження галерей...</div>
-            </Container>
-        );
-    }
+export const ShowCaseGallery = ({ galleries }: ShowCaseGalleryProps) => {
 
-    if (error) {
-        return (
-            <Container>
-                <div>Помилка завантаження галерей</div>
-            </Container>
-        );
-    }
     return (
         <div className="grid grid-cols-4 gap-[20px]">
             {galleries.map((item: Gallery) => (

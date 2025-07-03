@@ -13,8 +13,8 @@ import { cn } from "@utils";
 interface FullscreenImageProps {
     image: Media;
     alt: string;
-    prevPage: Gallery;
-    nextPage: Gallery;
+    prevPage: Gallery | null;
+    nextPage: Gallery | null;
 }
 
 export const FullscreenImage = ({ image, alt, prevPage, nextPage }: FullscreenImageProps) => {
