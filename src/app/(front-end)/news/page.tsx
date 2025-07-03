@@ -16,12 +16,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function News() {
+  
   const pageData = await getPayloadItem('pages', 'news') as Page;
-
   if (!pageData) return <Container>404</Container>;
-
   const newsData = await getNews();
-
+  
   return (
     <Suspense fallback={<>Завантаження...</>}>
       <Container transparent fixHeader>

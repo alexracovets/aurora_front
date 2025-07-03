@@ -1,0 +1,1 @@
+export { getNewsItem } from "./getNewsItem";
