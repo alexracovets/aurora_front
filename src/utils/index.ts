@@ -7,3 +7,4 @@ export { formatDate } from "./formatDate";
 export { getApiNews, getApiNewsBySlug, getApiNewsList } from "./getApiNews";
 export { getNews } from "./getNews";
 export { getPayloadItem } from "./getPayloadItem";
+export { generateMeta } from "./generateMeta";

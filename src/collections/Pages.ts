@@ -11,6 +11,9 @@ export const Pages: CollectionConfig = {
         useAsTitle: 'name',
     },
     access: {
+        create: () => false,
+        delete: () => false,
+        update: () => true,
         read: () => true,
     },
     fields: [
@@ -18,6 +21,23 @@ export const Pages: CollectionConfig = {
             name: 'name',
             type: 'text',
             label: 'Назва сторінки',
+            admin: {
+                hidden: true,
+            },
+            access: {
+                update: () => false,
+            }
+        },
+        {
+            name: 'slug',
+            type: 'text',
+            label: 'Slug',
+            admin: {
+                hidden: true,
+            },
+            access: {
+                update: () => false,
+            }
         },
         {
             name: 'title',
@@ -30,12 +50,5 @@ export const Pages: CollectionConfig = {
             label: 'Контент',
         },
         Steps,
-        {
-            name: 'slug',
-            type: 'text',
-            admin: {
-                position: 'sidebar',
-            },
-        },
-    ],
+    ]
 }

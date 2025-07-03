@@ -3,8 +3,8 @@ import { postgresAdapter } from '@payloadcms/db-postgres';
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { ParagraphFeature, BoldFeature, ItalicFeature, StrikethroughFeature, UnderlineFeature, FixedToolbarFeature, UnorderedListFeature } from '@payloadcms/richtext-lexical';
-import { seoPlugin } from '@payloadcms/plugin-seo';
 import { s3Storage } from '@payloadcms/storage-s3';
+import { seoPlugin } from '@payloadcms/plugin-seo';
 
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -70,14 +70,13 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    seoPlugin({
-      collections: [Pages.slug],
-      uploadsCollection: 'media',
-      generateTitle: ({ doc }) => `Website.com — ${doc.title}`,
-      generateDescription: ({ doc }) => doc.excerpt,
-      generateURL: ({ doc, collectionSlug }) =>
-        `http://localhost:3000/${doc?.slug === '/' ? '' : doc?.slug}`,
-    }),
+    seoPlugin(
+      {
+        collections: [Pages.slug],
+        tabbedUI: true,
+        uploadsCollection: 'media',
+      }
+    ),
     s3Storage({
       collections: {
         media: {

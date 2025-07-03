@@ -1,28 +1,23 @@
-import { getPayload } from "payload";
 import { Suspense } from "react";
+import { Metadata } from "next";
 
 import { AtomText, Container } from "@atoms";
 import { StepsBlock } from "@organisms";
 import { Page } from "@/payload-types";
-import config from "@/payload.config"; 
+import { generateMeta, getCollectionItem } from "@utils";
 
 export const revalidate = 60;
-export const dynamic = "force-static";
 export const dynamicParams = false;
 
+export async function generateMetadata(): Promise<Metadata> {
+    const page = await getCollectionItem({ collection: 'pages', slug: '' });
+
+    return generateMeta({ doc: page })
+}
+
 export default async function Home() {
-    const payload = await getPayload({ config })
+    const pageData = await getCollectionItem({ collection: 'pages', slug: '' }) as Page;
 
-    const page = await payload.find({
-        collection: 'pages',
-        where: {
-            slug: {
-                equals: ''
-            }
-        }
-    });
-
-    const pageData = page.docs[0] as Page; 
     if (!pageData) return <Container>404</Container>;
     return (
         <Suspense fallback={<>Завантаження...</>}>
@@ -32,7 +27,7 @@ export default async function Home() {
                 </AtomText>
             </Container>
             <Container transparent>
-                <StepsBlock steps={pageData.steps} />
+                <StepsBlock steps={pageData?.steps} />
             </Container>
         </Suspense>
     );

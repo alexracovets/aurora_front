@@ -178,6 +178,7 @@ export interface Media {
 export interface Page {
   id: number;
   name?: string | null;
+  slug?: string | null;
   title?: string | null;
   content?: {
     root: {
@@ -245,7 +246,6 @@ export interface Page {
         id?: string | null;
       }[]
     | null;
-  slug?: string | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -463,6 +463,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   title?: T;
   content?: T;
   steps?:
@@ -474,7 +475,6 @@ export interface PagesSelect<T extends boolean = true> {
         contentRight?: T;
         id?: T;
       };
-  slug?: T;
   meta?:
     | T
     | {
