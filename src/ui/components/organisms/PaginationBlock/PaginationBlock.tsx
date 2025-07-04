@@ -26,7 +26,12 @@ export const PaginationBlock = <T,>({ items, countItemsPerPage, ItemComponent, W
             />
             <WrapperItems>
                 {currentItems.map((item, idx) => <ItemComponent key={idx} {...item} />)}
-            </WrapperItems> 
+            </WrapperItems>
+            <PagitationComponent
+                totalPages={totalPages}
+                currentPage={currentPage}
+                onPageChange={setCurrentPage}
+            />
         </div>
     )
 }
