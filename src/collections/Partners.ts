@@ -13,13 +13,11 @@ export const Partners: CollectionConfig = {
         {
             name: 'name',
             type: 'text',
-            required: true,
         },
         {
             name: "upload",
             type: "upload",
             relationTo: "media",
-            required: true,
         }
     ],
 }

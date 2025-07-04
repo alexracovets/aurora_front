@@ -14,22 +14,18 @@ export const Gallery: CollectionConfig = {
             name: "image",
             type: "upload",
             relationTo: "media",
-            required: true,
         },
         {
             name: 'alt',
             type: 'text',
-            required: true,
         },
         {
             name: 'title',
             type: 'text',
-            required: true,
         },
         {
             name: 'slug',
             type: 'text',
-            required: true,
             unique: true,
             admin: {
                 position: 'sidebar',

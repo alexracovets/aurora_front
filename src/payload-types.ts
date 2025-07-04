@@ -263,7 +263,7 @@ export interface Media {
  */
 export interface Result {
   id: number;
-  title: string;
+  title?: string | null;
   description?: string | null;
   content?: {
     root: {
@@ -280,7 +280,7 @@ export interface Result {
     };
     [k: string]: unknown;
   } | null;
-  image: number | Media;
+  image?: (number | null) | Media;
   slug?: string | null;
   date?: string | null;
   meta?: {
@@ -300,7 +300,7 @@ export interface Result {
  */
 export interface Award {
   id: number;
-  title: string;
+  title?: string | null;
   description?: string | null;
   content?: {
     root: {
@@ -317,7 +317,7 @@ export interface Award {
     };
     [k: string]: unknown;
   } | null;
-  image: number | Media;
+  image?: (number | null) | Media;
   slug?: string | null;
   date?: string | null;
   meta?: {
@@ -337,8 +337,8 @@ export interface Award {
  */
 export interface Partner {
   id: number;
-  name: string;
-  upload: number | Media;
+  name?: string | null;
+  upload?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -348,10 +348,10 @@ export interface Partner {
  */
 export interface Gallery {
   id: number;
-  image: number | Media;
-  alt: string;
-  title: string;
-  slug: string;
+  image?: (number | null) | Media;
+  alt?: string | null;
+  title?: string | null;
+  slug?: string | null;
   meta?: {
     title?: string | null;
     description?: string | null;

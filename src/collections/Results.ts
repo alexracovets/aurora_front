@@ -14,7 +14,6 @@ export const Results: CollectionConfig = {
             name: 'title',
             type: 'text',
             label: 'Заголовок',
-            required: true,
         },
         {
             name: "description",
@@ -24,13 +23,11 @@ export const Results: CollectionConfig = {
         {
             name: 'content',
             type: 'richText',
-            required: false,
         },
         {
             name: "image",
             type: "upload",
             relationTo: "media",
-            required: true,
         },
         {
             name: 'slug',
