@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 
 import { generateMeta, getCollectionItem, getGalleriesNext, getNeighborGalleries, getCollection } from "@utils";
-import { GalleryStateUpdater } from "./GalleryStateUpdater";
 import { Container, AtomText, FullscreenImage } from "@atoms";
 import { Gallery, Media } from "@payload-types";
 import { ShowCaseGallery } from "@organisms";
@@ -41,16 +40,15 @@ export default async function GalleryPage({ params }: PageProps) {
   const pageData = await getCollectionItem({ collection: 'gallery', slug: gallery_page }) as Gallery;
   if (!pageData) return <Container>404</Container>;
 
-  const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug);
+  const { nextPage, prevPage } = await getNeighborGalleries(pageData.slug || '');
   const nextGalleriesResult = await getGalleriesNext(gallery_page, 4);
   const nextGalleries = nextGalleriesResult.success ? nextGalleriesResult.data : [];
 
   return (
     <Suspense fallback={<>Завантаження...</>}>
-      <GalleryStateUpdater slug={pageData.slug} />
       <FullscreenImage
         image={pageData.image as Media}
-        alt={pageData.alt}
+        alt={pageData.alt || ''}
         prevPage={prevPage}
         nextPage={nextPage}
       />

@@ -7,7 +7,7 @@ export const ResultItem = ({ title, image, slug, description }: Result) => {
     return (
         <div className="grid grid-cols-[26rem_1fr] gap-x-[24px] bg-white rounded-[8px] p-[8px]">
             {
-                typeof image === 'object' &&
+                image && typeof image === 'object' &&
                 <AtomImage src={image.url || ''} alt={image.alt || 'alt'} variant="resultItem" />
             }
             <div className="flex w-full flex-col py-[8px] gap-y-[8px] pb-[48px] relative">
