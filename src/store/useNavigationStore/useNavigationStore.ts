@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { Page } from "@/payload-types";
 
 interface NavigationStoreType {
   navigation: {
@@ -8,17 +7,10 @@ interface NavigationStoreType {
     name: string;
     slug: string;
   }[];
-  // loadNavigation: () => Promise<void>;
-}
-
-const getNavigation = async () => {
-  const response = await fetch('/api/globals/header');
-  const data = await response.json();
-  return data.page || [];
 }
 
 export const useNavigationStore = create<NavigationStoreType>()(
-  immer((set) => ({
+  immer(() => ({
     navigation: [
       { id: 7, name: 'Новини', slug: 'news' },
       { id: 3, name: 'Результати роботи', slug: 'results' },
@@ -27,16 +19,5 @@ export const useNavigationStore = create<NavigationStoreType>()(
       { id: 6, name: 'Фото', slug: 'gallery' },
       { id: 2, name: 'Правила', slug: 'rules' }
     ],
-    // loadNavigation: async () => {
-    //   const navigation = await getNavigation();
-
-    //   set({
-    //     navigation: navigation.map((page: Page) => ({
-    //       id: page.id,
-    //       name: page.name,
-    //       slug: page.slug,
-    //     }))
-    //   });
-    // },
   }))
 );

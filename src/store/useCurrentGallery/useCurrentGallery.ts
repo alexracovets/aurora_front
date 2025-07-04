@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { Gallery } from "@/payload-types";
 
 interface GalleryStoreType {
     currentGallery: string | null;

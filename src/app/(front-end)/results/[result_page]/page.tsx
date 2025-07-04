@@ -1,9 +1,8 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 
-
+import { formatDate, generateMeta, getCollection, getCollectionItem } from "@utils";
 import { Container, AtomText, ItemsPageWrapper, ArrowTo, AtomLink } from "@atoms";
-import { formatDate, generateMeta, getCollectionItem } from "@utils";
 import { ItemsPageContent } from "@molecules";
 import { Media, Result } from "@payload-types";
 
@@ -11,13 +10,29 @@ type PageProps = {
   params: Promise<{
     result_page: string;
   }>;
-}
+};
+
+export const revalidate = 60;
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { result_page } = await params;
   const page = await getCollectionItem({ collection: 'results', slug: result_page }) as Result;
   return generateMeta({ doc: page })
-}
+};
+
+export async function generateStaticParams() {
+  try {
+    const results = await getCollection({ collection: 'results' }) as Result[];
+
+    return results.map((result) => ({
+      result_page: result.slug,
+    }));
+  } catch (error) {
+    console.error('Помилка при генерації статичних параметрів:', error);
+    return [];
+  }
+};
 
 export default async function ResultPage({ params }: PageProps) {
   const { result_page } = await params;

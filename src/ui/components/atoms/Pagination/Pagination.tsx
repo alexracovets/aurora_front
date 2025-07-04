@@ -1,10 +1,10 @@
-import * as React from "react";
-import { MoreHorizontalIcon } from "lucide-react";
 import { LuArrowRight, LuArrowLeft } from "react-icons/lu";
+import { MoreHorizontalIcon } from "lucide-react";
+import * as React from "react";
 import Link from "next/link";
 
-import { cn } from "@utils"
 import { AtomButton } from "@atoms";
+import { cn } from "@utils"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
     return (
@@ -38,17 +38,15 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 type PaginationLinkProps = {
     isActive?: boolean
     disabled?: boolean
-} & Pick<React.ComponentProps<typeof AtomButton>, "variant"> &
+} & React.ComponentProps<typeof AtomButton> &
     React.ComponentProps<typeof Link>
 
 function PaginationLink({
     className,
     isActive,
-    variant = "default",
     disabled,
     ...props
 }: PaginationLinkProps) {
-    // const Component = disabled ? 'span' : Link;
     const Component = 'span';
 
     return (
@@ -76,7 +74,6 @@ function PaginationPrevious({
     return (
         <PaginationLink
             aria-label="Go to previous page"
-            variant="default"
             className={cn("mr-[10px]", className)}
             disabled={disabled}
             {...props}
@@ -94,7 +91,6 @@ function PaginationNext({
     return (
         <PaginationLink
             aria-label="Go to next page"
-            variant="default"
             className={cn("ml-[10px]", className)}
             disabled={disabled}
             {...props}

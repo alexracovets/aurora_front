@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
+
 import { PagitationComponent } from "@molecules";
 
-interface PaginationBlockProps {
-    items: any[];
+interface PaginationBlockProps<T> {
+    items: T[];
     countItemsPerPage: number;
-    ItemComponent: React.ComponentType<any>;
-    WrapperItems: React.ComponentType<any>;
+    ItemComponent: React.ComponentType<T>;
+    WrapperItems: React.ComponentType<{ children: React.ReactNode }>;
 }
 
-export const PaginationBlock = ({ items, countItemsPerPage, ItemComponent, WrapperItems }: PaginationBlockProps) => {
+export const PaginationBlock = <T,>({ items, countItemsPerPage, ItemComponent, WrapperItems }: PaginationBlockProps<T>) => {
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = Math.ceil(items.length / countItemsPerPage);
     const startIndex = (currentPage - 1) * countItemsPerPage;
@@ -24,8 +25,8 @@ export const PaginationBlock = ({ items, countItemsPerPage, ItemComponent, Wrapp
                 onPageChange={setCurrentPage}
             />
             <WrapperItems>
-                {currentItems.map((item, idx) => <ItemComponent key={item.id || idx} {...item} />)}
-            </WrapperItems>
+                {currentItems.map((item, idx) => <ItemComponent key={idx} {...item} />)}
+            </WrapperItems> 
         </div>
     )
 }

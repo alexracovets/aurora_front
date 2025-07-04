@@ -6,7 +6,7 @@ import { z } from "zod";
 import { useState, useEffect } from "react";
 import { IMaskInput } from 'react-imask';
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, AtomButton, Input, ReCaptcha } from "@atoms";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, AtomButton, ReCaptcha } from "@atoms";
 import { cn } from "@utils";
 
 
@@ -55,6 +55,8 @@ export const SignForm = () => {
                 message: "Будь ласка, підтвердіть, що ви не робот"
             });
             return;
+        } else {
+            console.log(values.recaptcha);
         }
 
         setIsSubmitting(true);
@@ -136,7 +138,7 @@ export const SignForm = () => {
                 <FormField
                     control={form.control}
                     name="recaptcha"
-                    render={({ field }) => (
+                    render={() => (
                         <FormItem className="relative">
                             <ReCaptcha
                                 siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "your_site_key_here"}

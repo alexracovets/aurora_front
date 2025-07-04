@@ -23,8 +23,8 @@ export const Header = () => {
             const headerHeight = headerRef.current?.clientHeight || 60;
             const scrollThreshold = headerHeight + 40;
             const scrollDelta = latest - previous;
-            latest > headerHeight ? setIsShadow(true) : setIsShadow(false);
-            scrollDelta < 0 || latest < scrollThreshold ? setIsSticky(true) : setIsSticky(false);
+            setIsShadow(latest > headerHeight);
+            setIsSticky(scrollDelta < 0 || latest < scrollThreshold);
         }
     });
 

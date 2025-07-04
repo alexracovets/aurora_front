@@ -20,7 +20,7 @@ export default async function Results() {
   const pageData = await getCollectionItem({ collection: 'pages', slug: 'results' }) as Page;
   if (!pageData) return <Container>404</Container>;
   const results = await getCollection({ collection: 'results' }) as Result[];
-  
+
   return (
     <Suspense fallback={<>Завантаження...</>}>
       <Container transparent fixHeader>
