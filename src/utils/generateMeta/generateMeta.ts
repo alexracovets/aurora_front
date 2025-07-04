@@ -16,6 +16,11 @@ export const generateMeta = async (args: { doc: Page }): Promise<Metadata> => {
 
     return {
         description: doc?.meta?.description,
+        icons: {
+            icon: '/favicon.png',
+            shortcut: '/favicon.png',
+            apple: '/favicon.png',
+        },
         openGraph: mergeOpenGraph({
             description: doc?.meta?.description || '',
             images: ogImage
