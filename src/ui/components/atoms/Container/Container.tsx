@@ -10,9 +10,10 @@ interface ContainerProps {
     roundedBottom?: boolean;
     roundedTop?: boolean;
     fixHeader?: boolean;
+    fixedMargin?: boolean;
 }
 
-export const Container = ({ children, className, padding, transparent, roundedBottom, roundedTop, fixHeader }: ContainerProps) => {
+export const Container = ({ children, className, padding, transparent, roundedBottom, roundedTop, fixHeader, fixedMargin }: ContainerProps) => {
     const adaptiveWidth = cn(
         "w-full max-w-[1366px] mx-auto relative",
         "min-[1920px]:max-w-[136.6rem]",
@@ -26,6 +27,7 @@ export const Container = ({ children, className, padding, transparent, roundedBo
             padding && "py-[32px]",
             transparent ? "bg-transparent" : "bg-white",
             fixHeader && "pt-[32px]",
+            fixedMargin && "mt-[96px]",
             className
         )}>
             {children}
