@@ -1,16 +1,16 @@
 "use client";
 
-import { Container, AtomText } from "@atoms";
-import { SignForm } from "@organisms";
+import { Container } from "@atoms";
+import { FillPhone, SMSVerification } from "@organisms";
+import { useUserInfo } from "@store";
 
 export default function SignInPage() {
+  const { isPhoneFilled } = useUserInfo();
 
   return (
     <Container padding roundedBottom roundedTop fixedMargin>
-      <AtomText variant="cardTitle" asChild className="mt-[60px] text-[28px]">
-        <p>Для можливості подачі запиту про допомогу, Вам потрібно авторизуватися або зареєструватися.</p>
-      </AtomText>
-      <SignForm />
+      {!isPhoneFilled && <FillPhone />}
+      {isPhoneFilled && <SMSVerification />}
     </Container>
   );
 }

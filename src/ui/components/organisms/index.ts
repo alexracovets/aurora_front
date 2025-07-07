@@ -8,5 +8,6 @@ export { PaginationBlock } from "./PaginationBlock";
 export { AwardsBlock } from "./AwardsBlock";
 export { GalleryBlock } from "./GalleryBlock";
 export { ShowCaseGallery } from "./ShowCaseGallery";
-export { RulesBlock } from "./RulesBlock";
-export { SignForm } from "./SignForm";
+export { RulesBlock } from "./RulesBlock"; 
+export { FillPhone } from "./FillPhone";
+export { SMSVerification } from "./SMSVerification";

@@ -15,3 +15,4 @@ export { GalleryItem } from "./GalleryItem";
 export { ItemsPageContent } from "./ItemsPageContent";
 export { NewsItemContent } from "./NewsItemContent";
 export { StepsColumn } from "./StepsColumn";
+export { SignForm } from "./SignForm";
