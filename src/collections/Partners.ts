@@ -15,9 +15,9 @@ export const Partners: CollectionConfig = {
             type: 'text',
         },
         {
-            name: "upload",
+            name: "image",
             type: "upload",
             relationTo: "media",
-        }
+        },
     ],
 }
